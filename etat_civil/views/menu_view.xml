@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+		<menuitem name="Etat Civil"	id="menu_etat_civil_root" sequence="1"  groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_approbateur,etat_civil.group_etat_civil_validateur,etat_civil.group_etat_civil_vendeur_timbre"/>
+		
+			<!-- Registre -->
+			<menuitem name="Registre de naissance"	id="menu_etat_civil_registre_naissance_tree_list" sequence="11" parent="menu_etat_civil_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_approbateur,etat_civil.group_etat_civil_validateur" />
+				
+				<menuitem action="action_view_etat_civil_naissance_tree" name="Toutes les déclarations de naissance"	id="menu_etat_civil_registre_naissance_tree_all" sequence="111" parent="menu_etat_civil_registre_naissance_tree_list" groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_naissance_a_confirmer_tree_view" name="Les déclarations de naissance à confirmer"	id="menu_etat_civil_registre_naissance_tree_a_confirmer" sequence="112" parent="menu_etat_civil_registre_naissance_tree_list" groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_naissance_a_approuver_tree_view" name="Les déclarations de naissance à approuver"	id="menu_etat_civil_registre_naissance_tree_a_approuver" sequence="113" parent="menu_etat_civil_registre_naissance_tree_list" groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_approbateur" />
+				
+				<menuitem action="action_view_etat_civil_naissance_a_valider_tree_view" name="Les déclarations de naissance à valider"	id="menu_etat_civil_registre_naissance_tree_a_valider" sequence="114" parent="menu_etat_civil_registre_naissance_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_validateur" />
+				
+				<menuitem action="action_view_etat_civil_naissance_a_terminer_tree_view" name="Les déclarations de naissance à terminer"	id="menu_etat_civil_registre_naissance_tree_a_terminer" sequence="115" parent="menu_etat_civil_registre_naissance_tree_list" groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_naissance_terminer_tree_view" name="Les déclarations de naissance terminé"	id="menu_etat_civil_registre_naissance_tree_terminer" sequence="116" parent="menu_etat_civil_registre_naissance_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_naissance_rejeter_tree_view" name="Les déclarations de naissance rejeté"	id="menu_etat_civil_registre_naissance_tree_rejeter" sequence="117" parent="menu_etat_civil_registre_naissance_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+			<menuitem name="Registre de mariage"	id="menu_etat_civil_mariage_tree_list" sequence="12" parent="menu_etat_civil_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_approbateur,etat_civil.group_etat_civil_validateur" />
+				
+				<menuitem action="action_view_etat_civil_mariage_tree" name="Toutes les déclarations de mariage"	id="menu_etat_civil_registre_mariage_tree_all" sequence="121" parent="menu_etat_civil_mariage_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_mariage_a_confirmer_tree_view" name="Les déclarations de mariage à confirmer"	id="menu_etat_civil_registre_mariage_tree_a_confirmer" sequence="122" parent="menu_etat_civil_mariage_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_mariage_a_approuver_tree_view" name="Les déclarations de mariage à approuver"	id="menu_etat_civil_registre_mariage_tree_a_approuver" sequence="123" parent="menu_etat_civil_mariage_tree_list" groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_approbateur" />
+				
+				<menuitem action="action_view_etat_civil_mariage_a_valider_tree_view" name="Les déclarations de mariage à valider"	id="menu_etat_civil_registre_mariage_tree_a_valider" sequence="124" parent="menu_etat_civil_mariage_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_validateur" />
+				
+				<menuitem action="action_view_etat_civil_mariage_a_terminer_tree_view" name="Les déclarations de mariage à terminer"	id="menu_etat_civil_registre_mariage_tree_a_terminer" sequence="125" parent="menu_etat_civil_mariage_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_mariage_terminer_tree_view" name="Les déclarations de mariage terminé"	id="menu_etat_civil_registre_mariage_tree_terminer" sequence="126" parent="menu_etat_civil_mariage_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_mariage_rejeter_tree_view" name="Les déclarations de mariage rejeté"	id="menu_etat_civil_registre_mariage_tree_rejeter" sequence="127" parent="menu_etat_civil_mariage_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+			<menuitem name="Registre de décès"	id="menu_etat_civil_deces_tree_list" sequence="13" parent="menu_etat_civil_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_approbateur,etat_civil.group_etat_civil_validateur" />
+							
+				<menuitem action="action_view_etat_civil_deces_tree" name="Toutes les déclarations de décès"	id="menu_etat_civil_registre_deces_tree_all" sequence="131" parent="menu_etat_civil_deces_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_deces_a_confirmer_tree_view" name="Les déclarations de décès à confirmer"	id="menu_etat_civil_registre_deces_tree_a_confirmer" sequence="132" parent="menu_etat_civil_deces_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_deces_a_approuver_tree_view" name="Les déclarations de décès à approuver"	id="menu_etat_civil_registre_deces_tree_a_approuver" sequence="133" parent="menu_etat_civil_deces_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_approbateur" />
+				
+				<menuitem action="action_view_etat_civil_deces_a_valider_tree_view" name="Les déclarations de décès à valider"	id="menu_etat_civil_registre_deces_tree_a_valider" sequence="134" parent="menu_etat_civil_deces_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_validateur" />
+				
+				<menuitem action="action_view_etat_civil_deces_a_terminer_tree_view" name="Les déclarations de décès à terminer"	id="menu_etat_civil_registre_deces_tree_a_terminer" sequence="135" parent="menu_etat_civil_deces_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_deces_terminer_tree_view" name="Les déclarations de décès terminé"	id="menu_etat_civil_registre_deces_tree_terminer" sequence="136" parent="menu_etat_civil_deces_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_deces_rejeter_tree_view" name="Les déclarations de décès rejeté"	id="menu_etat_civil_registre_deces_tree_rejeter" sequence="137" parent="menu_etat_civil_deces_tree_list"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+			<menuitem name="Configuration" id="menu_etat_civil_configuration_root" sequence="15" parent="menu_etat_civil_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+			
+				<menuitem action="action_etat_civil_registre_kanban_view" name="Registre"	id="menu_etat_civil_registre_kanban" sequence="141" parent="menu_etat_civil_configuration_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_document_tree" name="Document"	id="menu_etat_civil_document_naissance_tree_list" sequence="142" parent="menu_etat_civil_configuration_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_etat_civil_maire_tree" name="Maire"	id="menu_etat_civil_maire_tree_list" sequence="143" parent="menu_etat_civil_configuration_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+	</data>
+</odoo>

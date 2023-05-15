@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_innoving_mandat_report_form" model="ir.ui.view">
+		<field name="name">Innoving Mandat</field>
+		<field name="model">innoving.mandat.report</field>
+		<field name="arch" type="xml">
+			<form string="Naissance">
+				<sheet>
+					<group>
+						<field name="name"/>					
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_innoving_mandat_report_tree" model="ir.ui.view">
+		<field name="name">Innoving Mandat</field>
+		<field name="model">innoving.mandat.report</field>
+		<field name="arch" type="xml">
+			<tree string="Les naissances" toolbar="1">
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+	<record id="action_view_innoving_mandat_report_tree"
+		model="ir.actions.act_window">
+		<field name="name">Innoving Mandat</field>
+		<field name="res_model">innoving.mandat.report</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<!-- vue principale par defaut -->
+		<field name="view_id" ref="view_innoving_mandat_report_tree" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle....
+			</p>
+		</field>
+	</record>
+</odoo>

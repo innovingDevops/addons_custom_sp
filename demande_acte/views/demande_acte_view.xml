@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_demande_acte_form"
+		model="ir.ui.view">
+		<field name="name">Demande d'acte</field>
+		<field name="model">demande.acte</field>
+		<field name="arch" type="xml">
+			<form string="Demande d'acte">
+			<header>
+					<button name="button_confirm" string="Confirmer"
+						type="object" class="oe_highlight" states="draft"
+						groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_agent_de_demande"
+						confirm='Etes vous sûr de vouloir confirmer?' />
+						
+					<button name="button_approved" string="Approuver" type="object"
+						class="oe_highlight" states="confirm"
+						groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_vente_timbre"
+						confirm='Etes vous sûr de vouloir approuver?' />
+						
+					<button name="button_valid" string="Valider" type="object"
+						class="oe_highlight" states="approved"
+						groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_vente_timbre"
+						confirm='Etes vous sûr de vouloir valider?' />
+
+					<button name="button_draft" string="Remettre au brouillon"
+						type="object" class="oe_highlight" states="cancel"
+						groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture"
+						confirm='Etes vous sûr de vouloir remettre au brouillon?' />
+
+					<button name="button_cancel" string="Annuler/Rejeter"
+						type="object" class="oe_highlight" states="confirm,valid,approved"
+						groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture"
+						confirm='Etes vous sûr de vouloir annuler/rejeter?' />
+
+					<field name="state" widget='statusbar' />
+				</header>
+				<sheet>
+					<group>
+						<group string="Nature du document demandé">
+							<field name="date_jour" readonly="1" />
+							<field name="date_jour_str" readonly="1" />
+							<field name="code" required="True"  readonly="1"/>
+							<field name="name" invisible="1"/>
+							<field name="type_acte" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="etat_civil_naissance_id" options="{'no_create': True, 'no_open': True}" attrs="{'invisible':[('type_acte', 'not in', ['an','cian'])],'required':[('type_acte', 'in', ['an','cian'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="etat_civil_mariage_id" options="{'no_create': True, 'no_open': True}" attrs="{'invisible':[('type_acte', 'not in', ['am','ciam'])],'required':[('type_acte', 'in', ['am','ciam'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="etat_civil_deces_id" options="{'no_create': True, 'no_open': True}" attrs="{'invisible':[('type_acte', 'not in', ['ad','ciad'])],'required':[('type_acte', 'in', ['ad','ciad'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="ref_demande_ponctuelle" attrs="{'invisible':[('type_acte', 'not in', ['cv','cve','cn'])],'required':[('type_acte', 'in', ['cv','cve','cn'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="code_registre" attrs="{'invisible':[('type_acte', 'not in', ['an','ad','am','cian','ciam','ciad','cv','cve','cn'])],'required':[('type_acte', 'in', ['an','ad','am','cian','ciam','ciad','cv','cve','cn'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="nombre_copie" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<!--<field name="maire_id" options="{'no_create': True, 'no_open': True}" attrs="{'invisible':[('state', 'not in', ['approved','valid'])],'required':[('state', 'in', ['approved','valid'])]}"/>-->
+						</group>
+						<group attrs="{'invisible':[('type_acte', 'not in', ['an','ad','am','cv','cn','cian','ciam','ciad'])]}" string="Autres informations de l'acte">
+							<field name="prenom" attrs="{'invisible':[('type_acte', 'not in', ['an','ad','cian','ciad'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom" attrs="{'invisible':[('type_acte', 'not in', ['an','ad','cian','ciad'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="sexe" attrs="{'invisible':[('type_acte', 'not in', ['an','ad','cv','cian','ciad'])],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+							<!--  <field name="nom_prenom_enfant" attrs="{'invisible':[('type_acte', '!=', 'cve')],'required':[('type_acte', '==', 'cve')],'readonly': [('state','!=','draft')]}"/>-->
+							<field name="birthday_cv" attrs="{'invisible':[('type_acte', 'not in', ['an','ad','cv','cian','ciad'])],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+							<field name="lieu_naissance" attrs="{'invisible':[('type_acte', 'not in', ['an','ad','cian','ciad'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="date_deces" attrs="{'invisible':[('type_acte', 'not in', ['ad','ciad'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="lieu_deces" attrs="{'invisible':[('type_acte', 'not in', ['ad','ciad'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="date_mariage" attrs="{'invisible':[('type_acte', 'not in', ['am','ciam'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="prenom_homme" attrs="{'invisible':[('type_acte', 'not in', ['am','ciam'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_homme" attrs="{'invisible':[('type_acte', 'not in', ['am','ciam'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="prenom_femme" attrs="{'invisible':[('type_acte', 'not in', ['am','ciam'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_femme" attrs="{'invisible':[('type_acte', 'not in', ['am','ciam'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="country_id" attrs="{'invisible':[('type_acte', '!=', 'cv')],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_pere_certificat_vie" attrs="{'invisible':[('type_acte', '!=', 'cv')],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_mere_certificat_vie" attrs="{'invisible':[('type_acte', '!=', 'cv')],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+							<field name="prenom_temoin_premier" attrs="{'invisible':[('type_acte', '!=', 'cn')],'required':[('type_acte', '==', 'cn')],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_temoin_premier" attrs="{'invisible':[('type_acte', '!=', 'cn')],'required':[('type_acte', '==', 'cn')],'readonly': [('state','!=','draft')]}"/>
+							<field name="prenom_temoin_deuxieme" attrs="{'invisible':[('type_acte', '!=', 'cn')],'required':[('type_acte', '==', 'cn')],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_temoin_deuxieme" attrs="{'invisible':[('type_acte', '!=', 'cn')],'required':[('type_acte', '==', 'cn')],'readonly': [('state','!=','draft')]}"/>
+						</group>	
+					</group>
+					<group>
+						<group string="Informations sur le demandeur">
+							
+							<field name="prenom_demandeur" attrs="{'required':[('type_acte', 'in', ['cv','cn','cve'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_demandeur" attrs="{'required':[('type_acte', 'in', ['cv','cn','cve'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="numero_piece" attrs="{'required':[('type_acte', 'in', ['cv'])],'readonly': [('state','!=','draft')]}"/>
+							<field name="telephone" attrs="{'required':[('type_acte', 'in','cv')],'readonly': [('state','!=','draft')]}"/>
+							<field name="profession_demandeur_certificat_vie" attrs="{'invisible':[('type_acte', '!=', 'cv')],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+							<field name="numero_matricule_cgrae" attrs="{'invisible':[('type_acte', '!=', 'cv')],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+							<field name="domicile" attrs="{'invisible':[('type_acte', '!=', 'cv')],'required':[('type_acte', '==', 'cv')],'readonly': [('state','!=','draft')]}"/>
+						</group>
+						<group string="Informations complémentaires">
+							<field name="user_id" required="True" readonly="1" />
+							<field name="date_confirm" readonly="1" />
+							<field name="date_approved" readonly="1" />
+							<field name="date_valid" readonly="1" />
+						</group>
+					</group>
+					<group attrs="{'invisible':[('type_acte', 'not in', ['cve'])]}" string="Enfants à charge">
+						<field name="enfant_ids" nolabel="1" attrs="{'invisible':[('type_acte', '!=', 'cve')],'readonly': [('state','!=','draft')]}">
+							<tree>
+				 				<field name='code'/>
+								<field name="name"/>
+								<field name='birthday_str' />
+								<field name='lieu_naissance' />
+							</tree>
+						</field>
+					</group>
+				</sheet>
+				<!--  
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+				-->
+			</form>
+		</field>
+	</record>
+	<record id="view_demande_acte_tree"
+		model="ir.ui.view">
+		<field name="name">Liste des demandes d'actes</field>
+		<field name="model">demande.acte</field>
+		<field name="arch" type="xml">
+			<tree string="Les demandes d'actes" toolbar="1" create="0">
+				<field name="name" />
+				<field name="type_acte" />
+				<field name="code_registre" />
+				<!--
+				<field name="nom_demandeur" />
+				<field name="prenom_demandeur" />
+				 -->
+				<field name="user_id" />
+				<field name="date_ajout" />
+				<field name="state" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_demande_acte_calendar"
+		model="ir.ui.view">
+		<field name="name">Les demandes d'actes</field>
+		<field name="model">demande.acte</field>
+		<field name="arch" type="xml">
+			<calendar string="Les demandes d'actes"
+				date_start="create_date" color="user_id">
+				<field name="code" />
+				<field name="name" />
+				<field name="prenom_demandeur" />
+				<field name="user_id" />
+				<field name="date_ajout" />
+				<field name="type_acte" />
+				<field name="numero_piece" />
+				<field name="telephone" />
+			</calendar>
+		</field>
+	</record>
+
+	<record id="demande_acte_view_search"
+		model="ir.ui.view">
+		<field name="name">Les demandes d'actes
+		</field>
+		<field name="model">demande.acte</field>
+		<field name="arch" type="xml">
+			<search string="Recherche Demande d'Acte">
+				<field name="code" />
+				<field name="name" />
+				<separator />
+				<field name='user_id' />
+				<field name='date_ajout' />
+				<field name="state" />
+				<group expand="0" string="Grouper par">
+					<filter name="name" string="Nom" domain=""
+						context="{'group_by':'name'}" />
+					<filter name="user_id" string="Agent" domain=""
+						context="{'group_by':'user_id'}" />
+					<filter name="date_ajout" string="Date ajout" domain=""
+						context="{'group_by':'date_ajout'}" />
+					
+				</group>
+			</search>
+		</field>
+	</record>
+	<record model="ir.ui.view"
+		id="view_demande_acte_pivot">
+		<field name="name">Les demandes d'actes</field>
+		<field name="model">demande.acte</field>
+		<field name="arch" type="xml">
+			<pivot string="Les demandes d'actes">
+				<field name="date_ajout" type="row" />
+				<field name="user_id" type="measure" />
+			</pivot>
+		</field>
+	</record>
+
+	<record id="action_view_demande_acte_tree"
+		model="ir.actions.act_window">
+		<field name="name">Liste des demandes de copie d'actes</field>
+		<field name="res_model">demande.acte</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="view_id" ref="view_demande_acte_tree" />
+		<field name="search_view_id"
+			ref="demande_acte_view_search" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande de copie d'acte
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_demande_acte_a_confirmer_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte à confirmer</field>
+		<field name="res_model">demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','draft')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande de copie d'acte
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_demande_acte_a_approuver_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte à approuver</field>
+		<field name="res_model">demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','confirm')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande de copie d'acte
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_demande_acte_a_valider_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte à valider</field>
+		<field name="res_model">demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','approved')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande de copie d'acte
+			</p>
+		</field>
+	</record>
+
+	<record id="action_demande_acte_valider_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte validé</field>
+		<field name="res_model">demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','valid')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande de copie d'acte
+			</p>
+		</field>
+	</record>
+
+	<record id="action_demande_acte_rejecter_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte rejeté</field>
+		<field name="res_model">demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','cancel')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande de copie d'acte
+			</p>
+		</field>
+	</record>
+
+	<record id="etat_civil_demande_acte_kanban_view" model="ir.ui.view">
+		<field name="name">demande.acte.kanban</field>
+		<field name="model">demande.acte</field>
+		<field name="arch" type="xml">
+			<kanban	class="oe_background_grey o_kanban_dashboard o_emphasize_colors o_stock_kanban"	create="0">
+				<field name="code" />
+				<field name="name" />
+				<templates>
+					<t t-name="kanban-box">
+						<div style="width: 518px;">
+							<div>
+								<div t-attf-class="o_kanban_card_header">
+									<div class="o_kanban_card_header_title">
+										<div class="o_primary">
+										</div>
+										<div class="o_secondary">
+										</div>
+									</div>
+								</div>
+								<div class="container o_kanban_card_content">
+									<div class="row">
+										<div class="col-4 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> ACTE DE NAISSANCE
+												</span>
+											</button>
+										</div>
+										<div class="col-8 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> COPIE INTEGRALE D'ACTE DE NAISSANCE
+												</span>
+											</button>
+										</div>
+									</div><br/>
+									<div class="row">
+										<div class="col-4 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> ACTE DE MARIAGE
+												</span>
+											</button>
+										</div>
+										<div class="col-8 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> COPIE INTEGRALE D'ACTE DE MARIAGE
+												</span>
+											</button>
+										</div>
+									</div><br/>
+									<div class="row">
+										<div class="col-4 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> ACTE DE DECES
+												</span>
+											</button>
+										</div>
+										<div class="col-8 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> COPIE INTEGRALE D'ACTE DE DECES
+												</span>
+											</button>
+										</div>
+									</div><br/>
+								</div>
+							</div>
+						</div>
+					</t>
+
+				</templates>
+			</kanban>
+		</field>
+	</record>
+
+	<record id="action_etat_civil_demande_acte_kanban_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte</field>
+		<field name="res_model">demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">kanban,form</field>
+		<field name="view_id" ref="etat_civil_demande_acte_kanban_view" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande d'acte
+			</p>
+		</field>
+	</record>
+	
+</odoo>

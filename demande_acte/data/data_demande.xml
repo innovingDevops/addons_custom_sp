@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for demande -->
+		<record id="data_demande1" model="demande.acte.demande">
+			<field name="name">DEMANDE</field>
+			<field name="code">DEMANDE</field>
+		</record>
+	</data>
+</odoo>
+

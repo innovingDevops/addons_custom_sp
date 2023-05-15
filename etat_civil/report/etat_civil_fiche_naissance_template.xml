@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_etat_civil_fiche_naissance_p">
+		<t t-name="etat_civil.report_etat_civil_fiche_naissance">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page"
+						style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table table-borderless">
+								<tbody>
+										<tr>
+											<td>
+												<span style="float:left;text-align:center;">
+													<h5><strong>REGION DE SAN PEDRO</strong></h5>
+													<h6>- - - - -</h6>
+													<h5><strong>DEPARTEMENT DE SAN PEDRO</strong></h5>
+													<h6>- - - - -</h6>
+													<img class="img" src="/etat_civil/static/src/img/logo.jpeg" style="height:50%;width:30%;" />
+													<h5><strong>COMMUNE DE SAN PEDRO</strong></h5>
+													<h6>- - - - -</h6>
+													<h5><strong>ETAT CIVIL</strong></h5>
+												</span>
+											</td>
+											<td>
+											<h5><strong>SAF</strong></h5>
+											</td>
+											<td>
+												<span style="float:right;text-align:center;">
+													<h5><strong>REPUBLIQUE DE COTE D'IVOIRE</strong></h5>
+													<p>Union-Discipline-Travail</p>
+													<h6>- - - - -</h6>
+													<h1>
+														<strong>EXTRAIT</strong>
+													</h1>
+													<p><strong>du registre des actes de l'Etat-Civil</strong></p>
+													<p><strong>Pour l'Année</strong></p>
+												</span>
+												
+											</td>
+										</tr>
+								</tbody>
+							</table>
+							<table class="table table-borderless">
+								<tbody>
+										<tr>
+											<td>
+												N° du registre <strong><span t-field="o.numero_acte" /></strong><br/><br/>
+												NAISSANCE DE : <span t-field="o.prenom" /> <strong><span t-field="o.name" /> </strong><br/>
+											</td>
+											<td>
+												Le : <strong><span t-field="o.birthday" /></strong><br/><br/>
+												à :  <strong><span t-field="o.lieu_naissance" /></strong><br/><br/>
+												est né(e) : <strong><span t-field="o.prenom" /> <span t-field="o.name" /> </strong><br/>
+												à :  <strong><span t-field="o.heur_naissance" /></strong><br/><br/>
+												fils / fille de :  <strong><span t-field="o.prenom_pere" /> <span t-field="o.nom_pere" /> </strong><br/><br/>
+												et de :  <strong><span t-field="o.prenom_mere" /> <span t-field="o.nom_mere" /> </strong><br/><br/>
+											</td>
+										</tr>
+								</tbody>
+							</table>
+							<strong><hr/></strong><br/>
+							<strong style="text-align:center;"><h3>MENTION (éventuellement)</h3></strong><br/>
+							<p>
+								Marié (e) le .................................................................
+								..............................................................................
+								..............................................................................
+							</p>
+							<p>
+								Avec : .................................................................
+								..............................................................................
+								.......................................................................................
+							</p>
+							<p>
+								mariage dissous par décision de divorce en date du ...........................
+								..............................................................................
+								............................................
+							</p>
+							<p>
+								décédé (e) le ................................................................
+								..............................................................................
+								..............................................................................
+							</p>
+							<p>
+								certifie le présent extrait conforme aux indications portées au registre ......
+								...................................................................................
+								....................................
+							</p>
+							<br/>
+							<p style="float:right ;">
+								Délivré  à San Pedro le <span t-esc="time.strftime('%d-%m-%Y %H:%M:%S')" />
+							</p>
+							<p style="float:left ;">
+								Seau
+							</p>
+							<br/>
+							<br />
+							<table class="table table-borderless">
+								<tbody>
+										<tr>
+											<td>
+											</td>
+											<td style="float:right;font-size:10px;">
+												<span style="text-align:center;">L'Officier de l'Etat Civil</span><br/>
+												<span style="text-align:center;">L'Agent de l'Etat Civil</span><br/>
+												<span style="text-align:center;">(Signature)</span>
+											</td>
+										</tr>
+								</tbody>
+							</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

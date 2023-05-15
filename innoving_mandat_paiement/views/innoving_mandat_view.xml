@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_innoving_mandat_form" model="ir.ui.view">
+		<field name="name">Mandat</field>
+		<field name="model">innoving.mandat</field>
+		<field name="arch" type="xml">
+			<form string="Mandat">
+				<header>
+					<button name="button_confirm" string="Confirmer"
+						type="object" class="oe_highlight" states="draft"
+						groups="innoving_mandat_paiement.group_innoving_mandat_manager,innoving_mandat.group_innoving_mandat_agent" />
+
+					<button name="button_valid" string="Valider" type="object"
+						class="oe_highlight"
+						attrs="{'invisible': ['|',('type_demande_facture', '=', 'Taxe'),('state', '!=', 'confirm')]}"
+						groups="innoving_mandat_paiement.group_innoving_mandat_manager,innoving_mandat_paiement.group_innoving_mandat_lecture,innoving_mandat_paiement.group_innoving_mandat_agent" />
+
+					<button name="button_approuv" string="Transmettre"
+						type="object" class="oe_highlight" states="valid"
+						groups="innoving_mandat.group_innoving_mandat_manager,innoving_mandat_paiement.group_innoving_mandat_lecture,innoving_mandat_paiement.group_innoving_mandat_agent" />
+					
+					<button name="%(action_innoving_mandat_wizard2)d"
+						string="Régulariser" type="action" class="oe_highlight"
+						states="regularisation"
+						groups="innoving_mandat_paiement.group_innoving_mandat_manager,innoving_mandat_paiement.group_innoving_mandat_lecture,innoving_mandat_paiement.group_innoving_mandat_agent" />
+						
+					<button name="%(action_innoving_mandat_wizard)d"
+						string="Payer" type="action" class="oe_highlight"
+						states="approuv,partiel"
+						groups="innoving_mandat_paiement.group_innoving_mandat_manager,innoving_mandat_paiement.group_innoving_mandat_lecture,innoving_mandat_paiement.group_innoving_mandat_agent" />
+
+					<button name="%(action_innoving_mandat_cancel_wizard)d"
+						string="Réfuser/Annuler" type="action" class="oe_highlight"
+						states="confirm,valid,approuv"
+						groups="innoving_mandat_paiement.group_innoving_mandat_manager,innoving_mandat_paiement.group_innoving_mandat_lecture,innoving_mandat_paiement.group_innoving_mandat_agent" />
+
+					<button name="button_draft" string="Remettre au Brouillon"
+						type="object" class="oe_highlight" states="cancel"
+						groups="innoving_mandat_paiement.group_innoving_mandat_manager,innoving_mandat_paiement.group_innoving_mandat_lecture,innoving_mandat_paiement.group_innoving_mandat_agent" />
+						
+					<field name="state" widget='statusbar' />
+				</header>
+				<sheet>
+					<group col="2">
+						<group col="1">
+							<div class="oe_title">
+								<label for="name" class="oe_edit_only" />
+								<h1>
+									<field name="name" string="Numéro" required="1" readonly="1" />
+								</h1>
+							</div>
+							<button name="button_dommy" string="Valider" type="object"
+								class="oe_highlight"
+								attrs="{'invisible': ['|',('verif_compta', '=', 'non'),('state', '=', 'regularisation')]}" />
+							<field name="verif_compta" invisible="1" />
+						</group>
+						<group string="Mandat basé sur" col="2">
+							<group>
+								<field name="type_demande" widget="radio" nolabel="1" options="{'horizontal':true}" required="1"
+									attrs="{'readonly': [('state','not in',('draft'))]}" />
+							</group>
+							<group col="1">
+								<field name="type_demande_facture" widget="radio" options="{'horizontal':true}"
+									nolabel="1"
+									attrs="{'readonly': [('state','not in',('draft'))],'invisible': [('type_demande','!=','Facture')]}" />
+							</group>
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="type_depense"	required="1" string="Type de dépense" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+							<field name="type_fond" string="Dépense effectuée sur" widget='radio' options="{'horizontal': true}" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+							<field name="type_mandat" string="Mandat à généré" widget='radio' options="{'horizontal': true}" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+							<field name="numero_facture_origine" string="N° Facture Origine" readonly="1" />
+							<!--<field name='nature_mandat' />-->
+						</group>
+						<group>
+							<field name="date_edition_fournisseur"  string="Date du fournisseur" readonly="1" />
+							<field name="budget_id" required="1" readonly="1" domain="[('state', '=', 'validate')]"/>
+							<field name="is_carburant" string="Achat de carburant"/>
+							<field name="numero_ordre_mandat" string="N° Ordre Mandat" />
+							<field name="account_patrimoniale_code" string="Code patrimoniale" />						
+						</group>
+					</group>
+					<group string="Objet du mandat">
+						<field name="note"
+							placeholder="Indiquez l'Objet du mandat" required="1"
+							nolabel="1" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+					</group>
+					<group>
+						<group string="Compte fonctionnel à engager">
+							<field name="account_fonctionnel_id" readonly="1"  attrs="{'invisible': [('type_depense', '!=', 'fonctionnel')],'required': [('type_depense', '=', 'fonctionnel')]}" />
+							<field name="barre_account_fonctionnel" readonly="1" attrs="{'invisible': [('type_depense', '!=', 'fonctionnel')],'required': [('type_depense', '=', 'fonctionnel')]}" />
+							<field name="account_patrimoine_id" readonly="1" attrs="{'invisible': [('type_depense', '!=', 'investissement')],'required': [('type_depense', '=', 'investissement')]}" />
+							<field name="barre_account_patrimoine" readonly="1" attrs="{'invisible': [('type_depense', '!=', 'investissement')],'required': [('type_depense', '=', 'investissement')]}" />
+							<field name="compte" string="Compte" required="1" attrs="{'readonly': [('state', 'not in', ['draft','confirm'])]}"/>
+							<field name="chapitre" string="Chapitre" required="1" attrs="{'readonly': [('state', 'not in', ['draft','confirm'])]}"/>
+							<field name="account_patrimoniale_id" readonly="1" attrs="{'invisible': [('type_depense', '!=', 'investissement')]}" />
+							<field name="type_mandat" string="Mandat à généré" widget='radio' options="{'horizontal': true}" attrs="{'readonly': [('state', '!=', 'draft')],'invisible': [('type_depense', '!=', 'investissement')],'required': [('type_depense', '=', 'investissement')]}" />
+						</group>
+						<group string="Délibération">
+							<field name="avis_municipalite"  attrs="{'readonly': [('state', 'not in', ['draft','confirm'])]}"/>
+							<field name="numero_deliberation"  attrs="{'readonly': [('state', 'not in', ['draft','confirm'])]}"/>		
+							<field name="date_deliberation"  attrs="{'readonly': [('state', 'not in', ['draft','confirm'])]}"/>	
+							<field name="decision_file" string="Joindre la décision" attrs="{'readonly': [('state', 'not in', ['draft','confirm'])]}" />			
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="montant_alloue"  required="1"  readonly="1" />
+							<field name="depense_anterieur"  required="1" readonly="1" />
+						</group>
+						<group>
+							<field name="depense_actuelle"   required="1" readonly="1" />
+							<field name="montant_disponible"  required="1"  readonly="1" />			
+						</group>
+					</group>
+					<group>
+						<group string="Information comptable" colspan="2" col="2">
+							<group >
+								<field name="partner_id" context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}" domain="[('supplier','=',True)]" readonly="1" />
+								<field name='beneficiaire' required="1"	readonly="1" />
+								<field name='banque_name' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+								<field name='numero_compte_fournisseur' attrs="{'readonly': [('state', '!=', 'draft')]}" />
+								<field name='agence' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+								<field name='account_id'  invisible="1" readonly="1" />
+								<field name='journal_id' invisible="1" />
+								<!--<field name="selon_decision" placeholder="NUMERO DE DECISION" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('type_demande', '=', 'Decision')]}" />-->
+							</group>
+							<group >
+								<!-- 
+								<field name='montant_estime' attrs="{'readonly': [('state', '=', 'cancel')]}" />
+								<field name='montant_a_payer' attrs="{'readonly': [('state', '=', 'cancel')]}" />
+								 -->
+								<field name="selon_facture"	placeholder="FACTURE FOURNISSEUR N°" readonly="1" />
+								<field name='montant_reel'  attrs="{'readonly': [('state', '!=', 'draft')]}" />
+								<field name='montant_reste'	attrs="{'readonly': [('state', '!=', 'draft')]}" />
+								<field name="montant_paye" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+								<field name='date_prevue' required="1"	readonly="1" />
+								<!--<field name='tax_source' attrs="{'readonly': [('state','not in',('draft'))]}" />-->
+								<field name="montant_lettre" readonly="1"/>
+							</group>
+						</group>
+					</group>
+					<group>
+						<notebook>
+							<page string="Factures">
+								<group>
+									<field name='invoice_ids' nolabel="1" readonly="1"
+										domain="[('state', '=', 'open'),('partner_id', '=', partner_id)]">
+										<tree>
+											<field name="number" />
+											<field name="reference" string="Numéro facture" />
+											<field name="date_invoice" />
+											<field name="date_due" />
+											<field name="amount_total" sum='Total' />
+											<field name="residual" sum='Total' />
+											<field name="state" />
+										</tree>
+									</field>
+								</group>
+							</page>
+							<!-- 
+							<page string="Bons de commande"
+								attrs="{'invisible': [('type_demande', '!=', 'Bc')]}">
+								<group>
+									<field name="purchase_order_ids" nolabel="1"
+										attrs="{'readonly': [('state', '=', 'cancel')]}"
+										domain="[('state','in',('to approve','purchase')),('partner_id', '=', partner_id)]" />
+								</group>
+							</page> 
+							 -->
+							<page string="Reglements">
+								<group>
+									<field name='line_ids' nolabel="1" readonly="1"
+										widget="one2one">
+										<tree editable="bottom">
+											<field name='date' />
+											<field name='user_id' />
+											<field name='montant_paye' sum="total" />
+											<field name='journal_id' />
+											<field name="type_reglement" />
+											<field name="move_id" invisible="0" />
+											<field name="payment_id" />
+											<field name="state" />
+										</tree>
+										<form>
+											<field name='date' />
+											<field name='user_id' />
+											<field name='montant_paye' sum="total" />
+											<field name='journal_id' />
+											<field name="type_reglement" />
+											<field name="move_id" invisible="0" />
+											<field name="payment_id" />
+											<field name="state" />
+										</form>
+									</field>
+								</group>
+							</page>
+							<page string="Historiques des actions">
+								<group col="2">
+									<group string="Historique de Valitatons" col="2">
+										<field name='date_demande' readonly="1" />
+										<field name='date_validation' readonly="1" />
+										<field name='date_approbation' readonly="1" />
+									</group>
+									<group string="Historique de refus">
+										<field name="order_cancel_ids" nolabel="1" readonly="1">
+											<tree editable="bottom">
+												<field name="user_id" />
+												<field name="name" />
+												<field name="date" />
+											</tree>
+										</field>
+									</group>
+								</group>
+							</page>
+							<page string="Autres informations">
+								<group col="2">
+									<field name='demandeur' required="1"
+									options="{'no_create': True, 'no_open': True}"
+									domain="[('id', '=', uid)]"	attrs="{'readonly': [('state', '!=', 'draft')]}" />
+									<field name='validateur' required="0" readonly="1" widget="selected" />
+									<field name='approbateur' required="0" readonly="1" />
+									<field name='payeur' readonly="1" />
+								</group>
+							</page>
+							<!--
+							<page string="Liens" name="lien">
+							</page>
+							 -->
+						</notebook>
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+			</form>
+		</field>
+	</record>
+	<record id="view_innoving_mandat_tree" model="ir.ui.view">
+		<field name="name">Liste des mandats</field>
+		<field name="model">innoving.mandat</field>
+		<field name="arch" type="xml">
+			<tree string="Mandat de paiement"
+				decoration-info="state == 'draft'"
+				decoration-muted="state == 'cancel'"
+				decoration-success="state == 'approuv'"
+				decoration-danger="state in ('regularisation','partiel')"
+				decoration-warning="state == 'paid'"
+				decoration-primary="state == 'confirm'"
+				decoration-bf="state == 'valid'" toolbar="1" create="0">
+				<field name='name'/>
+				<field name="type_depense" />
+				<field name="selon_facture"/>
+				<field name="type_demande"/>
+				<field name='partner_id'/>
+				<field name="user_id" />
+				<field name='validateur'/>
+				<field name='approbateur'/>
+				<field name='montant_estime' />
+				<field name='montant_paye' />
+				<field name='payeur' />
+				<field name='date_demande'/>
+				<field name='date_validation'/>
+				<field name='date_approbation'/>
+				<field name='date_prevue' />
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!-- 
+	<record id="view_innoving_mandat_calendar"
+		model="ir.ui.view">
+		<field name="name">innoving.mandat.calendar</field>
+		<field name="model">innoving.mandat</field>
+		<field name="arch" type="xml">
+			<calendar string="Mandats" date_start="create_date"
+				color="state">
+				<field name="name" />
+				<field name="type_depense" />
+				<field name="date_ajout" />
+				<field name="date_confirm" />
+				<field name="date_valid" />
+				<field name="user_id" />
+				<field name="state" />
+			</calendar>
+		</field>
+	</record>
+
+	<record id="innoving_mandat_view_search" model="ir.ui.view">
+		<field name="name">innoving_mandat.innoving_mandat_view_search
+		</field>
+		<field name="model">innoving.mandat</field>
+		<field name="arch" type="xml">
+			<search string="Recherche Mandat">
+				<field name="name" />
+				<field name="type_depense" />
+				<field name="date_ajout" />
+				<field name="date_confirm" />
+				<field name="date_valid" />
+				<field name="user_id" />
+				<field name="state" />
+				<separator />
+				<filter string="Brouillon" name="draft"
+					domain="[('state','=','draft')]" />
+				<filter string="Confirmé" name="confirm"
+					domain="[('state','=','confirm')]" />
+				<filter string="Validé" name="valid"
+					domain="[('state','=','valid')]" />
+				<filter string="Annulé/Rejeté" name="cancel"
+					domain="[('state','=','cancel')]" />
+				<field name='user_id' />
+				<field name='date_ajout' />
+				<field name='date_confirm' />
+				<field name='date_valid' />
+				<group expand="0" string="Grouper par">
+					<filter name="user_id" string="Agent" domain=""
+						context="{'group_by':'user_id'}" />
+					<filter name="date_ajout" string="Date ajout" domain=""
+						context="{'group_by':'date_ajout'}" />
+					<filter name="date_confirm" string="Date confirmation"
+						domain="" context="{'group_by':'date_confirm'}" />
+					<filter name="date_valid" string="Date validation" domain=""
+						context="{'group_by':'date_valid'}" />
+				</group>
+			</search>
+		</field>
+	</record>
+	 -->
+	<record model="ir.ui.view" id="view_innoving_mandat_pivot">
+		<field name="name">innoving_mandat</field>
+		<field name="model">innoving.mandat</field>
+		<field name="arch" type="xml">
+			<pivot string="Mandats">
+				<field name="date_demande" type="row" />
+				<field name="user_id" type="measure" />
+			</pivot>
+		</field>
+	</record>
+
+	<record id="action_view_innoving_mandat_tree"
+		model="ir.actions.act_window">
+		<field name="name">Liste des mandats</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="view_id" ref="view_innoving_mandat_tree" />
+		<!--  <field name="search_view_id"
+			ref="innoving_mandat_view_search" />-->
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_a_confirmer_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats à confirmer</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('state','=','draft')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_mandat_a_valider_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats à valider</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('state','=','confirm')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_a_transmettre_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats à transmettre</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('state','=','valid')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_mandat_a_payer_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats à payer</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('state','=','approuv')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_mandat_payer_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats payés</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('state','=','paid')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_rejeter_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats rejetés</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('state','=','cancel')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_fonctionnement_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats de fonctionnement</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('type_depense','=','fonctionnel')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_investissement_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats d'investissement</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('type_depense','=','investissement')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mes_mandat_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mes Mandats</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="domain">[('user_id','=',uid)]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+<!-- 
+	<record id="action_mes_mandat_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mes Mandats</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('user_id','=',uid)]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_a_valider_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats à valider</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','confirm')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_valider_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats validés</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','valid')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+
+	<record id="action_mandat_rejeter_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Mandats rejetés</field>
+		<field name="res_model">innoving.mandat</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','cancel')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Créer un nouveau mandat
+			</p>
+		</field>
+	</record>
+ -->
+
+</odoo>

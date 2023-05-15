@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	
+	
+		<record id="syscoa_report_format" model="report.paperformat">
+				<field name="name">Contract Format</field>
+				<field name="default" eval="True" />
+				<field name="format">custom</field>
+				<field name="page_height">0</field>
+				<field name="page_width">0</field>
+				<field name="orientation">Portrait</field>
+				<field name="margin_top">3</field>
+				<field name="margin_bottom">23</field>
+				<field name="margin_left">20</field>
+				<field name="margin_right">20</field>
+				<field name="header_line" eval="False" />
+				<field name="header_spacing">35</field>
+				<field name="dpi">90</field>
+		</record>	
+	
+	
+	
+	
+	
+        <template id="syscoa_report_payslip">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <template id="payroll_css" inherit_id="web.layout">
+                            <xpath expr="//head" position="inside">
+                                <link rel="stylesheet" href="/l10n_syscoa_payroll/static/src/css/payroll.css" />
+                            </xpath>
+                        </template>
+                        <table >
+                            <tr>
+                              <td class="header-line-spacer" colspan="4"></td>
+                              <td width="2%" rowspan="22"></td>
+                              <td class="header-line-spacer" colspan="3">&amp;nbsp; </td>
+                            </tr>
+                            <tr>
+                              <td class="table-header-title text-dark-red" colspan="4" rowspan="2">
+                                <t t-if="o.type == 'leaves'">BULLETIN DE CONGÉ <t t-if="o.credit_note == True">(AVOIR)</t> </t>
+                                <t t-if="o.type != 'leaves'">BULLETIN DE PAIE <t t-if="o.credit_note == True">(AVOIR)</t> </t>
+                              </td>
+                              <td >Matricule</td>
+                              <td >N° CNPS</td>
+                              <td >N° CNPS EMPLOYEUR</td>
+                            </tr>
+                            <tr>
+                              <td class="text-bold"><span t-field="o.employee_id.matricule" /> <span t-field="o.employee_id.name" />&#160;&#160;</td>
+                              <td class="text-bold"><span t-field="o.employee_id.ipres_id" /></td>
+                              <td class="text-bold"><span t-field="company.number_cnps" /></td>
+                            </tr>
+                            <tr>
+                              <td class="header-line-spacer" colspan="4">&amp;nbsp; </td>
+                              <td class="header-line-spacer" colspan="3">&amp;nbsp; </td>
+                            </tr>
+                            <tr>
+                              <td colspan="4" rowspan="8">
+                                  <p style="font-size: 10pt !important;">
+                                    <img t-attf-src="data:image/*;base64,{{company.logo}}"/>
+                                </p>
+                                <p style="font-size: 10pt !important;">
+                                    <strong><span t-field="o.company_id.name" /></strong>
+                                </p>
+
+                                <p>
+                                    <t t-if="o.company_id.street">
+                                    <span t-field="o.company_id.street" /> <br/>
+                                    </t>
+                                    <t t-if="o.company_id.street2">
+                                        <span t-field="o.company_id.street2" /> <br/>
+                                    </t>
+                                    <t t-if="o.company_id.zip">
+                                        <span t-field="o.company_id.zip" />&#160;
+                                    </t>
+                                    <t t-if="o.company_id.city">
+                                        <span t-field="o.company_id.city" />
+                                    </t>
+                                    <t t-if="o.company_id.country_id">
+                                        &#160;&#160;-&#160;&#160;<span style="text-transform: uppercase;" t-field="o.company_id.country_id" />
+                                    </t>
+                                </p>
+                                <t t-if="o.company_id.vat">
+                                    <span t-field="o.company_id.vat" />
+                                </t>
+                                <t t-if="o.company_id.company_registry and o.company_id.vat">
+                                    &#160;&#160;&#160;&#160;&#160;/&#160;&#160;&#160;&#160;&#160;
+                                </t>
+                                <t t-if="o.company_id.company_registry">
+                                    <span t-field="o.company_id.company_registry" />
+                                </t>
+                              </td>
+                              <td>Catégorie</td>
+                              <td>Qualification</td>
+                              <td>Ancienneté</td>
+                            </tr>
+                            <tr>
+                              <td class="text-bold"><span t-field="o.contract_id.category" /></td>
+                              <td class="text-bold"><span t-field="o.contract_id.qualif" /></td>
+                              <td class="text-bold"><span t-field="o.contract_id.seniority" /></td>
+                            </tr>
+                            <tr>
+                              <td class="header-line-spacer" colspan="3">&amp;nbsp; </td>
+                            </tr>
+                            <tr>
+                              <td>Part soc./Niveau</td>
+                              <td>Coefficient</td>
+                              <td>Convention Collective</td>
+                            </tr>
+                            <tr>
+                              <td class="text-bold"><span t-field="o.contract_id.niveau" /></td>
+                              <td class="text-bold"><span t-field="o.contract_id.coef" />&#160;&#160;</td>
+                              <td class="text-bold"><span t-field="o.company_id.conv_coll_national" /></td>
+                            </tr>
+                            <tr>
+                              <td class="header-line-spacer" colspan="3">&amp;nbsp; </td>
+                            </tr>
+                            <tr>
+                              <td>Heures prévues</td>
+                              <td colspan="2">Emploi  occupé</td>
+                        <!--      <td>Département</td>      -->
+                            </tr>
+                            <tr>
+                              <td class="text-bold">
+                                <span t-esc="get_worked_hours(o)" />
+                                <!-- <span t-esc="o.contract_id.time_fixed" />  -->
+                                &#160;&#160;
+                              </td>
+                              <td class="text-bold" colspan="2">
+                                <t t-if="o.contract_id.job_id"><span t-field="o.contract_id.job_id" /></t>
+                                <t t-if="not o.contract_id.job_id"><span t-field="o.employee_id.job_id.name" /></t>
+                              </td>
+                        <!--      <td class="text-bold"><span t-field="o.employee_id.department_id.name" /></td>    -->
+                            </tr>
+                            <tr>
+                              <td class="header-line-spacer" colspan="4">&amp;nbsp; </td>
+                              <td class="header-line-spacer" colspan="3">&amp;nbsp; </td>
+                            </tr>
+                            <tr>
+                              <td colspan="4">Référence du bulletin : &#160;&#160;&#160;&#160;&#160; <strong><span t-field="o.number" /></strong></td>
+                              <td class="more-padding-left" colspan="3" rowspan="8">
+                                <p style="font-size: 10pt !important;">
+                                    <strong><span t-field="o.employee_id.address_home_id.name" /></strong>
+                                </p>
+                                <p>
+                                    <t t-if="o.employee_id.address_home_id.street">
+                                        <span t-field="o.employee_id.address_home_id.street" /> <br/>
+                                    </t>
+                                    <t t-if="o.employee_id.address_home_id.street2">
+                                        <span t-field="o.employee_id.address_home_id.street2" /> <br/>
+                                    </t>
+                                    <t t-if="o.employee_id.address_home_id.zip">
+                                        <span t-field="o.employee_id.address_home_id.zip" />&#160;
+                                    </t>
+                                    <t t-if="o.employee_id.address_home_id.city">
+                                        <span t-field="o.employee_id.address_home_id.city" />
+                                    </t>
+                                    <t t-if="o.employee_id.address_home_id.country_id">
+                                        &#160;&#160;-&#160;&#160;<span style="text-transform: uppercase;" t-field="o.employee_id.address_home_id.country_id.name" />
+                                    </t>
+                                </p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="4">Période payée :    &#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;   &#160;&#160;&#160;&#160; <strong><span t-field="o.date_from" />&#160;&#160;-&#160;&#160;<span t-field="o.date_to" /></strong></td>
+                            </tr>
+                            <tr>
+                              <td colspan="4">Paiement :    &#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;   &#160;&#160;&#160;&#160;&#160;  &#160;&#160;&#160;&#160;&#160;&#160; <strong><span t-field="o.pay_date" /></strong>  &#160;&#160;&#160; /   &#160;&#160;&#160; <strong><span t-field="o.pay_mod" /></strong></td>
+                            </tr>
+                            <tr>
+                              <td class="header-line-spacer" colspan="4">&amp;nbsp; </td>
+                            </tr>
+                            <tr>
+                              <td class="text-right" width="24%">&amp;nbsp;</td>
+                              <td class="text-right" width="8%">Acquis</td>
+                              <td class="text-right" width="8%">Pris</td>
+                              <td class="text-right" width="8%">Reste</td>
+                            </tr>
+                            <tr>
+                              <td class="text-right more-padding-right">Congé payé N</td>
+                              <td class="leaves-data"><span t-field="o.max_leaves" /></td>
+                              <td class="leaves-data"><span t-field="o.leaves_taken" /></td>
+                              <td class="leaves-data"><span t-field="o.remaining_leaves" /></td>
+                            </tr>
+                            <tr>
+                              <td class="text-right more-padding-right">Congé payé N-1</td>
+                              <td class="leaves-data"><span t-field="o.max_leaves_n1" /></td>
+                              <td class="leaves-data"><span t-field="o.leaves_taken_n1" /></td>
+                              <td class="leaves-data"><span t-field="o.remaining_leaves_n1" /></td>
+                            </tr>
+                            <tr>
+                              <td class="text-right more-padding-right">Congé payé N-2</td>
+                              <td class="leaves-data"><span t-field="o.max_leaves_n2" /></td>
+                              <td class="leaves-data"><span t-field="o.leaves_taken_n2" /></td>
+                              <td class="leaves-data"><span t-field="o.remaining_leaves_n2" /></td>
+                            </tr>
+                            <tr>
+                              <td class="header-line-spacer" colspan="4">&amp;nbsp; </td>
+                              <td class="header-line-spacer" colspan="3">&amp;nbsp; </td>
+                            </tr>
+                        </table>
+
+
+                        <t t-if="o.state != 'draft'">
+                            <br />
+                            <br />
+                        </t>
+                        <t t-if="o.state == 'draft'">
+                            <br />
+                            <div class="draft-text">
+                                <div class="col-xs-6" />
+                                <div class="col-xs-6 draft-text" t-if="o.state == 'draft'">BROUILLON </div>
+                            </div>
+                            <br />
+                        </t>
+
+
+                        <table align="center">
+                            <thead class="td-background-dark">
+                                <tr>
+                                    <th rowspan="2" class="text-center body-row" width="5.5%">N°</th>
+                                    <th rowspan="2" class="text-left body-row">Désignation</th>
+                                    <th rowspan="2" class="text-center body-row" width="5.5%">Nbre</th>
+                                    <th rowspan="2" class="text-center body-row" width="10%">Base</th>
+                                    <td colspan="3" class="text-center body-row">
+                                        <strong>Part salariale</strong>
+                                    </td>
+                                    <td colspan="3" class="text-center body-row">
+                                        <strong>Part patronale</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center body-row" width="5.5%">Taux</th>
+                                    <th class="text-center body-row" width="10%">Gain</th>
+                                    <th class="text-center body-row" width="10%">Retenue</th>
+                                    <th class="text-center body-row" width="5.5%">Taux</th>
+                                    <th class="text-center body-row" width="10%">Retenue (+)</th>
+                                    <th class="text-center body-row" width="10%">Retenue (-)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <t t-set="counter" t-value="0" />
+
+                                <tr t-foreach="get_payslip_lines_main(o.line_ids)" t-as="p">
+
+                                    <td class="body-row">
+                                        <span t-esc="p.id" />
+                                    </td>
+                                    <td class="body-row">
+                                        <span t-esc="p.name" />
+                                    </td>
+                                    <td class="text-right body-row">
+                                        <span t-esc="formatLang((o.worked_days_line_ids[0].number_of_days),digits=0)" />
+                                    </td>
+                                    <td class="text-right body-row">
+                                        <span  t-esc="formatLang(p.amount,0)"/>
+                                    </td>
+                                    <td class="text-right body-row">
+                                        <span t-esc="p.rate"/>
+                                    </td>
+                                    <td class="text-right body-row">
+									                      <t t-if="p.category_id.code == 'BASE'">
+                                            <span  t-esc="formatLang(p.total,0)"/>
+                                        </t>
+                                        <t t-if="p.category_id.code == 'BRUTIMPO'">
+                                            <span  t-esc="formatLang(p.total,0)"/>
+                                        </t>
+                                        
+                                        <t t-if="p.category_id.code == 'PRIME'">
+                                            <span  t-esc="formatLang(p.total,0)"/>
+                                        </t>
+                                        
+                                        <t t-if="p.category_id.code == 'INDEMNITES'">
+                                            <span  t-esc="formatLang(p.total,0)"/>
+                                        </t>									
+                                        <t t-if="p.category_id.code == 'GAINS'">
+                                            <span  t-esc="formatLang(p.total,0)"/>
+                                        </t>		
+                                        <t t-if="p.category_id.code == 'TPNONIMPO'">
+                                            <span  t-esc="formatLang(p.total,0)"/>
+                                        </t>
+                                      <!--span t-esc="formatLang(_get_gain(p), digits=0)" /-->
+                                    </td>
+                                    <td class="text-right body-row">
+                                      <t t-if="p.category_id.code == 'RETENUES'">
+                                          <span  t-esc="formatLang(p.total,0)"/>
+                                      </t>										
+                                      <t t-if="p.category_id.code == 'CNPSSAL'">
+                                          <span  t-esc="formatLang(p.total,0)"/>
+                                      </t>
+                                      <t t-if="p.category_id.code == 'IPRES'">
+                                          <span  t-esc="formatLang(p.total,0)"/>
+                                      </t>
+                                    </td>
+                                    <td class="text-right body-row">
+                                        <span t-esc="(get_employer_line_rate(o,p.salary_rule_id.id))" />
+                                    </td>
+                                   <td class="text-right body-row">
+								   
+                                        <span t-esc="formatLang(get_contribution_patronal_plus(p), digits=0)" />
+                                    </td>
+                                    <td class="text-right body-row">
+                                        <span t-esc="formatLang(get_employer_line_amount(o,p.salary_rule_id.id), digits=0)" />
+                                    </td>
+
+                                </tr>
+                             
+                            </tbody>
+                        </table>
+                        <br/>
+                        <br/>
+                        <table width="100%" >
+                            <tr class="td-background-dark text-center">
+                                <td class="footer-row text-dark-red text-right">
+                                    <strong><center>NET À PAYER</center></strong>
+                                </td>
+                                <td><strong><center><span t-esc="formatLang(get_total_by_rule_category(o, 'NET'), digits=0)"/></center></strong></td>
+                            </tr>
+                          
+                        </table>
+						<br/>
+                        <br/>
+                        <P>
+						Arrété le présent bulletin à la somme de :<strong> <span t-esc="amount_to_text_fr(get_total_by_rule_category(o, 'NET'),'FRANCS CFA')" /></strong>
+						
+                        </P>
+						
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

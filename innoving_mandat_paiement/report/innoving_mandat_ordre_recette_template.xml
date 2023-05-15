@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_mandat_ordre_recette_p">
+		<t t-name="innoving_mandat_paiement.report_innoving_ordre_recette">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-if="o.type_depense in ['investissement']">
+					<t t-if="o.type_fond in ['Fond propre']">
+					<t t-if="o.type_mandat in ['Ordre de recette']">
+					<t t-if="o.state in ['valid']">
+					<div class="page" style="font-family:Century Gothic !important;font-size:13px;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+									<table class="table border-collapse" style="width:100%;">
+										<tbody class="sale_tbody">
+											<tr>
+												<td rowspan="2" style="width:40%;border: 1px solid black;">
+													<strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong><br/><br/>
+													<strong>DEPARTEMENT DE</strong> : SAN PEDRO<br/><br/>
+													<strong>COMMUNE DE</strong> : SAN PEDRO<br/><br/>
+													<strong>Code</strong> : 336
+												</td>
+												<td rowspan="2" style="width:32%;border: 1px solid black;">
+													<strong>ORDRE DE RECETTE</strong><br/>
+													<strong>EXERCICE</strong> : <span t-field="o.date_edition_fournisseur" t-options='{"widget": "date","format": "yyyy"}'/><br/>
+													<strong>TITRE DU BUDGET</strong> : II<br/><br/>
+													<p style="text-align:center;"><strong>IMPUTATION</strong></p>		
+													<strong>FONCTIONNELLE</strong> : <span t-field="o.account_patrimoine_code"/><br/>
+													<strong>PATRIMONIALE</strong> : 
+												</td>
+												<td style="width:28%;border: 1px solid black;">
+													<strong>N° d'inscription au livre d'exécution des opérations budgétaires</strong>:<br/>
+													..................................................................
+												</td>
+											</tr>
+											<tr>
+												<td style="border: 1px solid black;">
+													<strong>Numéro d'ordre :</strong> ................................<br/><br/>
+													<strong>Numéro de Bordereau d'émission :</strong> <br/>
+													..................................................................
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>L'ordonnateur</strong> : LE MAIRE DE LA COMMUNE DE SAN PEDRO<br/><br/><br/><br/><br/><br/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>Nom et adresse du débiteur : </strong>RECEVEUR MUNICIPAL DE SAN PEDRO<br/><br/><br/><br/><br/><br/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>Objet de la recette et du décompte</strong> : PRELEVEMENT SUR FONDS D'INVESTISSEMENT<br/><br/><br/><br/><br/>
+													<p style="font-size:10px;"><i><strong>(Ordre de recette rendu exécutoire conformement à l'article 28 de la loi n° 81-1129  de décembre 1981)</strong></i></p>
+												</td>
+											</tr>
+											<tr>
+												<td style="border: 1px solid black;text-align:right;">
+													<br/><br/><strong>Somme due</strong><br/>
+												</td>
+												<td colspan="2" style="width:50%;border: 1px solid black;">
+													<br/>
+													<strong>En chiffre</strong> : <span t-field="o.montant_reel"/> FCFA <br/><br/>
+													<strong>En lettre</strong> : <span t-field="o.montant_lettre"/>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+						</t>
+					</div>
+					<div class="page" style="font-family:Century Gothic !important;font-size:13px;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+									<table class="table border-collapse" style="width:100%;">
+										<tbody class="sale_tbody">
+											<tr>
+												<td rowspan="2" style="width:40%;border: 1px solid black;">
+													<strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong><br/><br/>
+													<strong>DEPARTEMENT DE</strong> : SAN PEDRO<br/><br/>
+													<strong>COMMUNE DE</strong> : SAN PEDRO<br/><br/>
+													<strong>Code</strong> : 336
+												</td>
+												<td rowspan="2" style="width:32%;border: 1px solid black;">
+													<strong>ORDRE DE RECETTE</strong><br/>
+													<strong>EXERCICE</strong> : 2022<br/>
+													<strong>TITRE DU BUDGET</strong> : II<br/><br/>
+													<p style="text-align:center;"><strong>IMPUTATION</strong></p>		
+													<strong>FONCTIONNELLE</strong> :<br/>
+													<strong>PATRIMONIALE</strong> : 
+												</td>
+												<td style="width:28%;border: 1px solid black;">
+													<strong>N° d'inscription au livre d'exécution des opérations budgétaires</strong>:<br/>
+													..................................................................
+												</td>
+											</tr>
+											<tr>
+												<td style="border: 1px solid black;">
+													<strong>Numéro d'ordre :</strong> ................................<br/><br/>
+													<strong>Numéro de Bordereau d'émission :</strong> <br/>
+													..................................................................
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>L'ordonnateur</strong> : LE MAIRE DE LA COMMUNE DE SAN PEDRO<br/><br/><br/><br/><br/><br/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>Nom et adresse du débiteur : </strong>RECEVEUR MUNICIPAL DE SAN PEDRO<br/><br/><br/><br/><br/><br/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>Objet de la recette et du décompte</strong> : PRELEVEMENT SUR FONDS D'INVESTISSEMENT<br/><br/><br/><br/><br/>
+													<p style="font-size:10px;"><i><strong>(Ordre de recette rendu exécutoire conformement à l'article 28 de la loi n° 81-1129  de décembre 1981)</strong></i></p>
+												</td>
+											</tr>
+											<tr>
+												<td style="border: 1px solid black;text-align:right;">
+													<br/><br/><strong>Somme due</strong><br/>
+												</td>
+												<td colspan="2" style="width:50%;border: 1px solid black;">
+													<br/>
+													<strong>En chiffre</strong> : <span t-field="o.montant_reel"/> FCFA <br/><br/>
+													<strong>En lettre</strong> : <span t-field="o.montant_lettre"/>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+						</t>
+					</div>
+					<div class="page" style="font-family:Century Gothic !important;font-size:13px;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+									<table class="table border-collapse" style="width:100%;">
+										<tbody class="sale_tbody">
+											<tr>
+												<td rowspan="2" style="width:40%;border: 1px solid black;">
+													<strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong><br/><br/>
+													<strong>DEPARTEMENT DE</strong> : SAN PEDRO<br/><br/>
+													<strong>COMMUNE DE</strong> : SAN PEDRO<br/><br/>
+													<strong>Code</strong> : 336
+												</td>
+												<td rowspan="2" style="width:32%;border: 1px solid black;">
+													<strong>ORDRE DE RECETTE</strong><br/>
+													<strong>EXERCICE</strong> : 2022<br/>
+													<strong>TITRE DU BUDGET</strong> : II<br/><br/>
+													<p style="text-align:center;"><strong>IMPUTATION</strong></p>		
+													<strong>FONCTIONNELLE</strong> :<br/>
+													<strong>PATRIMONIALE</strong> : 
+												</td>
+												<td style="width:28%;border: 1px solid black;">
+													<strong>N° d'inscription au livre d'exécution des opérations budgétaires</strong>:<br/>
+													..................................................................
+												</td>
+											</tr>
+											<tr>
+												<td style="border: 1px solid black;">
+													<strong>Numéro d'ordre :</strong> ................................<br/><br/>
+													<strong>Numéro de Bordereau d'émission :</strong> <br/>
+													..................................................................
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>L'ordonnateur</strong> : LE MAIRE DE LA COMMUNE DE SAN PEDRO<br/><br/><br/><br/><br/><br/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>Nom et adresse du débiteur : </strong>RECEVEUR MUNICIPAL DE SAN PEDRO<br/><br/><br/><br/><br/><br/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;">
+													<strong>Objet de la recette et du décompte</strong> : PRELEVEMENT SUR FONDS D'INVESTISSEMENT<br/><br/><br/><br/><br/>
+													<p style="font-size:10px;"><i><strong>(Ordre de recette rendu exécutoire conformement à l'article 28 de la loi n° 81-1129  de décembre 1981)</strong></i></p>
+												</td>
+											</tr>
+											<tr>
+												<td style="border: 1px solid black;text-align:right;">
+													<br/><br/><strong>Somme due</strong><br/>
+												</td>
+												<td colspan="2" style="width:50%;border: 1px solid black;">
+													<br/>
+													<strong>En chiffre</strong> : <span t-field="o.montant_reel"/> FCFA <br/><br/>
+													<strong>En lettre</strong> : <span t-field="o.montant_lettre"/>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="width:100%;border: 1px solid black;font-size:13px;">
+													<p style="text-align:center;"><strong>AVERTISSEMENT</strong></p>
+													<p>
+														J'ai l'honneur de vous prier de verser le plus tôt possible à ma caisse la somme dont le montant est inscrit dans le cadre ci-dessus,
+														pour le motif indiqué sous rubrique Objet de la recette.
+													</p>
+													<p>
+														Je vous remercie de votre règlement et vous prie d'agréer l'assurance de mes sentiments distingués
+													</p>
+													<p>
+														Veuillez toujours rappeler le numéro d'ordre.
+													</p>
+													<p>
+														Au cas où vous auriez déjà effectué le règlement de cette somme, veuillez ne pas tenir compte du présent avertissement.
+													</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+						</t>
+					</div>
+					</t>
+					</t>
+					</t>
+					</t>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_create_book_payslip" model="ir.ui.view">
+        <field name="name">create.book.payslip.view.form</field>
+        <field name="model">create.book.payslip</field>
+        <field name="arch" type="xml">
+            <form string="Generer un livre de paie">
+                <group>
+                    <p>
+                        Generer <i>un livre de paie </i> avec les informations ci dessous . Cliquer sur  <i>Générer</i> pour afficher le livre
+                        
+                    </p>
+                </group>
+                <group>
+						<field name="date_start"/>
+                        <field name="date_end"/>
+                </group>
+				
+                <footer>
+                    <button name="create_book" string="Générer" type="object" class="btn-primary"/>
+                    <button string="Annuler" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+	
+	 <record id="action_view_create_book_payslip" model="ir.actions.act_window">
+            <field name="name">Générer un livre de paie</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.book.payslip</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_create_book_payslip"/>
+            <field name="target">new</field>
+    </record>
+	
+	<menuitem  name="Rapports de paie" id="menu_payslip_report" parent="hr_payroll.menu_hr_payroll_root"/>
+	<menuitem action="action_view_create_book_payslip" id="menu_action_view_create_book_payslip" parent="menu_payslip_report"/>
+	
+</odoo>

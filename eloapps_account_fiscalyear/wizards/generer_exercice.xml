@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id = "generer_exercice_view" model = "ir.ui.view">
+            <field name = "name">generer.exercice.view</field>
+            <field name = "model">generer.exercice</field>
+            <field name = "arch" type = "xml">
+                <form string="Générer l'exercice et ces périodes">
+                    <group col="4">
+                        <field name="date_from" required="1"/>
+                        <field name="type_de_periode" required="1"/>
+                        <field name="date_to" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="generer_exercice" 
+                                string="Générer l'exercice et ces périodes" 
+                                type="object" 
+                                default_focus="1" 
+                                class="oe_highlight"
+                        />
+                        <button special = "cancel" string = "Annuler"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_generer_exercice"
+            name="Générer l'exercice et ces périodes"
+            res_model="generer.exercice"
+            view_mode="form"
+            target="new"
+        />
+
+        <menuitem id="menu_generer_exercice"
+                parent='menu_fin_periode'
+                name="Exercices et périodes"
+                action="action_generer_exercice"
+                sequence="30"/>
+    </data>
+</odoo>

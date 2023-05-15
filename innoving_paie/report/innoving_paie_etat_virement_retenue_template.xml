@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_paie_etat_virements_p">
+		<t t-name="innoving_paie.report_innoving_paie_etat_virements">
+			<!--  <t t-call="web.html_container">-->
+			<t t-call="web.basic_layout">
+				<div class="page" style="font-family:arial !important;">
+					<div class="oe_structure" />
+						<table class="table table-borderless" style="width:100%;font-size:15px;">
+							<tbody class="sale_tbody">
+								<tr>
+								    <td style="width:50%;">
+										<strong>
+											DISTRICT AUTONOME DU BAS SASSANDRA<br/>
+											REGION DE SAN PEDRO<br/>
+											COMMUNE DE SAN PEDRO<br/>
+											Tél : 27 34 70 35 15
+										</strong>
+									</td>
+								    <td colspan="2" style="width:50%;">
+								    	<strong>PERIODE : <span t-esc="form_data['date_from']" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/> au <span t-esc="form_data['date_to']" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/></strong>
+								    </td>
+								  </tr>
+								  <tr>
+								    <td colspan="5" style="text-align:center;">
+										<h5><strong>ETAT DE VIREMENT BANCAIRE : <span t-esc="form_data['name']" /></strong></h5>
+									</td>
+								  </tr>
+							</tbody>
+						</table>
+						<table class="table table-borderless" style="width:100%;font-size:15px;margin-top:-50px">
+							<tbody class="sale_tbody">
+								  <tr>
+								  		<td style="width:10%;border: 1px solid black;text-align:center;">
+										<strong>N°</strong>
+									</td>
+								    <td style="width:60%;border: 1px solid black;text-align:center;">
+										<strong>NOM ET PRENOMS</strong>
+									</td>
+									<td style="width:30%;border: 1px solid black;text-align:center;">
+								    	<strong>MONTANT</strong>
+									</td>
+								  </tr>
+								  <t t-set="i" t-value="1"/>
+								  <t t-foreach="payslips" t-as="line">
+								   	<tr>
+								   		<td style="border: 1px solid black;text-align:center;"><span t-esc="i"/></td>
+								   		<td style="border: 1px solid black;"><span t-esc="line['employee_id']" /></td>
+										<td style="border: 1px solid black;text-align:center;"><span  t-esc="line['amount']" t-options='{"widget": "float", "precision": 0}'/></td>
+										<t t-set="i" t-value="i+1"/>
+									</tr>
+								  </t>
+								  <tr>
+								   	<td colspan="2" style="border: 1px solid black;text-align:center;">TOTAL</td>
+									<td style="border: 1px solid black;text-align:center;"><strong><span t-esc="form_data['somme_amount']" t-options='{"widget": "float", "precision": 0}'/></strong></td>
+								</tr><br/>
+								<tr>
+									 <td colspan="2">
+									    ARRETE LE VIREMENT BANCAIRE A LA SOMME DE : <br/>
+										<strong><span t-esc="form_data['amount_lettre']" /></strong>
+									 </td>
+									 <td>
+									    <p style="float:right;margin-top:50px;margin-right:50px;"><strong>LE MAIRE</strong></p>
+									 </td>
+								</tr>
+							</tbody>
+						</table>
+						<!--
+						<table class="table table-borderless" style="width:80%;font-size:15px;">
+								<tbody class="sale_tbody">
+									<tr>
+									    <td style="width:60%;border: 1px solid black;">
+									    	Vu,Vérifié et Liquidé la Présente Facture<br/>
+									    	Ou le Présent Etat ou Mémoire à la Somme de : <br/>
+									    	<strong><span t-esc="form_data['amount_lettre']" /></strong><br/>
+									    	Imputable du Budget ................ Ex ...............<br/>
+									    	Cpte .......................  Chap .............. Art .............§ ..........<br/>
+									    	SAN PEDRO, le .......................................
+									    	
+										</td>
+									    <td style="width:40%;border: 1px solid black;">
+									    	<p><strong><u>SITUATION DES CREDITS</u></strong></p>
+									    	Crédit OUVERT .......................<br/>
+									    	Dépenses Anterieures .....................<br/>
+									    	Dépense Actuelle  <strong><span t-esc="form_data['somme_salaire_net']" /></strong><br/>
+									    	Disponible ...........................
+									    </td>
+									  </tr>
+								</tbody>
+							</table>
+							-->
+					</div>
+				<div class="oe_structure" />
+			</t>
+		</t>
+	</template>
+</odoo>

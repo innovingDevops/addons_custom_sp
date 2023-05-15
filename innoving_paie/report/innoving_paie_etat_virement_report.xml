@@ -1,0 +1,22 @@
+<odoo>		
+	<record id="paperformat_innoving_paie_etat_virement_report" model="report.paperformat">
+		<field name="name">Etat de virements  </field>		
+		<field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">3</field>
+		<field name="margin_bottom">3</field>
+		<field name="margin_left">3</field>
+		<field name="margin_right">3</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">0</field>
+		<field name="dpi">0</field>
+	</record>
+	 	
+	<report string="Etat de virements" id="action_report_innoving_paie_etat_virement_report"
+		model="innoving.hr.payslip.etat.virement" report_type="qweb-pdf"
+		name="innoving_paie.report_innoving_paie_etat_virement_p"
+		file="innoving_paie.report_innoving_paie_etat_virement_report" 
+		paperformat="innoving_paie.paperformat_innoving_paie_etat_virement_report" />
+	
+</odoo>

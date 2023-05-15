@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_book_pay">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+                <div class="cadre">
+                    <style>
+                                .cadre{
+                                     border:3px solid black;
+                                     width:900px;
+                                     height:100px;
+                                     margin-left: auto;
+                                     margin-right: auto;
+                                }
+                            </style>
+                    <caption><h1><font face="times new roman" size="50"><strong><center>Livre de paie de la période du <span t-field="o.date_from" t-field-options='{"format":"dd/MM/yyyy"}'/> au <span t-field="o.date_to" t-field-options='{"format":"dd/MM/yyyy"}'/></center></strong></font></h1></caption>
+                </div>
+                 <br/>
+                <br/>
+                 <br/>
+                <br/>
+				<table>
+
+                    <style>
+                    table
+                    {
+                        border-collapse: collapse;
+                        width: 100%;
+                        font-size: 15px;
+                        font-family: "Times New Roman", Arial;
+                        border-radius: 10px 10px 10px 10px;
+                    }
+                    td, th
+                    {
+                        border: 1px solid black;
+                    }
+
+					td {
+							border: 1px solid gray;
+							margin: 0px;
+							padding-left: 5px;
+							padding-right: 5px;
+
+						}
+
+                    th {
+							border: 1px solid gray;
+							text-align: center;
+							background-color: #E6ECEB;
+							height: 20px;
+						}
+				</style>
+                    <thead>
+                         <tr>
+                            <th>Nom-Prénoms</th>
+                            <th>Emploi</th>
+                            <th>Categorie</th>
+                            <th>Salaire de base</th>
+                            <th>Sursalaire</th>
+                            <th>Transport</th>
+                            <th>Brut</th>
+                            <th>Brut Imposable</th>
+                            <th>IS</th>
+                            <th>CN</th>
+                            <th>IGR</th>
+                            <th>CNPS</th>
+                            <th>Total Retenues</th>
+                            <th>Net à payer</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="_get_lines_paie(o.date_from,o.date_to)" t-as="p">
+                            <td><span t-esc="p['name']"/></td>
+                            <td><span t-esc="p['poste']"/></td>
+                            <td><span t-esc="p['cate']"/></td>
+                            <td><span t-esc="formatLang(p['wage'],digits=0)"/></td>
+                            <td><span t-esc="formatLang(p['sursal'],digits=0)"/></td>
+                            <td><span t-esc="formatLang(p['tp'],digits=0)"/></td>
+                            <td><span t-esc="p['brut']"/></td>
+                            <td><span t-esc="p['brut']"/></td>
+                            <td><span t-esc="p['its']"/></td>
+                            <td><span t-esc="p['cn']"/></td>
+                            <td><span t-esc="p['igr']"/></td>
+                            <td><span t-esc="p['cnps']"/></td>
+                            <td><span t-esc="p['ret']"/></td>
+                            <td><span t-esc="p['total']"/></td>
+                        </tr>
+
+                    </tbody>
+				</table>
+			</div>
+
+
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

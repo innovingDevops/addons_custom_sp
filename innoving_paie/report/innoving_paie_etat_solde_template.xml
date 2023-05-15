@@ -1,0 +1,440 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_paie_p1">
+		<t t-name="innoving_paie.report_innoving_paie">
+			<t t-call="web.html_container">
+				<t t-foreach="payslips" t-as="line">
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table table-borderless" style="width:100%;font-size:17px;">
+								<tbody class="sale_tbody">
+									<tr>
+									    <td colspan="5" style="width:30%;">
+											<strong>
+											DISTRICT AUTONOME DU BAS SASSANDRA<br/>
+											REGION DE SAN PEDRO<br/>
+											COMMUNE DE SAN PEDRO
+											</strong>
+										</td>
+									    <td colspan="4" style="width:40%;">
+									    	<strong>ETAT DE SOLDE</strong><br/><br/>
+											<p style="text-align:center;"><strong>BANQUE : <span t-esc="line['bank_id']" /></strong></p>		
+									    	<p style="text-align:center;"><strong>N° COMPTE : <span t-esc="line['numero_compte']" /></strong></p>	
+										</td>
+									    <td colspan="5" style="width:30%;">
+									    	<strong>REPUBLIQUE DE COTE D'IVOIRE<br/>
+											UNION-DISCIPLINE-TRAVAIL</strong>
+										</td>
+									  </tr>
+									  <tr>
+									    <td colspan="4" style="width:30%;">
+											<strong>EXERCICE : <span t-esc="time.strftime('%Y')" /></strong>
+										</td>
+									    <td colspan="10" style="width:70%;">
+									    	C.C.P ........IMPUTATION FONCTIONNELLE ........ <span t-esc="line['account_fonctionnel_id']" /> / <span t-esc="line['analytic_account_ref']" />	
+									    </td>
+									  </tr>
+									  <tr>
+									    <td colspan="6" style="width:40%;">
+											ETAT NOMINATIF pour servir au paiement de la somme<br/>
+											acquise par les virés du service<br/>
+											du <span t-esc="line['date_from']" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/> au <span t-esc="line['date_to']" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+										</td>
+									    <td colspan="4" style="width:30%;margin-top:30px;">
+									    	Grade : <span t-esc="line['hr_grade_id']" />
+									    </td>
+									    <td colspan="4" style="width:30%;margin-top:30px;">
+									    	Echelon : <span t-esc="line['hr_echelon_id']" />
+										</td>
+									  </tr>
+									  
+								</tbody>
+							</table>
+							<table class="table table-borderless" style="width:100%;font-size:15px;">
+								<tbody class="sale_tbody">
+									  <tr>
+									    <td rowspan="2" style="width:15%;border: 1px solid black;text-align:center;">
+											<br/><br/><strong>Nom et Prenoms</strong>
+										</td>
+									    <td  rowspan="2" style="width:15%;border: 1px solid black;text-align:center;">
+									    	<br/><br/><strong>Fonction</strong>
+									    </td>
+									    <td colspan="4" style="border: 1px solid black;text-align:center;">
+									    	<strong>ELEMENTS IMPOSABLES</strong>
+										</td>
+										<td colspan="4" style="border: 1px solid black;text-align:center;">
+											<strong>RETENUES</strong>
+										</td>
+									    <td rowspan="2" style="border: 1px solid black;text-align:center;">
+									    	<br/><strong>Net après retenues</strong>
+									    </td>
+									    <td colspan="2" style="border: 1px solid black;text-align:center;">
+									    	<strong>DIVERSES INDEMNITES</strong>
+										</td>
+										<td rowspan="2" style="border: 1px solid black;text-align:center;">
+											<strong>SALAIRE NET A PAYER</strong>
+										</td>
+									    <td rowspan="2" style="border: 1px solid black;text-align:center;">
+									    	<br/><br/><strong>EMARGEMENTS</strong>
+									    </td>
+									  </tr>
+									  <tr>
+									    <td style="border: 1px solid black;text-align:center;">
+									    	<strong>sal. Base</strong>
+									    </td>
+										<td style="border: 1px solid black;text-align:center;">
+									    	<strong>Ind. Resi</strong>
+									    </td>
+										<td style="border: 1px solid black;text-align:center;">
+									    	<strong>Fonction</strong>
+									    </td>
+									    <td style="border: 1px solid black;text-align:center;">
+									    	<strong>Brut Impos</strong>
+										</td>
+										<td style="border: 1px solid black;text-align:center;">
+											<strong>Mutuelle</strong>
+										</td>
+										<td style="border: 1px solid black;text-align:center;">
+											<strong>CNPS</strong>
+										</td>
+										<td style="border: 1px solid black;text-align:center;">
+									    	<strong>Assurance</strong>
+										</td>
+									    <td style="border: 1px solid black;text-align:center;">
+									    	<strong>I.S</strong>
+									    </td>
+										<td style="border: 1px solid black;text-align:center;">
+											<strong>Transport</strong>
+										</td>
+										<td style="border: 1px solid black;text-align:center;">
+											<strong>Respo</strong>
+										</td>
+										<!--
+									    <td style="border: 1px solid black;text-align:center;">
+									    	<strong>Fonction</strong>
+									    </td>
+										-->
+									  </tr>
+
+									  <!--RESPONSABLE-->
+
+									  <t t-if="line['structure_salariale'] in ['MAIRIE SPY']">
+										<tr>
+												<td style="border: 1px solid black;">
+													<span t-esc="line['employee_id']" />
+												</td>	  	
+												<td style="border: 1px solid black;">
+													<span t-esc="line['job_id']" />
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code'] in ['C100']">
+														<span t-esc="line['line_amount']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code2'] in ['C105']">
+														<span t-esc="line['line_amount2']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code3'] in ['C110']">
+														<span t-esc="line['line_amount3']" />
+													</t>
+												</td>
+
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code4'] in ['C300']">
+														<span t-esc="line['line_amount4']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code17'] in ['MUTUELLEMAMA']">
+														<span t-esc="line['line_amount17']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code12'] in ['RETRAITECNPS']">
+														<span t-esc="line['line_amount12']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code16'] in ['SCAINTERA']">
+														<span t-esc="line['line_amount16']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code6'] in ['c400']">
+														<span t-esc="line['line_amount6']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code19'] in ['NAR']">
+														<span t-esc="line['line_amount19']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code13'] in ['C506']">
+														<span t-esc="line['line_amount13']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code14'] in ['C517']">
+														<span t-esc="line['line_amount14']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+
+												<!--
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code13'] in ['516']">
+														<span t-esc="line['line_amount13']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												-->
+
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code24'] in ['C900']">
+														<span t-esc="line['line_amount24']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;">
+													
+												</td>
+										</tr>
+										<tr>
+												<td colspan="2" style="border: 1px solid black;text-align:center;">
+													<strong>TOTAL</strong>
+												</td>	  	
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code'] in ['C100']">
+														<span t-esc="line['line_amount']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code2'] in ['C105']">
+														<span t-esc="line['line_amount2']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code3'] in ['C110']">
+														<span t-esc="line['line_amount3']" />
+													</t>
+												</td>
+
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code4'] in ['C300']">
+														<span t-esc="line['line_amount4']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code17'] in ['MUTUELLEMAMA']">
+														<span t-esc="line['line_amount17']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code12'] in ['RETRAITECNPS']">
+														<span t-esc="line['line_amount12']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code16'] in ['SCAINTERA']">
+														<span t-esc="line['line_amount16']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code6'] in ['c400']">
+														<span t-esc="line['line_amount6']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code19'] in ['NAR']">
+														<span t-esc="line['line_amount19']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code13'] in ['C506']">
+														<span t-esc="line['line_amount13']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code14'] in ['C517']">
+														<span t-esc="line['line_amount14']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+
+												<!--
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code13'] in ['516']">
+														<span t-esc="line['line_amount13']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												-->
+
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code24'] in ['C900']">
+														<span t-esc="line['line_amount24']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;">
+													
+												</td>
+										</tr>
+									</t>
+
+									<!--RESPONSABLE-->
+									<t t-if="line['structure_salariale'] in ['RESPONSABLE MAIRIE SPY']">
+										<tr>
+												<td style="border: 1px solid black;">
+													<span t-esc="line['employee_id']" />
+												</td>	  	
+												<td style="border: 1px solid black;">
+													<span t-esc="line['job_id']" />
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code'] in ['C100']">
+														<span t-esc="line['line_amount']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code1'] in ['C300']">
+														<span t-esc="line['line_amount1']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code2'] in ['C900']">
+														<span t-esc="line['line_amount2']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;">
+													
+												</td>
+										</tr>
+										<tr>
+												<td colspan="2" style="border: 1px solid black;text-align:center;">
+													<strong>TOTAL</strong>
+												</td>	  	
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code'] in ['C100']">
+														<span t-esc="line['line_amount']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code1'] in ['C300']">
+														<span t-esc="line['line_amount1']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													0
+												</td>
+												<td style="border: 1px solid black;text-align:center;">
+													<t t-if="line['line_code2'] in ['C900']">
+														<span t-esc="line['line_amount2']" t-options='{"widget": "float", "precision": 0}'/>
+													</t>
+												</td>
+												<td style="border: 1px solid black;">
+													
+												</td>
+										</tr>
+									</t>
+
+									<tr>
+									    <td colspan="10">
+									    	ARRETE LE PRESENT ETAT A LA SOMME DE : <br/>
+											<strong><span t-esc="line['amount_lettre']" /></strong>
+									    </td>
+									    <td colspan="4">
+									    	<p style="float:left;margin-top:20px;">SAN PEDRO, LE </p>
+									    	<p style="float:right;margin-top:50px;margin-right:50px;"><strong>LE MAIRE</strong></p>
+									    </td>
+									  </tr>
+								</tbody>
+							</table><br/><br/>
+							<table class="table table-borderless" style="width:70%;font-size:17px;">
+								<tbody class="sale_tbody">
+									<tr>
+									    <td style="width:60%;border: 1px solid black;">
+									    	Vu,Vérifié et Liquidé la Présente Facture<br/>
+									    	Ou le Présent Etat ou Mémoire à la Somme de : <br/>
+									    	<strong><span t-esc="line['amount_lettre']" /></strong><br/>
+									    	Imputable du Budget <strong>Com</strong> Ex <strong><span t-esc="time.strftime('%Y')" /></strong> <br/>
+									    	Cpte  <strong><span t-esc="line['compte']" /></strong> Chap <strong><span t-esc="line['chapitre']" /></strong> Art <strong><span t-esc="line['account_fonctionnel_code']" /></strong> § <strong><span t-esc="line['analytic_account_ref']" /></strong><br/>
+									    	SAN PEDRO, le <!--<span t-esc="time.strftime('%d-%m-%Y')" />-->
+									    	
+										</td>
+									    <td style="width:40%;border: 1px solid black;">
+									    	<p><strong><u>SITUATION DES CREDITS</u></strong></p>
+									    	Crédit OUVERT ...................................<br/>
+									    	Dépenses Antérieures ............................<br/>
+									    	Dépense Actuelle  
+											<strong>
+												<t t-if="line['structure_salariale'] in ['MAIRIE SPY']"><span t-esc="line['line_amount24']" t-options='{"widget": "float", "precision": 0}'/></t>
+												<t t-if="line['structure_salariale'] in ['RESPONSABLE MAIRIE SPY']"><span t-esc="line['line_amount2']" t-options='{"widget": "float", "precision": 0}'/></t>
+											</strong><br/>
+									    	Disponible ......................................
+									    </td>
+									  </tr>
+								</tbody>
+							</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

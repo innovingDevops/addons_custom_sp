@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_demande_acte_demande_form" model="ir.ui.view">
+		<field name="name">DEMANDE</field>
+		<field name="model">demande.acte.demande</field>
+		<field name="arch" type="xml">
+			<form string="Demande">
+				<sheet>
+					<group string="">
+						<field name="code" />
+						<field name="name" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="demande_acte_demande_kanban_view" model="ir.ui.view">
+		<field name="name">DEMANDE</field>
+		<field name="model">demande.acte.demande</field>
+		<field name="arch" type="xml">
+			<kanban
+				class="oe_background_grey o_kanban_dashboard o_emphasize_colors o_stock_kanban"
+				create="0">
+				<field name="code" />
+				<field name="name" />
+				<templates>
+					<t t-name="kanban-box">
+						<div style="width: 1200px;">
+							<div>
+								<div class="container o_kanban_card_content">
+									<div class="row" style="width: 1200px;">
+										<!--<div class="card" style="margin-top:-9px;margin-left:-17px;width: 1674px;">-->
+										<div class="card" style="width: 1300px;margin-left:100px;">
+											<div class="card-header" style="text-align:center;">
+												<h1>DEMANDES DE COPIE D'ACTE</h1>
+											</div>
+											<div class="card-body">
+												<div class="container">
+													<div class="row">
+														<div class="col-sm-4">
+															<button class="btn btn-success btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_acte_naissance" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		EXTRAIT DE NAISSANCE
+																	</span>
+																</button>
+														</div>
+														<div class="col-sm-4">
+															<button class="btn btn-success btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_acte_mariage" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		EXTRAIT DE MARIAGE
+																	</span>
+																</button>
+														</div>
+														<div class="col-sm-4">
+															<button class="btn btn-success btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_acte_deces" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		EXTRAIT DE DECES
+																	</span>
+																</button>
+														</div>
+													</div><br/>
+													<div class="row">
+														<div class="col-sm-4">
+															<button class="btn btn-info btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_cpi_acte_naissance" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		CPI EXTRAIT DE NAISSANCE
+																	</span>
+																</button>
+														</div>
+														<div class="col-sm-4">
+															<button class="btn btn-info btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_cpi_acte_mariage" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		CPI EXTRAIT DE MARIAGE
+																	</span>
+																</button>
+														</div>
+														<div class="col-sm-4">
+															<button class="btn btn-info btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_cpi_acte_deces" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		CPI EXTRAIT DE DECES
+																	</span>
+																</button>
+														</div>
+													</div><br/>
+													<div class="row">
+														<div class="col-sm-4">
+															<button class="btn btn-danger btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_certificat_vie" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		CERTIFICAT DE VIE
+																	</span>
+																</button>
+														</div>
+														<div class="col-sm-4">
+															<button class="btn btn-danger btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_certificat_vie_entretien" type="object" style="font-size:18px">
+																	<span style="color:white">
+																		CERTIFICAT DE VIE ET ENTRETIEN
+																	</span>
+																</button>
+														</div>
+														<div class="col-sm-4">
+															<button class="btn btn-danger btn-block" groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent_de_demande"
+																			name="open_demande_certificat_non" type="object" style="font-size:19px">
+																	<span style="color:white">
+																		CERTIFICAT DE NON REMARIAGE
+																	</span>
+																</button>
+														</div>
+													</div>												
+												</div>												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+
+	<record id="view_demande_acte_demande_tree" model="ir.ui.view">
+		<field name="name">DEMANDE</field>
+		<field name="model">demande.acte.demande</field>
+		<field name="arch" type="xml">
+			<tree string="Demande" toolbar="1" create="0">
+				<field name="code" />
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_view_demande_acte_demande_tree"
+		model="ir.actions.act_window">
+		<field name="name">DEMANDE</field>
+		<field name="res_model">demande.acte.demande</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="view_demande_acte_demande_tree" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande
+			</p>
+		</field>
+	</record>
+
+	<record id="action_demande_acte_demande_kanban_view"
+		model="ir.actions.act_window">
+		<field name="name">DEMANDE</field>
+		<field name="res_model">demande.acte.demande</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">kanban,tree,form</field>
+		<field name="view_id" ref="demande_acte_demande_kanban_view" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande
+			</p>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,22 @@
+<odoo>		
+	<record id="paperformat_innoving_mandat_prelevement_report" model="report.paperformat">
+		<field name="name">Mandat de prelevement </field>		
+		<field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">10</field>
+		<field name="margin_bottom">0</field>
+		<field name="margin_left">5</field>
+		<field name="margin_right">5</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">0</field>
+		<field name="dpi">0</field>
+	</record>
+		
+	<report string="Mandat de prelevement" id="report_innoving_mandat_prelevement_report"
+		model="innoving.mandat" report_type="qweb-pdf"
+		name="innoving_mandat_paiement.report_innoving_mandat_prelevement_p"
+		file="innoving_mandat_paiement.report_innoving_mandat_prelevement_report" 
+		paperformat="innoving_mandat_paiement.paperformat_innoving_mandat_prelevement_report" />
+		
+</odoo>

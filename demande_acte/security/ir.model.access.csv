@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_demande_acte_manager,access.demande.acte,model_demande_acte,etat_civil.group_etat_civil_manager,1,1,1,1
+access_demande_acte_lecture,access.demande.acte,model_demande_acte,etat_civil.group_etat_civil_lecture,1,0,0,0
+access_demande_acte_vendeur_timbre,access.demande.acte,model_demande_acte,etat_civil.group_etat_civil_vendeur_timbre,1,1,0,0
+access_demande_acte_enfant_manager,access.demande.acte.enfant,model_demande_acte_enfant,etat_civil.group_etat_civil_manager,1,1,1,1
+access_demande_acte_enfant_lecture,access.demande.acte.enfant,model_demande_acte_enfant,etat_civil.group_etat_civil_lecture,1,0,0,0
+access_demande_acte_enfant_vendeur_timbre,access.demande.acte.enfant,model_demande_acte_enfant,etat_civil.group_etat_civil_vendeur_timbre,1,1,0,0
+access_demande_acte_enfant_agent_de_demande,access.demande.acte.enfant,model_demande_acte_enfant,etat_civil.group_etat_civil_agent_de_demande,1,1,1,0
+access_demande_acte_demande_manager,access.demande.acte.demande,model_demande_acte_demande,etat_civil.group_etat_civil_manager,1,1,1,1
+access_demande_acte_demande_lecture,access.demande.acte.demande,model_demande_acte_demande,etat_civil.group_etat_civil_lecture,1,0,0,0
+access_demande_acte_demande_agent_de_demande,access.demande.acte.demande,model_demande_acte_demande,etat_civil.group_etat_civil_agent_de_demande,1,1,1,0
+access_demande_acte_caisse_manager,access.demande.acte.caisse,model_demande_acte_caisse,etat_civil.group_etat_civil_manager,1,1,1,1
+access_demande_acte_caisse_lecture,access.demande.acte.caisse,model_demande_acte_caisse,etat_civil.group_etat_civil_lecture,1,0,0,0
+access_demande_acte_caisse_vendeur_timbre,access.demande.acte.caisse,model_demande_acte_caisse,etat_civil.group_etat_civil_vendeur_timbre,1,1,0,0
+access_demande_acte_caisse_line_manager,access.demande.acte.caisse.line,model_demande_acte_caisse_line,etat_civil.group_etat_civil_manager,1,1,1,1
+access_demande_acte_caisse_line_lecture,access.demande.acte.caisse.line,model_demande_acte_caisse_line,etat_civil.group_etat_civil_lecture,1,0,0,0
+access_demande_acte_caisse_line_vendeur_timbre,access.demande.acte.caisse.line,model_demande_acte_caisse_line,etat_civil.group_etat_civil_vendeur_timbre,1,1,0,0

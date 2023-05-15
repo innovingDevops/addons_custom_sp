@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_grade_manager,access.hr.grade,model_hr_grade,group_innoving_paie_manager,1,1,1,1
+access_hr_grade_lecture,access.hr.grade,model_hr_grade,group_innoving_paie_lecture,1,0,0,0
+access_hr_grade_agent,access.hr.grade,model_hr_grade,group_innoving_paie_agent,1,1,1,0
+
+access_hr_echelon_manager,access.hr.echelon,model_hr_echelon,group_innoving_paie_manager,1,1,1,1
+access_hr_echelon_lecture,access.hr.echelon,model_hr_echelon,group_innoving_paie_lecture,1,0,0,0
+access_hr_echelon_agent,access.hr.echelon,model_hr_echelon,group_innoving_paie_agent,1,1,1,0

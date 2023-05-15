@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_demande_acte_caisse_line_form" model="ir.ui.view">
+		<field name="name">Trésorérie</field>
+		<field name="model">demande.acte.caisse.line</field>
+		<field name="arch" type="xml">
+			<form string="Ligne de caisse">
+				<sheet>
+					<group string="">
+						<field name="code" readonly="1" />
+						<field name="type_acte" readonly="1"/>
+						<field name="quantity" readonly="1"/>
+						<field name="unit_price" readonly="1"/>
+						<field name="amount" readonly="1"/>
+						<field name="user_id" readonly="1"/>
+						<field name="date_ajout" readonly="1"/>
+					</group>
+				</sheet>
+				<!--  
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+				-->
+			</form>
+		</field>
+	</record>
+	<record id="view_demande_acte_caisse_line_tree" model="ir.ui.view">
+		<field name="name">Liste des lignes de caisse</field>
+		<field name="model">demande.acte.caisse.line</field>
+		<field name="arch" type="xml">
+			<tree string="Ligne de caisse" toolbar="1" create="0">
+				<field name="code"/>
+				<field name="type_acte"/>
+				<field name="quantity"/>
+				<field name="unit_price"/>
+				<field name="amount"/>
+				<field name="user_id"/>
+				<field name="date_ajout"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_demande_acte_caisse_line_calendar"
+		model="ir.ui.view">
+		<field name="name">Ligne de caisse</field>
+		<field name="model">demande.acte.caisse.line</field>
+		<field name="arch" type="xml">
+			<calendar string="Ligne de caisse" date_start="create_date" color="type_acte">
+				<field name="code"/>
+				<field name="type_acte"/>
+				<field name="amount"/>
+				<field name="user_id"/>
+				<field name="date_ajout"/>
+			</calendar>
+		</field>
+	</record>
+
+	<record id="demande_acte_caisse_line_view_search" model="ir.ui.view">
+		<field name="name">Ligne de caisse
+		</field>
+		<field name="model">demande.acte.caisse.line</field>
+		<field name="arch" type="xml">
+			<search string="Recherche de ligne de caisse">
+				<field name="code"/>
+				<field name="type_acte"/>
+				<separator />
+				<field name="amount"/>
+				<field name='user_id' />
+				<field name='date_ajout' />
+				<group expand="0" string="Grouper par">
+					<filter name="type_acte" string="Type d'acte" domain=""
+						context="{'group_by':'type_acte'}" />
+					<filter name="user_id" string="Agent" domain=""
+						context="{'group_by':'user_id'}" />
+					<filter name="date_ajout" string="Date ajout" domain=""
+						context="{'group_by':'date_ajout'}" />
+					
+				</group>
+			</search>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="view_demande_acte_caisse_line_pivot">
+		<field name="name">Ligne de caisse</field>
+		<field name="model">demande.acte.caisse.line</field>
+		<field name="arch" type="xml">
+			<pivot string="Ligne de caisse">
+				<field name="date_ajout" type="row" />
+				<field name="user_id" type="measure" />
+			</pivot>
+		</field>
+	</record>
+	<record id="action_view_demande_acte_caisse_line_tree" model="ir.actions.act_window">
+		<field name="name">Ligne de caisse</field>
+		<field name="res_model">demande.acte.caisse.line</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<!-- vue principale par defaut -->
+		<field name="view_id" ref="view_demande_acte_caisse_line_tree" />
+		<!-- declaration de la search vue-->
+		<field name="search_view_id"
+			ref="demande_acte_caisse_line_view_search" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande
+			</p>
+		</field>
+	</record>
+</odoo>

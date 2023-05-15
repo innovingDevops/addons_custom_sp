@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_etat_civil_naissance_p">
+		<t t-name="etat_civil.report_etat_civil_naissance">
+			<!--<t t-call="report.external_layout"> -->
+			<t t-call="web.html_container">
+
+				<div class="page" style="font-family:Century Gothic !important;">
+					<t t-call="web.basic_layout">
+						<div class="oe_structure" />
+						<center>
+							<b>
+								<h3 class="card-header"
+									style="background-color:#0000FF;color:white;">
+									LISTE DES NAISSANCES
+								</h3>
+							</b>
+						</center>
+						<br />
+						<p style="float:right ;">
+							San Pedro, le
+							<span t-esc="time.strftime('%d-%m-%Y %H:%M:%S')" />
+						</p>
+						<br />
+						<br />
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Numéro d'acte</th>
+									<th scope="col">Code</th>
+									<th scope="col">Prenoms</th>
+									<th scope="col">Nom</th>
+								</tr>
+							</thead>
+							<tbody class="sale_tbody">
+								<t t-foreach="docs" t-as="o">
+									<tr>
+										<td>
+											<span class="text-left" t-field="o.numero_acte" />
+										</td>
+										<td>
+											<span t-field="o.code" />
+										</td>
+										<td>
+											<span t-field="o.prenom" />
+										</td>
+										<td>
+											<span t-field="o.name" />
+										</td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+					</t>
+				</div>
+
+
+				<div class="oe_structure" />
+			</t>
+		</t>
+	</template>
+</odoo>

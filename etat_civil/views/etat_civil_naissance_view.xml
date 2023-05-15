@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_etat_civil_naissance_form" model="ir.ui.view">
+		<field name="name">Naissance</field>
+		<field name="model">etat.civil.naissance</field>
+		<field name="arch" type="xml">
+			<form string="Naissance">
+				<header>
+					<button name="button_confirm" string="Confirmer"
+						type="object" class="oe_highlight" states="draft"
+						groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_agent"
+						confirm='Etes vous sûr de vouloir confirmer?' />
+
+					<button name="button_approuved" string="Approuver"
+						type="object" class="oe_highlight" states="confirm"
+						groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_approbateur"
+						confirm='Etes vous sûr de vouloir approuver?' />
+						
+					<button name="button_valid" string="Valider" type="object"
+						class="oe_highlight" states="approuved"
+						groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_validateur"
+						confirm='Etes vous sûr de vouloir valider?' />
+						
+					<button name="button_done" string="Terminer"
+						type="object" class="oe_highlight" states="valid"
+						groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager"
+						confirm='Etes vous sûr de vouloir terminer?' />
+
+					<button name="button_cancel" string="Annuler/Rejeter"
+						type="object" class="oe_highlight" states="confirm,approuved,valid,done"
+						groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager"
+						confirm='Etes vous sûr de vouloir annuler/rejeter?' />
+						
+					<button name="button_draft" string="Remettre au brouillon"
+						type="object" class="oe_highlight" states="cancel"
+						groups="etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_manager"
+						confirm='Etes vous sûr de vouloir remettre au brouillon?' />
+
+					<field name="state" widget='statusbar' />
+				</header>
+				<sheet>
+					<div class="oe_title">
+						<label for="ref_registre" class="oe_edit_only" style="font-size:20px;" attrs="{'readonly': [('state','!=','draft')]}"/>
+						<h1>
+							<field name="ref_registre" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+						</h1>
+					</div> 
+					<group name="infos_registre" string="Information du registre" col="2">
+						<group>
+							<field name="date_registre" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+						</group>
+						<group>
+							<field name="surfixe" required="True" readonly="1"/>
+						</group>
+					</group>
+					<group name="infos_enf" string="Enfant né">
+						<group>
+							<field name="date_ajout" required="True" readonly="1" />
+							<field name="name" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="code" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="prenom" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="nom" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="sexe" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="birthday" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="birthday_str" required="True" readonly="1"/>
+						</group>
+						<group>
+							<field name="heure_naissance" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="minute_naissance" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="heure_str" readonly="1"/>
+							<field name="lieu_naissance" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="sous_prefecture_naissance_enfant"  attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="commune_naissance_enfant"  attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="user_id" required="True" readonly="1"/>
+						    <field name="maire_id"  attrs="{'readonly': [('state','!=','draft')]}"/>
+						</group>
+					</group>
+					<group>
+						<group name="infos_pere_enf" string="Père de l'enfant né">
+							<field name="prenom_pere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_pere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="birthday_pere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="birthday_pere_str" required="True" readonly="1"/>
+							<field name="lieu_naissance_pere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="sous_prefecture_pere"  attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="commune_naissance_pere"  attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="residence_pere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="profession_pere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+						</group>
+						<group name="infos_mere_enf" string="Mère de l'enfant né">
+							<field name="prenom_mere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="nom_mere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="birthday_mere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="birthday_mere_str" required="True" readonly="1"/>
+							<field name="lieu_naissance_mere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							
+							<field name="sous_prefecture_mere"  attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="commune_naissance_mere"  attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="residence_mere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="profession_mere" required="True" attrs="{'readonly': [('state','!=','draft')]}"/>
+						</group>
+					</group>
+					<group string="Pièces à joindre">
+						<group>
+							<field name="document" widget="many2many_tags" options="{'no_create': True}" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="certificat_naissance" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="cni_pere" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="cni_mere" attrs="{'readonly': [('state','!=','draft')]}"/>
+						</group>
+						<group string="Mention (Eventuellement)">
+							<field name="situation_matrimoniale" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="date_mariage" attrs="{'invisible':[('situation_matrimoniale', 'not in', ['marie','divorce'])] ,'readonly': [('state','!=','draft')],'required':[('situation_matrimoniale', 'in', ['marie','divorce'])]}"/>
+							<field name="date_mariage_str" attrs="{'invisible':[('situation_matrimoniale', 'not in', ['marie','divorce'])]}" readonly="1"/>
+							<field name="conjoint" attrs="{'invisible':[('situation_matrimoniale', 'not in', ['marie','divorce'])] ,'readonly': [('state','!=','draft')],'required':[('situation_matrimoniale', 'in', ['marie','divorce'])]}"/>
+							<field name="date_divorce" attrs="{'invisible':[('situation_matrimoniale', 'not in', ['divorce'])] ,'readonly': [('state','!=','draft')],'required':[('situation_matrimoniale', 'in', ['divorce'])]}"/>
+							<field name="date_divorce_str" attrs="{'invisible':[('situation_matrimoniale', 'not in', ['divorce'])]}" readonly="1"/>
+							<field name="decede" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="date_deces" attrs="{'invisible':[('decede', 'not in', ['oui'])] ,'readonly': [('state','!=','draft')],'required':[('decede', 'in', ['oui'])]}"/>
+							<field name="date_deces_str" attrs="{'invisible':[('decede', 'not in', ['oui'])]}" readonly="1"/>
+						</group>
+					</group>
+					<group string="Informations sur le demandeur">
+						<group>
+							<field name="nom_demandeur" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="prenom_demandeur" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="date_naissance" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="birthday_demandeur_str" readonly="1"/>
+						</group>
+						<group>
+							<field name="lieu_naissance_demandeur" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="domicile" attrs="{'readonly': [('state','!=','draft')]}"/>
+							<field name="profession" attrs="{'readonly': [('state','!=','draft')]}"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Liste des demandes d'acte de naissance">
+							<group name="infos_demande_acte_naissance">
+							
+							</group>
+						</page>
+					</notebook>
+				</sheet>
+				<!--  
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+				-->
+			</form>
+		</field>
+	</record>
+	<record id="view_etat_civil_naissance_tree" model="ir.ui.view">
+		<field name="name">Liste des naissances</field>
+		<field name="model">etat.civil.naissance</field>
+		<field name="arch" type="xml">
+			<tree string="Les naissances" toolbar="1" create="0">
+				<field name="code"/>
+				<field name="prenom"/>
+				<field name="nom"/>
+				<field name="birthday"/>
+				<field name="heure_naissance"/>
+				<field name="lieu_naissance"/>
+				<field name="sexe"/>
+				<field name="user_id"/>
+				<field name="date_ajout"/>
+				<field name="state"/>
+				<!--  
+				<field name="date_registre"/>
+				<field name="nom_pere"/>
+				<field name="prenom_pere"/>
+				<field name="birthday_pere"/>
+				<field name="lieu_naissance_pere"/>
+				<field name="residence_pere"/>
+				<field name="profession_pere"/>
+
+				<field name="nom_mere"/>
+				<field name="prenom_mere"/>
+				<field name="birthday_mere"/>
+				<field name="lieu_naissance_mere"/>
+				<field name="residence_mere"/>
+				<field name="profession_mere"/>
+				-->
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_etat_civil_naissance_calendar"
+		model="ir.ui.view">
+		<field name="name">Les naissances</field>
+		<field name="model">etat.civil.naissance</field>
+		<field name="arch" type="xml">
+			<calendar string="Les naissances" date_start="create_date" color="sexe">
+				<field name="name"/>
+				<field name="code"/>
+				<field name="sexe"/>
+				<field name="user_id"/>
+				<field name="date_ajout"/>
+			</calendar>
+		</field>
+	</record>
+
+	<record id="etat_civil_naissance_view_search" model="ir.ui.view">
+		<field name="name">Les naissances
+		</field>
+		<field name="model">etat.civil.naissance</field>
+		<field name="arch" type="xml">
+			<search string="Recherche Naissance">
+				<field name="name"/>
+				<field name="code"/>
+				<field name="sexe"/>
+				<field name="state"/>
+				<separator />
+				<field name='user_id' />
+				<field name='date_ajout' />
+				<group expand="0" string="Grouper par">
+					<filter name="name" string="Nom" domain=""
+						context="{'group_by':'name'}" />
+					<filter name="birthday" string="Date de naissance" domain=""
+						context="{'group_by':'birthday'}" />
+					<filter name="lieu_naissance" string="Lieu de naissance"
+						domain="" context="{'group_by':'lieu_naissance'}" />
+					<filter name="sexe" string="Sexe" domain=""
+						context="{'group_by':'sexe'}" />
+					<filter name="user_id" string="Agent" domain=""
+						context="{'group_by':'user_id'}" />
+					<filter name="date_ajout" string="Date ajout" domain=""
+						context="{'group_by':'date_ajout'}" />
+					<filter name="state" string="Etat" domain=""
+						context="{'group_by':'state'}" />
+				</group>
+			</search>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="view_etat_civil_naissance_pivot">
+		<field name="name">Les naissances</field>
+		<field name="model">etat.civil.naissance</field>
+		<field name="arch" type="xml">
+			<pivot string="Les naissances">
+				<field name="date_ajout" type="row" />
+				<field name="user_id" type="measure" />
+			</pivot>
+		</field>
+	</record>
+
+	<record id="action_view_etat_civil_naissance_tree"
+		model="ir.actions.act_window">
+		<field name="name">Les déclarations de naissances</field>
+		<field name="res_model">etat.civil.naissance</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<!-- vue principale par defaut -->
+		<field name="view_id" ref="view_etat_civil_naissance_tree" />
+		<!-- declaration de la search vue -->
+		<field name="search_view_id"
+			ref="etat_civil_naissance_view_search" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle naissance
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_view_etat_civil_naissance_a_confirmer_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Déclaration de naissance à confirmer</field>
+		<field name="res_model">etat.civil.naissance</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','draft')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle naissance
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_view_etat_civil_naissance_a_approuver_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Déclaration de naissance à approuver</field>
+		<field name="res_model">etat.civil.naissance</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','confirm')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle naissance
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_view_etat_civil_naissance_a_valider_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Déclaration de naissance à valider</field>
+		<field name="res_model">etat.civil.naissance</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','approuved')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle naissance
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_view_etat_civil_naissance_a_terminer_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Déclaration de naissance à terminer</field>
+		<field name="res_model">etat.civil.naissance</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','valid')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle naissance
+			</p>
+		</field>
+	</record>
+	
+	<record id="action_view_etat_civil_naissance_terminer_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Déclaration de naissance terminée</field>
+		<field name="res_model">etat.civil.naissance</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','done')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle naissance
+			</p>
+		</field>
+	</record>
+
+	<record id="action_view_etat_civil_naissance_rejeter_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Déclaration de naissance rejetée</field>
+		<field name="res_model">etat.civil.naissance</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','cancel')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle naissance
+			</p>
+		</field>
+	</record>
+</odoo>

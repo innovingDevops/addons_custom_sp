@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_etat_civil_maire_form" model="ir.ui.view">
+		<field name="name">Maire</field>
+		<field name="model">etat.civil.maire</field>
+		<field name="arch" type="xml">
+			<form string="Décès">
+				<sheet>
+					<group required="True">
+						<field name="name" required="True" />
+						<field name="sexe" required="True"/>
+						<field name="rang" required="True" />
+					</group>
+				</sheet>
+				<!-- <div class="oe_chatter"> <field name="message_follower_ids" widget="mail_followers" 
+					/> <field name="activity_ids" widget="mail_activity" /> <field name="message_ids" 
+					widget="mail_thread" /> </div> -->
+			</form>
+		</field>
+	</record>
+	<record id="view_etat_civil_maire_tree" model="ir.ui.view">
+		<field name="name">Liste des maires</field>
+		<field name="model">etat.civil.maire</field>
+		<field name="arch" type="xml">
+			<tree string="Les maire" toolbar="1">
+				<field name="name" required="True" />
+				<field name="sexe" required="True"/>
+			</tree>
+		</field>
+	</record>
+
+	
+
+	<record id="etat_civil_maire_view_search" model="ir.ui.view">
+		<field name="name">Les maires</field>
+		<field name="model">etat.civil.maire</field>
+		<field name="arch" type="xml">
+			<search string="Recherche Maire">
+				<field name="name" />
+				<field name="sexe" />
+				<field name="rang" />
+				
+				<separator />
+				<group expand="0" string="Grouper par">
+					<filter name="name" string="Nom" domain=""
+						context="{'group_by':'name'}" />
+					<filter name="sexe" string="Sexe" domain=""
+						context="{'group_by':'sexe'}" />
+					
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<record id="action_view_etat_civil_maire_tree"
+		model="ir.actions.act_window">
+		<field name="name">Liste des maire</field>
+		<field name="res_model">etat.civil.maire</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,pivot</field>
+		<field name="view_id" ref="view_etat_civil_maire_tree" />
+		<field name="search_view_id" ref="etat_civil_maire_view_search" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer un nouveau maire
+			</p>
+		</field>
+	</record>
+</odoo>

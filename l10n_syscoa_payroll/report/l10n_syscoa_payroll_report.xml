@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <report
+            id="action_syscoa_report_payslip"
+            model="hr.payslip"
+            string="Bulletin de paie"
+            report_type="qweb-pdf"
+            name="l10n_syscoa_payroll.syscoa_report_payslip"
+            file="l10n_syscoa_payroll.syscoa_report_payslip"
+            paperformat="syscoa_report_format"
+        />
+       <!--report
+            id="action_report_book_pay"
+            model="hr.payslip"
+            string="Livre de paie"
+            report_type="qweb-pdf"
+            name="l10n_syscoa_payroll.report_book_pay"
+            file="l10n_syscoa_payroll.report_book_pay"
+            paperformat="book_format"
+        />
+         <report
+            id="hr_payroll.action_report_payslip"
+            model="hr.payslip"
+            string="Payslip"
+            report_type="qweb-pdf"
+            name="l10n_syscoa_payroll.syscoa_report_payslip"
+            file="l10n_syscoa_payroll.syscoa_report_payslip"
+            menu="False"
+             auto="False"
+        />
+
+        <report
+            id="action_report_payroll"
+            string="Livre"
+            model="hr.payslip"
+            report_type="qweb-pdf"
+            name="l10n_syscoa_payroll.report_payroll"
+            file="l10n_syscoa_payroll.report_payroll"
+            paperformat="book_format"
+        /-->
+
+
+    </data>
+</openerp>

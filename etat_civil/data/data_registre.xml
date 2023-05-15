@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for registre -->
+		<record id="data_registre1" model="etat.civil.registre">
+			<field name="name">REGISTRE</field>
+			<field name="code">REGISTRE</field>
+		</record>
+	</data>
+</odoo>
+

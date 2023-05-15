@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+		
+		<menuitem name="Mandats"	id="menu_innoving_mandat_root" sequence="1"/>
+		
+			<menuitem action="purchase.product_normal_action_puchased" name="Articles"	id="view_innoving_mandat_article_tree" sequence="12" parent="menu_innoving_mandat_root"/>
+			
+			<menuitem action="base.action_partner_supplier_form" name="Fournisseurs"	id="view_innoving_mandat_fournisseur_tree" sequence="13" parent="menu_innoving_mandat_root"/>
+			
+			<menuitem action="purchase.purchase_form_action" name="Bons de commande"	id="view_innoving_mandat_bon_commande_tree" sequence="14" parent="menu_innoving_mandat_root"/>
+			
+			<menuitem action="account.action_vendor_bill_template" name="Factures"	id="view_innoving_mandat_facture_tree" sequence="15" parent="menu_innoving_mandat_root"/>
+			
+			<menuitem name="Mandats de paiement" id="menu_innoving_mandat_paiement_root" sequence="16" parent="menu_innoving_mandat_root"/>
+			
+				<menuitem action="action_view_innoving_mandat_tree" name="Tous les mandats"	id="view_innoving_mandat_paiement_tree" sequence="161" parent="menu_innoving_mandat_paiement_root"/>
+
+				<menuitem action="action_mandat_fonctionnement_tree_view" name="Mandats de fonctionnement"	id="view_innoving_mandat_fonctionnement_tree" sequence="162" parent="menu_innoving_mandat_paiement_root"/>
+
+				<menuitem action="action_mandat_investissement_tree_view" name="Mandats d'investissement"	id="view_innoving_mandat_investissement_tree" sequence="163" parent="menu_innoving_mandat_paiement_root"/>
+				
+				<menuitem action="action_mes_mandat_tree_view" name="Mes mandats"	id="view_innoving_mes_mandat_tree" sequence="164" parent="menu_innoving_mandat_paiement_root"/>
+				<!--
+				<menuitem action="action_mandat_a_confirmer_tree_view" name="Mandats à confirmer"	id="view_innoving_mandat_paiement_a_confirmer_tree" sequence="162" parent="menu_innoving_mandat_paiement_root"/>
+				
+				<menuitem action="action_mandat_a_valider_tree_view" name="Mandats à valider"	id="view_innoving_mandat_paiement_a_valider_tree" sequence="163" parent="menu_innoving_mandat_paiement_root"/>
+				
+				<menuitem action="action_mandat_a_transmettre_tree_view" name="Mandats à transmettre"	id="view_innoving_mandat_paiement_a_transmettre_tree" sequence="164" parent="menu_innoving_mandat_paiement_root"/>
+				
+				<menuitem action="action_mandat_a_payer_tree_view" name="Mandats à payer"	id="view_innoving_mandat_paiement_a_payer_tree" sequence="165" parent="menu_innoving_mandat_paiement_root"/>
+				
+				<menuitem action="action_mandat_payer_tree_view" name="Mandats payés"	id="view_innoving_mandat_paiement_paid_tree" sequence="166" parent="menu_innoving_mandat_paiement_root"/>
+				
+				<menuitem action="action_mandat_rejeter_tree_view" name="Mandats rejetés"	id="view_innoving_mandat_paiement_rejete_tree" sequence="167" parent="menu_innoving_mandat_paiement_root"/>
+				-->
+			<!-- 
+			<menuitem name="Bon de commande"	id="menu_innoving_bon_commande_root" sequence="12" parent="menu_innoving_mandat_root"/>
+			
+				<menuitem action="purchase.purchase_rfq" name="Demandes de prix" id="view_innoving_mandat_demande_prix_tree" sequence="121" parent="menu_innoving_bon_commande_root"/>
+			
+				<menuitem action="purchase.purchase_form_action" name="Bon de commande"	id="view_innoving_mandat_bon_commande_tree" sequence="122" parent="menu_innoving_bon_commande_root"/>
+				
+				<menuitem action="base.action_partner_supplier_form" name="Fournisseurs"	id="view_innoving_mandat_fournisseur_tree" sequence="123" parent="menu_innoving_bon_commande_root"/>
+				
+				<menuitem action="purchase.product_normal_action_puchased" name="Articles"	id="view_innoving_mandat_article_tree" sequence="124" parent="menu_innoving_bon_commande_root"/>
+			
+			<menuitem name="Facturation" id="menu_innoving_mandat_facturation_root" sequence="13" parent="menu_innoving_mandat_root"/>
+			
+				<menuitem action="account.action_vendor_bill_template" name="Factures"	id="view_innoving_mandat_facture_tree" sequence="131" parent="menu_innoving_mandat_facturation_root"/>
+				
+				<menuitem action="account.action_invoice_out_refund" name="Avoir"	id="view_innoving_mandat_avoir_tree" sequence="132" parent="menu_innoving_mandat_facturation_root"/>
+				
+				<menuitem action="account.action_account_payments_payable" name="Paiements"	id="view_innoving_mandat_account_paiement_tree" sequence="133" parent="menu_innoving_mandat_facturation_root"/>
+				
+			<menuitem action="action_view_innoving_mandat_report_tree" name="Report"	id="view_innoving_mandat_report_tree" sequence="14" parent="menu_innoving_mandat_root" groups="group_innoving_mandat_lecture,group_innoving_mandat_manager"/> 		
+	
+			<menuitem name="Mandat de paiement"	id="menu_innoving_mandat_paiement_root" sequence="14" parent="menu_innoving_mandat_root"/>
+			
+				<menuitem action="action_view_innoving_mandat_tree" name="Tous les mandats"	id="view_innoving_mandat_paiement_tree" sequence="141" parent="menu_innoving_mandat_paiement_root"/>
+			
+			 -->
+				
+	</data>
+</odoo>

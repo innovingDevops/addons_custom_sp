@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record forcecreate="True" id="decimal_payroll_sn" model="decimal.precision">
+            <field name="name">Payroll SN</field>
+            <field name="digits">0</field>
+        </record>
+    </data>
+</openerp>

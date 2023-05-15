@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_hr_payslip_form_inherit_innoving_hr_payslip"
+		model="ir.ui.view">
+		<field name="name">hr.payslip</field>
+		<field name="model">hr.payslip</field>
+		<field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='contract_id']" position="after">
+				<field name="account_fonctionnel_id" options='{"no_open": True}' attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="numero_compte_id" options='{"no_open": True}' attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="numero_compte" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="account_fonctionnel_code" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="bank_id" options='{"no_open": True}' attrs="{'readonly':[('state','!=','draft')]}" />
+				<field name="analytic_account_id" options='{"no_open": True}' attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="hr_grade_id" options='{"no_open": True}' attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="analytic_account_ref" attrs="{'readonly':[('state','!=','draft')]}"/>				
+				<field name="hr_echelon_id" options='{"no_open": True}' attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="compte"/>
+				<field name="job_id" options='{"no_open": True}' attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="chapitre"/>
+				<field name="mise_a_pied" string="Mise à pieds / Jours" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="amount_retenue" readonly="1"/>
+				<field name="amount_retenue_transport" readonly="1" />
+				<field name="amount_rappel" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="net" string="Salaire net" readonly="1"/>
+			</xpath>
+			<xpath expr="//field[@name='payslip_run_id']" position="after">
+				<field name="credit_ouvert"/>
+				<field name="depense_anterieur"/>
+				<field name="depense_actuelle"/>
+				<field name="credit_disponible" />
+				<field name="objet" />
+			</xpath>
+		</field>
+	</record>
+</odoo>

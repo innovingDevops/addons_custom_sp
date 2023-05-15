@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_etat_civil_demande_acte_form"
+		model="ir.ui.view">
+		<field name="name">Demande d'acte</field>
+		<field name="model">etat.civil.demande.acte</field>
+		<field name="arch" type="xml">
+			<form string="Demande d'acte">
+				<sheet>
+					<group string="">
+						<field name="ref" required="True" />
+						<field name="code" required="True" />
+						<field name="name" required="True" />
+						<field name="user_id" required="True" readonly="1" />
+						<field name="date_ajout" required="True" readonly="1" />
+					</group>
+					<group>
+						<group string="">
+
+						</group>
+						<group string="">
+
+						</group>
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+			</form>
+		</field>
+	</record>
+	<record id="view_etat_civil_demande_acte_tree"
+		model="ir.ui.view">
+		<field name="name">Liste des demandes d'actes</field>
+		<field name="model">etat.civil.demande.acte</field>
+		<field name="arch" type="xml">
+			<tree string="Les demandes d'actes" toolbar="1">
+				<field name="ref" />
+				<field name="code" />
+				<field name="name" />
+				<field name="user_id" />
+				<field name="date_ajout" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_etat_civil_demande_acte_calendar"
+		model="ir.ui.view">
+		<field name="name">Les demandes d'actes</field>
+		<field name="model">etat.civil.demande.acte</field>
+		<field name="arch" type="xml">
+			<calendar string="Les demandes d'actes"
+				date_start="create_date" color="user_id">
+				<field name="ref" />
+				<field name="code" />
+				<field name="name" />
+				<field name="user_id" />
+				<field name="date_ajout" />
+			</calendar>
+		</field>
+	</record>
+
+	<record id="etat_civil_demande_acte_view_search"
+		model="ir.ui.view">
+		<field name="name">Les demandes d'actes
+		</field>
+		<field name="model">etat.civil.demande.acte</field>
+		<field name="arch" type="xml">
+			<search string="Recherche Demande d'Acte">
+				<field name="ref" />
+				<field name="code" />
+				<field name="name" />
+				<separator />
+				<field name='user_id' />
+				<field name='date_ajout' />
+				<group expand="0" string="Grouper par">
+					<filter name="name" string="Nom" domain=""
+						context="{'group_by':'name'}" />
+					<filter name="user_id" string="Agent" domain=""
+						context="{'group_by':'user_id'}" />
+					<filter name="date_ajout" string="Date ajout" domain=""
+						context="{'group_by':'date_ajout'}" />
+				</group>
+			</search>
+		</field>
+	</record>
+	<record model="ir.ui.view"
+		id="view_etat_civil_demande_acte_pivot">
+		<field name="name">Les demandes d'actes</field>
+		<field name="model">etat.civil.demande.acte</field>
+		<field name="arch" type="xml">
+			<pivot string="Les demandes d'actes">
+				<field name="date_ajout" type="row" />
+				<field name="user_id" type="measure" />
+			</pivot>
+		</field>
+	</record>
+
+	<record id="action_view_etat_civil_demande_acte_tree"
+		model="ir.actions.act_window">
+		<field name="name">Liste des demandes d'actes</field>
+		<field name="res_model">etat.civil.demande.acte</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="view_id" ref="view_etat_civil_demande_acte_tree" />
+		<field name="view_id" ref="view_etat_civil_demande_acte_tree" />
+		<field name="search_view_id"
+			ref="etat_civil_demande_acte_view_search" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande d'acte
+			</p>
+		</field>
+	</record>
+
+	<!-- <record id="etat_civil_demande_acte_kanban_view" model="ir.ui.view"> 
+		<field name="name">Demande d'acte</field> <field name="model">etat.civil.demande.acte</field> 
+		<field name="arch" type="xml"> <kanban class="o_res_partner_kanban"> <field 
+		name="ref" /> <field name="code" /> <field name="name" /> <templates> <t 
+		t-name="kanban-box"> <div t-attf-class="oe_kanban_global_click"> <div class="oe_kanban_details"> 
+		<strong class="o_kanban_record_title"> <field name="ref" /> </strong> <strong 
+		class="o_kanban_record_title"> <field name="code" /> </strong> <strong class="o_kanban_record_title"> 
+		<field name="name" /> </strong> </div> </div> </t> </templates> </kanban> 
+		</field> </record> <record id="action_etat_civil_demande_acte_kanban_view" 
+		model="ir.actions.act_window"> <field name="name">Liste des demandes d'actes</field> 
+		<field name="res_model">etat.civil.demande.acte</field> <field name="view_type">form</field> 
+		<field name="view_mode">kanban,tree,form,calendar,pivot</field> <field name="view_id" 
+		ref="etat_civil_demande_acte_kanban_view" /> <field name="search_view_id" 
+		ref="etat_civil_demande_acte_view_search" /> <field name="help" type="html"> 
+		<p class="o_view_nocontent_smiling_face"> Enregistrer une nouvelle demande 
+		d'acte </p> </field> </record> -->
+
+
+	<record id="etat_civil_demande_acte_kanban_view" model="ir.ui.view">
+		<field name="name">etat.civil.demande.acte.kanban</field>
+		<field name="model">etat.civil.demande.acte</field>
+		<field name="arch" type="xml">
+			<kanban	class="oe_background_grey o_kanban_dashboard o_emphasize_colors o_stock_kanban"	create="0">
+				<field name="ref" />
+				<field name="code" />
+				<field name="name" />
+				<templates>
+					<t t-name="kanban-box">
+						<div style="width: 518px;">
+							<div>
+								<div t-attf-class="o_kanban_card_header">
+									<div class="o_kanban_card_header_title">
+										<div class="o_primary">
+										</div>
+										<div class="o_secondary">
+										</div>
+									</div>
+								</div>
+								<div class="container o_kanban_card_content">
+									<div class="row">
+										<div class="col-4 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> ACTE DE NAISSANCE
+												</span>
+											</button>
+										</div>
+										<div class="col-8 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> COPIE INTEGRALE D'ACTE DE NAISSANCE
+												</span>
+											</button>
+										</div>
+									</div><br/>
+									<div class="row">
+										<div class="col-4 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> ACTE DE MARIAGE
+												</span>
+											</button>
+										</div>
+										<div class="col-8 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> COPIE INTEGRALE D'ACTE DE MARIAGE
+												</span>
+											</button>
+										</div>
+									</div><br/>
+									<div class="row">
+										<div class="col-4 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> ACTE DE DECES
+												</span>
+											</button>
+										</div>
+										<div class="col-8 o_kanban_primary_left">
+											<button class="btn btn-primary"	name="open_demande_acte" type="object">
+												<span>
+													<i class="fa fa-file" role="img"/> COPIE INTEGRALE D'ACTE DE DECES
+												</span>
+											</button>
+										</div>
+									</div><br/>
+								</div>
+							</div>
+						</div>
+					</t>
+
+				</templates>
+			</kanban>
+		</field>
+	</record>
+
+	<record id="action_etat_civil_demande_acte_kanban_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte</field>
+		<field name="res_model">etat.civil.demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">kanban,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande d'acte
+			</p>
+		</field>
+	</record>
+</odoo>

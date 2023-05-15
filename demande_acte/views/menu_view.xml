@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+		<menuitem name="Demande D'Acte"	id="menu_demande_acte_root" sequence="1"  groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_agent_de_demande,etat_civil.group_etat_civil_vendeur_timbre"/>
+		
+			<!-- Registre 
+			<menuitem name="Demande d'actes"	id="menu_demande_acte_civil_root" sequence="11" parent="menu_demande_acte_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />-->
+	
+				
+			<menuitem groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_agent_de_demande,etat_civil.group_etat_civil_vendeur_timbre" id="menu_demande_acte_copie_root" name="Demande de copie d'acte" parent="menu_demande_acte_root" sequence="11" />
+				
+				<menuitem action="action_demande_acte_demande_kanban_view" groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_agent_de_demande" id="menu_demande_acte_tree_list" name="Demander une copie d'acte" parent="menu_demande_acte_copie_root"
+				sequence="111" /> 
+				
+				<menuitem action="action_view_demande_acte_tree" name="Les demandes de copie d'acte"	id="menu_demande_acte_copie_tree_list" sequence="112" parent="menu_demande_acte_copie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_demande_acte_a_confirmer_tree_view" name="Les demandes à confirmé"	id="menu_demande_acte_copie_a_confirmer_tree_list" sequence="113" parent="menu_demande_acte_copie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_agent_de_demande" />
+				
+				<menuitem action="action_demande_acte_a_approuver_tree_view" name="Les demandes à approuver"	id="menu_demande_acte_copie_a_aprouver_tree_list" sequence="114" parent="menu_demande_acte_copie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_vendeur_timbre" />
+				
+				<menuitem action="action_demande_acte_a_valider_tree_view" name="Les demandes à valider"	id="menu_demande_acte_copie_a_valider_tree_list" sequence="115" parent="menu_demande_acte_copie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_vendeur_timbre" />
+				
+				<menuitem action="action_demande_acte_valider_tree_view" name="Les demandes validées"	id="menu_demande_acte_copie_valider_tree_list" sequence="116" parent="menu_demande_acte_copie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_demande_acte_rejecter_tree_view" name="Les demandes rejetées"	id="menu_demande_acte_copie_rejeter_tree_list" sequence="117" parent="menu_demande_acte_copie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture,etat_civil.group_etat_civil_vendeur_timbre" />
+				
+			<menuitem name="Trésorerie" id="menu_demande_acte_tresorerie_root" sequence="12" parent="menu_demande_acte_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_demande_acte_caisse_tree" name="Toutes les caisses" id="menu_demande_acte_caisse_root" sequence="121" parent="menu_demande_acte_tresorerie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+				<menuitem action="action_view_demande_acte_caisse_line_tree" name="Toutes les lignes de caisse" id="menu_demande_acte_caisse_line_root" sequence="122" parent="menu_demande_acte_tresorerie_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+			
+			<menuitem name="Configuration" id="menu_demande_acte_configuration_root" sequence="13" parent="menu_demande_acte_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+			
+			
+				<menuitem action="action_view_demande_acte_demande_tree" name="Demande"	id="menu_etat_civil_registre_kanban" sequence="131" parent="menu_demande_acte_configuration_root"	groups="etat_civil.group_etat_civil_manager,etat_civil.group_etat_civil_lecture" />
+				
+	</data>
+</odoo>

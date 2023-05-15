@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for colibri.activite.secteur -->
+		<record id="data_hr_grade1" model="hr.grade">
+			<field name="name">A1</field>
+			<field name="code">A1</field>
+		</record>
+		<record id="data_hr_grade2" model="hr.grade">
+			<field name="name">A2</field>
+			<field name="code">A2</field>
+		</record>
+		<record id="data_hr_grade3" model="hr.grade">
+			<field name="name">A3</field>
+			<field name="code">A3</field>
+		</record>
+		<record id="data_hr_grade4" model="hr.grade">
+			<field name="name">A4</field>
+			<field name="code">A4</field>
+		</record>
+		<record id="data_hr_grade5" model="hr.grade">
+			<field name="name">B1</field>
+			<field name="code">B1</field>
+		</record>
+		<record id="data_hr_grade6" model="hr.grade">
+			<field name="name">B2</field>
+			<field name="code">B2</field>
+		</record>
+		<record id="data_hr_grade7" model="hr.grade">
+			<field name="name">B3</field>
+			<field name="code">B3</field>
+		</record>
+		<record id="data_hr_grade8" model="hr.grade">
+			<field name="name">B4</field>
+			<field name="code">B4</field>
+		</record>
+		<record id="data_hr_grade9" model="hr.grade">
+			<field name="name">C1</field>
+			<field name="code">C1</field>
+		</record>
+		<record id="data_hr_grade10" model="hr.grade">
+			<field name="name">C2</field>
+			<field name="code">C2</field>
+		</record>
+		<record id="data_hr_grade11" model="hr.grade">
+			<field name="name">C3</field>
+			<field name="code">C3</field>
+		</record>
+		<record id="data_hr_grade12" model="hr.grade">
+			<field name="name">C4</field>
+			<field name="code">C4</field>
+		</record>
+		<record id="data_hr_grade13" model="hr.grade">
+			<field name="name">D1</field>
+			<field name="code">D1</field>
+		</record>
+		<record id="data_hr_grade14" model="hr.grade">
+			<field name="name">D1</field>
+			<field name="code">D2</field>
+		</record>
+		<record id="data_hr_grade15" model="hr.grade">
+			<field name="name">D3</field>
+			<field name="code">D3</field>
+		</record>
+		<record id="data_hr_grade16" model="hr.grade">
+			<field name="name">D4</field>
+			<field name="code">D4</field>
+		</record>
+		<record id="data_hr_grade17" model="hr.grade">
+			<field name="name">E1</field>
+			<field name="code">E1</field>
+		</record>
+		<record id="data_hr_grade18" model="hr.grade">
+			<field name="name">E1</field>
+			<field name="code">E2</field>
+		</record>
+		<record id="data_hr_grade19" model="hr.grade">
+			<field name="name">E3</field>
+			<field name="code">E3</field>
+		</record>
+		<record id="data_hr_grade20" model="hr.grade">
+			<field name="name">E4</field>
+			<field name="code">E4</field>
+		</record>
+	</data>
+</odoo>

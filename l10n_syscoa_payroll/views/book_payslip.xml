@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+	<record id="book_report_tree" model="ir.ui.view">
+            <field name="name">book.report.tree</field>
+            <field name="model">book.report</field>
+            <field name="arch" type="xml">
+                <tree  decoration-muted="state=='cancel'" decoration-info="state in ('done','verify')" string="Livre de paie">
+                    
+                    <field name="name_related" string="Nom et prénoms"/>
+					<field name="employee_id" invisible="1"/>
+                    <field name="salary_rule_id" />
+                    <field name="total"/>
+                    <field name="state"/>
+                    
+                </tree>
+            </field>
+    </record>
+	
+	<record model="ir.ui.view" id="book_report_pivot">
+            <field name="name">book.report.pivot</field>
+            <field name="model">book.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Livre de paie" >
+                    <field name="employee_id" type="col"/>
+                    <field name="salary_rule_id" type="row"/>
+                    <field name="total" type="measure"/>
+                </pivot>
+            </field>
+    </record>
+	
+	
+	<!--record id="book_report_search3" model="ir.ui.view">
+            <field name="name">book.report.search</field>
+            <field name="model">book.report</field>
+            <field name="arch" type="xml">
+                <search string="Livre de paie">
+                   <field name="name_related" string="Nom et prénoms"/>
+					<field name="employee_id"/>
+                    <field name="salary_rule_id" />
+                    <field name="total"/>
+                    <field name="state"/>
+                    
+                    <filter name="done" string="Terminé" domain="[('state', '=', 'done')]"/>
+                    <filter name="draft" string="Brouillon" domain="[('state', '=', 'draft')]"/>
+					<filter name="cancel" string="Annulé" domain="[('state', '=', 'cancel')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="employee" string="Employé" domain="[]" context="{'group_by' : 'employee_id'}" />
+                        <filter name="salary_rule" string="Product" domain="[]" context="{'group_by' : 'salary_rule_id'}" />
+                        <filter string="Statut" domain="[]" context="{'group_by' : 'state'}" />
+                    </group>
+                </search>
+            </field>
+        </record-->
+		
+    <record id="book_report_action" model="ir.actions.act_window">
+            <field name="name">Livre de paie</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">book.report</field>
+            <field name="domain">[('state','in',('draft','done','cancel', 'verify'))]</field>
+            <field name="view_mode">tree,pivot</field>
+            <!--field name="search_view_id" ref="book_report_search"/-->
+           
+    </record>
+
+	<menuitem action="book_report_action" id="menu_book_report_action" parent="menu_payslip_report"/>
+
+	
+		
+		
+		
+		
+		
+		
+	
+    </data>
+</openerp>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+		<report 
+            id="action_report_payslip" 
+            model="hr.payslip" 
+            string="Payslip"
+            report_type="qweb-pdf"
+            name="l10n_syscoa_payroll.report_payslip"
+            file="l10n_syscoa_payroll.report_payslip"
+        />
+    </data>
+</openerp>

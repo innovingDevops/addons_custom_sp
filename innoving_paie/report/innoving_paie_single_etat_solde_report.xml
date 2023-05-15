@@ -1,0 +1,30 @@
+<odoo>		
+	<record id="paperformat_innoving_paie_single_report" model="report.paperformat">
+		<field name="name">Single etat de solde  </field>		
+		<field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Landscape</field>
+		<field name="margin_top">3</field>
+		<field name="margin_bottom">0</field>
+		<field name="margin_left">3</field>
+		<field name="margin_right">3</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">0</field>
+		<field name="dpi">125</field>
+	</record>
+	
+	<!-- 	
+	<report string="Etat de solde" id="report_innoving_paie_report"
+		model="hr.payslip" report_type="qweb-pdf"
+		name="innoving_paie.report_innoving_paie_p"
+		file="innoving_paie.report_innoving_paie_report" 
+		paperformat="innoving_paie.paperformat_innoving_paie_report" />
+	 -->
+	 	
+	<report string="Etat de solde" id="action_report_innoving_paie_single_report"
+		model="hr.payslip" report_type="qweb-pdf"
+		name="innoving_paie.report_innoving_paie_single_p1"
+		file="innoving_paie.report_innoving_paie_single_report" 
+		paperformat="innoving_paie.paperformat_innoving_paie_single_report" />
+	
+</odoo>

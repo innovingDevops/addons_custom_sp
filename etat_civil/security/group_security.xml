@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+
+		<record model="ir.module.category" id="module_etat_civil">
+			<field name="name">Gestion des états civils</field>
+			<field name="sequence">40</field>
+		</record>
+		<record id="group_etat_civil_manager" model="res.groups">
+			<field name="name">Manager</field>
+			<field name="category_id" ref="module_etat_civil" />
+		</record>
+		<record id="group_etat_civil_agent" model="res.groups">
+			<field name="name">Agent</field> 
+			<field name="category_id" ref="module_etat_civil" />
+		</record>
+		
+		<record id="group_etat_civil_lecture" model="res.groups">
+			<field name="name">Lecture</field>
+			<field name="category_id" ref="module_etat_civil" />
+		</record>
+		
+		<record id="group_etat_civil_approbateur" model="res.groups">
+			<field name="name">Approbateur</field>
+			<field name="category_id" ref="module_etat_civil" />
+		</record>
+		
+		<record id="group_etat_civil_validateur" model="res.groups">
+			<field name="name">Validateur</field>
+			<field name="category_id" ref="module_etat_civil" />
+		</record>
+		
+		<record id="group_etat_civil_vendeur_timbre" model="res.groups">
+			<field name="name">Vente de timbre</field>
+			<field name="category_id" ref="module_etat_civil" />
+		</record>
+		
+		<record id="group_etat_civil_agent_de_demande" model="res.groups">
+			<field name="name">Agent de demande de copie</field>
+			<field name="category_id" ref="module_etat_civil" />
+		</record>
+	</data>
+</odoo>

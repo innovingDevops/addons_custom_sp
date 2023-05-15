@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_paie_bordereau_paie_p">
+		<t t-name="innoving_paie.report_innoving_paie">
+			<t t-call="web.html_container">				
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table table-borderless" style="width:100%;background-color;font-size:14px;">
+							<tbody class="sale_tbody">
+								<tr>
+									<td style="width:25%;">
+										<strong>DISTRICT AUTONOME DU BAS SASSANDRA</strong><br/>
+										<strong>REGION DE SAN PEDRO</strong><br/>
+										<strong>COMMUNE DE SAN PEDRO</strong><br/>
+										<strong>EXERCICE</strong> <span t-esc="time.strftime('%Y')" /> <strong>CODE</strong> 336
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="text-align:center;width:50%;">
+										<strong>BORDEREAU D'EMISSION DE MANDATS</strong>			
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="width:25%;">
+										<strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong><br/>
+										<strong>UNION-DISCIPLINE-TRAVAIL</strong>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-borderless" style="width:100%;margin-top:-30px;font-size:14px;">
+							<tbody class="sale_tbody">
+								<tr style="">
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="6"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="14" style="border: 1px solid black;"><strong>PARTIE RESERVEE AU RECEVEUR</strong></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="3"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;"><strong>IMPUTATION</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;"><strong>SOMME MANDATEE</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;"><strong>Date de paiement</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" rowspan="2" style="border: 1px solid black;"><strong>CREDITEURS DIVERS C/4690</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="8" style="border: 1px solid black;"><strong>AUTRES OPERATIONS</strong></td>
+									
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="6%"><strong>N°</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="20%"><strong>Nature de la dépense</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="42%"><strong>Nom et adresse du créancier</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="4%"><strong>Fonctionnelle</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="4%"><strong>Patrimoine</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;" width="8%"><strong>Reste à payer</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;" width="8%"><strong>SOMMES</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;" width="8%"><strong>N° de cpte aut.cpte de tiers</strong></td>
+								</tr>
+								<t t-foreach="docs" t-as="o">
+									<tr style="">
+										<td style="border: 1px solid black;">
+											
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.objet" />
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.employee_id" />
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.account_fonctionnel_code" /> / <span class="text-left" t-field="o.analytic_account_ref" />
+										</td>
+										<td style="border: 1px solid black;weight:60%;">
+											 
+										</td>
+										<td style="border: 1px solid black;">
+											<t t-foreach="o.line_ids" t-as="line">
+												<t t-if="line.code in ['C900']">
+													<span class="text-left" t-field="line.total" t-options='{"widget": "float", "precision": 0}'/>
+												</t>
+											</t>
+										</td>
+										<td colspan="2" style="border: 1px solid black;">
+											
+										</td>
+										<td colspan="4" style="border: 1px solid black;">
+											
+										</td>
+										<td colspan="4"  style="border: 1px solid black;">
+											
+										</td>
+										<td colspan="4"  style="border: 1px solid black;">
+											
+										</td>
+									</tr>
+								</t>
+								<tr>
+									<td colspan="2" rowspan="5" style="border-left: 1px solid black;border-bottom: 1px solid black;">
+										<div class="row">
+											<div><strong>FOLIO N°</strong></div>
+											<div style="padding:15px 0px;border: 2px solid black;width:110px;"></div>
+											<div style="padding:15px 0px;border: 2px solid black;width:110px;"></div>
+										</div><br/>
+										<p style="text-align:left;">Arrêtée à la somme de (en lettres) : <br/>
+											<strong><span t-esc="docs.sum_text(sum(line.net for line in docs))"/></strong>
+										</p><br/><br/>
+										<div style="text-align:right;">
+											<strong>A SAN PEDRO,le</strong><br/>
+											<strong>L'ordonnateur</strong><br/><br/><br/><br/>
+										</div>
+										<p style="text-align:left">CL 20  ***1/3***</p>
+									</td>
+									<td colspan="3" rowspan="5" style="border-bottom: 1px solid black;">
+										<div style="text-align:right;">
+											<strong>TOTAL DU PRESENT BORDEREAU</strong><br/><br/>
+											<strong>TOTAL DU PRECEDENT BORDEREAU</strong><br/><br/>
+											<strong>TOTAL GENERAL DU PRESENT BORDEREAU</strong>
+										</div>
+									</td>
+									<td rowspan="3" style="border: 1px solid black;">
+										<strong><span t-esc="sum(line.net for line in docs)" t-options='{"widget": "float", "precision": 0}'/></strong><br/><br/><br/><br/><br/><br/>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" ></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border-right: 1px solid black;"></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="3" style="border-right: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="6" style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="5" style="border-right: 1px solid black;"></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="14" style="border-right: 1px solid black;"></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;"><strong>DATE D'EMISSION</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;"><div style="-ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);"><strong>Control des prises en charge</strong></div></td>
+									<div >
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;height:120px;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+									</div>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"><div style="-ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);margin-top:10px;"><strong>Totaux</strong></div></td>
+								</tr>
+							</tbody>
+						</table>
+					</t>
+				</div>
+				<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table table-borderless" style="width:100%;background-color;font-size:14px;">
+							<tbody class="sale_tbody">
+								<tr>
+									<td style="width:25%;">
+										<strong>DISTRICT AUTONOME DU BAS SASSANDRA</strong><br/>
+										<strong>REGION DE SAN PEDRO</strong><br/>
+										<strong>COMMUNE DE SAN PEDRO</strong><br/>
+										<strong>EXERCICE</strong> <span t-esc="time.strftime('%Y')" /> <strong>CODE</strong> 336
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="text-align:center;width:50%;">
+										<strong>BORDEREAU D'EMISSION DE MANDATS</strong>			
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="width:25%;">
+										<strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong><br/>
+										<strong>UNION-DISCIPLINE-TRAVAIL</strong>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-borderless" style="width:100%;margin-top:-30px;font-size:14px;">
+							<tbody class="sale_tbody">
+								<tr style="">
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="6"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="14" style="border: 1px solid black;"><strong>PARTIE RESERVEE AU RECEVEUR</strong></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="3"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;"><strong>IMPUTATION</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;"><strong>SOMME MANDATEE</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;"><strong>Date de paiement</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" rowspan="2" style="border: 1px solid black;"><strong>CREDITEURS DIVERS C/4690</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="8" style="border: 1px solid black;"><strong>AUTRES OPERATIONS</strong></td>
+									
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="6%"><strong>N°</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="20%"><strong>Nature de la dépense</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="42%"><strong>Nom et adresse du créancier</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="4%"><strong>Fonctionnelle</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="4%"><strong>Patrimoine</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;" width="8%"><strong>Reste à payer</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;" width="8%"><strong>SOMMES</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;" width="8%"><strong>N° de cpte aut.cpte de tiers</strong></td>
+								</tr>
+								<t t-foreach="docs" t-as="o">
+									<tr style="">
+										<td style="border: 1px solid black;">
+											
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.objet" />
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.employee_id" />
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.account_fonctionnel_code" /> / <span class="text-left" t-field="o.analytic_account_ref" /> 
+										</td>
+										<td style="border: 1px solid black;weight:60%;">
+											 
+										</td>
+										<td style="border: 1px solid black;">
+											<t t-foreach="o.line_ids" t-as="line">
+												<t t-if="line.code in ['C900']">
+													<span class="text-left" t-field="line.total" t-options='{"widget": "float", "precision": 0}'/>
+												</t>
+											</t>
+										</td>
+										<td colspan="2" style="border: 1px solid black;">
+											
+										</td>
+										<td colspan="4" style="border: 1px solid black;">
+											
+										</td>
+										<td colspan="4"  style="border: 1px solid black;">
+											
+										</td>
+										<td colspan="4"  style="border: 1px solid black;">
+											
+										</td>
+									</tr>
+								</t>
+								<tr>
+									<td colspan="2" rowspan="5" style="border-left: 1px solid black;border-bottom: 1px solid black;">
+										<div class="row">
+											<div><strong>FOLIO N°</strong></div>
+											<div style="padding:15px 0px;border: 2px solid black;width:110px;"></div>
+											<div style="padding:15px 0px;border: 2px solid black;width:110px;"></div>
+										</div><br/>
+										<p style="text-align:left;">Arrêtée à la somme de (en lettres) : <br/>
+										<strong><span t-esc="docs.sum_text(sum(line.net for line in docs))"/></strong></p><br/><br/>
+										<div style="text-align:right;">
+											<strong>A SAN PEDRO,le</strong><br/>
+											<strong>L'ordonnateur</strong><br/><br/><br/><br/>
+										</div>
+										<p style="text-align:left">CL 20  ***2/3***</p>
+									</td>
+									<td colspan="3" rowspan="5" style="border-bottom: 1px solid black;">
+										<div style="text-align:right;">
+											<strong>TOTAL DU PRESENT BORDEREAU</strong><br/><br/>
+											<strong>TOTAL DU PRECEDENT BORDEREAU</strong><br/><br/>
+											<strong>TOTAL GENERAL DU PRESENT BORDEREAU</strong>
+										</div>
+									</td>
+									<td rowspan="3" style="border: 1px solid black;">
+										<strong><span t-esc="sum(line.net for line in docs)" t-options='{"widget": "float", "precision": 0}'/></strong><br/><br/><br/><br/><br/><br/>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" ></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="4" style="border-right: 1px solid black;"></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="3" style="border-right: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="6" style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="5" style="border-right: 1px solid black;"></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="14" style="border-right: 1px solid black;"></td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;"><strong>DATE D'EMISSION</strong></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;"><div style="-ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);margin-top:70px;"><strong>Control des prises en charge</strong></div></td>
+									<div >
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;height:120px;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+										<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+										<td style="border: 1px solid black;"></td>
+									</div>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"></td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;"><div style="-ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);margin-top:10px;"><strong>Totaux</strong></div></td>
+								</tr>
+							</tbody>
+						</table>
+					</t>
+				</div>
+				<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table table-borderless" style="width:100%;background-color;font-size:14px;">
+							<tbody class="sale_tbody">
+								<tr>
+									<td style="width:25%;">
+										<strong>DISTRICT AUTONOME DU BAS SASSANDRA</strong><br/>
+										<strong>REGION DE SAN PEDRO</strong><br/>
+										<strong>COMMUNE DE SAN PEDRO</strong><br/>
+										<strong>EXERCICE</strong> <span t-esc="time.strftime('%Y')" /> <strong>CODE</strong> 336
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="text-align:center;width:50%;">
+										<strong>BORDEREAU D'EMISSION DE MANDATS</strong>			
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="width:25%;">
+										<strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong><br/>
+										<strong>UNION-DISCIPLINE-TRAVAIL</strong>
+									</td>
+								</tr>
+							</tbody>
+						</table>		
+						<table class="table table-borderless" style="width:100%;margin-top:-30px;font-size:14px;">
+							<tbody class="sale_tbody">
+								<tr>
+									<td colspan="6">
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="3" style="border: 1px solid black;">
+										<strong>PARTIE RESERVEE AU TRESOR</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+								</tr>
+								<tr>
+									<td colspan="3">
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;">
+										<strong>IMPUTATION</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;">
+										<strong>SOMME MANDATEE</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="3" style="border: 1px solid black;">
+										<strong>PARTIE NON MIS EN PAIEMENT</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="6%">
+										<strong>N°</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="20%">
+										<strong>Nature de la dépense</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="36%">
+										<strong>Nom et adresse du créancier</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="4%">
+										<strong>Fonctionnelle</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="4%">
+										<strong>Patrimoine</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="8%">
+										<strong>N° des mandats</strong>
+									</td>
+									<td style="border: 1px solid black;" width="14%">
+										<strong>MOTIFS</strong>
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;" width="8%">
+										<strong>Montants des mandats</strong>
+									</td>
+									
+								</tr>
+								<t t-foreach="docs" t-as="o">
+									<tr style="">
+										<td style="border: 1px solid black;">
+											
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.objet" />
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.employee_id" />
+										</td>
+										<td style="border: 1px solid black;">
+											<span class="text-left" t-field="o.account_fonctionnel_code" /> / <span class="text-left" t-field="o.analytic_account_ref" /> 
+										</td>
+										<td style="border: 1px solid black;weight:60%;">
+											 
+										</td>
+										<td style="border: 1px solid black;">
+											<t t-foreach="o.line_ids" t-as="line">
+												<t t-if="line.code in ['C900']">
+													<span class="text-left" t-field="line.total" t-options='{"widget": "float", "precision": 0}'/>
+												</t>
+											</t>
+										</td>
+										<td style="border: 1px solid black;">
+											
+										</td>
+										<td style="border: 1px solid black;">
+											
+										</td>
+										<td style="border: 1px solid black;">
+											
+										</td>
+										
+									</tr>
+								</t>
+								
+								
+								<tr>
+									<td colspan="2" rowspan="4" style="border-left: 1px solid black;border-bottom: 1px solid black;">
+										<div class="row">
+											<div><strong>FOLIO N°</strong></div>
+											<div style="padding:15px 0px;border: 2px solid black;width:110px;"></div>
+											<div style="padding:15px 0px;border: 2px solid black;width:110px;"></div>
+										</div><br/>
+										<p style="text-align:left;">Arrêtée à la somme de (en lettres) : <br/>
+										<strong><span t-esc="docs.sum_text(sum(line.net for line in docs))"/></strong></p><br/><br/>
+										<div style="text-align:right;">
+											<strong>A SAN PEDRO,le</strong><br/>
+											<strong>L'ordonnateur</strong><br/><br/><br/><br/>
+										</div>
+										<p style="text-align:left">CL 20  ***3/3***</p>
+									</td>
+									<td colspan="3" rowspan="4" style="border-bottom: 1px solid black;">
+										<div style="text-align:right;">
+											<strong>TOTAL DE PRESENT BORDEREAU</strong><br/><br/>
+											<strong>TOATAL DU PRECEDENT BORDEREAU</strong><br/><br/>
+											<strong>TOTAL GENERAL DU PRESENT BORDEREAU</strong>
+										</div>
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									
+									<td rowspan="2" style="border: 1px solid black;">
+										<strong><span t-esc="sum(line.net for line in docs)" t-options='{"widget": "float", "precision": 0}'/></strong><br/><br/><br/><br/><br/><br/>
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;">
+										<strong>Total des mandats non remis en paiement (à deduire du total ci-contre)</strong>
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="border: 1px solid black;">
+									</td>
+								</tr>
+								<tr>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;">
+										<strong>Nouveau total du précédent bordereau</strong>
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="border: 1px solid black;">
+										
+									</td>
+								</tr>
+								<tr>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;">
+										<strong>DATE D'EMISSION</strong>
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;">
+										<strong>Total général à presenter sur le prochain bordereau</strong>
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="border: 1px solid black;">										
+									</td>
+								</tr>
+								
+								<tr>
+									<td colspan="3" style="border: 1px solid black;text-align:center;">
+										<strong>LE RECEVEUR</strong> <br/><br/><br/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</t>
+					</div>
+			</t>
+		</t>
+	</template>
+</odoo>

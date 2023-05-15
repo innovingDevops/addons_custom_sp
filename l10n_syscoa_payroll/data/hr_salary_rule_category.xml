@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data noupdate="1">
+		<record id="hr_salary_rule_category0" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">RETENUES</field>
+			<field name="name">Total Retenues</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category1" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">INDM</field>
+			<field name="name">Indemnite</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category2" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">CATINDMNI</field>
+			<field name="name">Indemnite Non Imposable</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category3" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">SALC</field>
+			<field name="name">Total Charges Salariales</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category4" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">NET</field>
+			<field name="name">Net</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category5" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">BASE</field>
+			<field name="name">Salaire de base</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category6" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">BRUT</field>
+			<field name="name">Salaire Brut</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category7" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">INDM</field>
+			<field name="name">Indemnite</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category8" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">DED</field>
+			<field name="name">Deduction</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category9" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">SURSALAIRE</field>
+			<field name="name">Sursalaire</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<!--<record id="hr_salary_rule_category10" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="id">23</field>
+			<field name="code">SALC</field>
+			<field name="create_date">2015-03-07 11:02:37.832323</field>
+			<field name="name">Total Charges Salariales</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id" ref="hr_salary_rule_category0"></field>
+		</record>-->
+		<record id="hr_salary_rule_category11" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">TOTAL</field>
+			<field name="name">Cout total pour l'entreprise</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category12" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="code">O_TOTALS</field>
+			<field name="name">Autres Totaux</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category13" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="id">27</field>
+			<field name="code">C_IMP</field>
+			<field name="create_date">2015-03-07 11:02:37.832323</field>
+			<field name="name">Net Imposable</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category14" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="id">28</field>
+			<field name="code">RET_EMP</field>
+			<field name="create_date">2015-03-08 02:34:05.738085</field>
+			<field name="name">Retenues employés</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category15" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="id">29</field>
+			<field name="code">IMP_EMP</field>
+			<field name="create_date">2015-03-08 02:39:55.42066</field>
+			<field name="name">Impôts employeurs</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category16" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="id">31</field>
+			<field name="code">TRETR</field>
+			<field name="create_date">2015-03-08 02:44:24.029507</field>
+			<field name="name">Total Cotisations Rétraite</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category17" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="id">32</field>
+			<field name="code">ARETE</field>
+			<field name="create_date">2015-03-08 02:59:03.298521</field>
+			<field name="name">Autres retenues</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+		<record id="hr_salary_rule_category18" model="hr.salary.rule.category">
+			<field name="name">hr_salary_rule_category</field>
+			<field name="code">hr.salary.rule.category</field>
+			<field name="id">12</field>
+			<field name="code">CPATR</field>
+			<field name="create_date">2015-03-07 11:02:37.832323</field>
+			<field name="name">Cotisations Patronales</field>
+			<field name="company_id">1</field>
+			<field name="note"></field>
+			<field name="parent_id"></field>
+		</record>
+	</data>
+</openerp>

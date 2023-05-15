@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_invoice_form_inherit_account_invoice"
+		model="ir.ui.view">
+		<field name="name">account.invoice</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_supplier_form" />
+		<field name="arch" type="xml">
+			<button name="action_invoice_open" position="after">
+				<button name="button_gen_mandat" type="object"
+					states="open" string="Générer un Mandat" class="oe_highlight"
+					groups="account.group_account_invoice" confirm="Vous êtes sur le point de Générer un Mandat de paiement! Voulez-vous continuer?"/>
+			</button>
+			<button name="148" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</button>
+			<button name="202" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</button>
+			<field name="reference" position="replace">
+				<field name="reference" string="N° facture" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+			</field>
+			<group position="before">
+				<group string="Objet">
+					<field name="note" string="Objet de la dépense" required="1" nolabel="1" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+				</group>
+				<group>
+					<group>
+						<!-- <field name="numero_facture_origine" string="N° Facture Origine" attrs="{'readonly': [('state', '!=', 'draft')]}" /> -->
+						<field name="date_edition_fournisseur" string="Date du fournisseur" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+						<field name="budget_id" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+						<field name="type_depense"	required="1" string="Type de dépense" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+						<field name="type_fond" string="Dépense effectuée sur" widget='radio' options="{'horizontal': true}" attrs="{'readonly': [('state', '!=', 'draft')],'invisible': [('type_depense', '!=', 'investissement')],'required': [('type_depense', '=', 'investissement')]}" />
+						<field name="type_mandat" string="Mandat à généré" widget='radio' options="{'horizontal': true}" attrs="{'readonly': [('state', '!=', 'draft')],'invisible': [('type_depense', '!=', 'investissement')],'required': [('type_depense', '=', 'investissement')]}" />
+						
+					</group>
+					<group>
+						<field name="is_carburant" string="Achat de carburant" attrs="{'readonly': [('state', '!=', 'draft')]}" />
+						<field name="mandat_id" string="N° du Mandat" readonly="1" />
+						<field name="account_patrimoine_id" string="Compte patrimoniale" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('type_depense', '=', 'investissement')]}" />
+					</group>
+				</group>
+			</group>
+		</field>
+	</record>
+</odoo>
+
+

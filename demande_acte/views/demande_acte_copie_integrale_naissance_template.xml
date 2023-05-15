@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_demande_acte_copie_integrale_naissance_p">
+		<t t-name="demande.acte.report_demande_acte_copie_integrale_naissance">
+			<t t-call="web.basic_layout">
+				<t t-foreach="docs" t-as="o">
+					<div class="page"
+						style="font-family:Century Gothic !important;">
+							<div class="oe_structure" />
+							<table class="table table-borderless">
+								<tbody>
+										<tr>
+											<td>
+												<span style="float:left;text-align:center;">
+													<h5><strong>REGION DE SAN PEDRO</strong></h5>
+													<h6>- - - - -</h6>
+													<h5><strong>DEPARTEMENT DE SAN PEDRO</strong></h5>
+													<h6>- - - - -</h6>
+													<img class="img" src="/etat_civil/static/src/img/logo.jpeg" style="height:50%;width:30%;" />
+													<h5><strong>COMMUNE DE SAN PEDRO</strong></h5>
+													<h6>- - - - -</h6>
+													<h5><strong>ETAT CIVIL</strong></h5>
+												</span>
+											</td>
+											<td>
+											<h5><strong>SAF</strong></h5>
+											</td>
+											<td>
+												<span style="float:right;text-align:center;">
+													<h5><strong>REPUBLIQUE DE COTE D'IVOIRE</strong></h5>
+													<p>Union-Discipline-Travail</p>
+													<h6>- - - - -</h6>
+													<h1>
+														<strong>Copie Intégrale</strong>
+													</h1>
+													<p><strong>DU REGISTRE DES ACTES DE L'ETAT CIVIL</strong></p>
+													<p><strong>DE LA COMMUNE DE SAN-PEDRO</strong></p>
+													<p><strong>POUR L'ANNEE 1991</strong></p>
+												</span>
+												
+											</td>
+										</tr>
+								</tbody>
+							</table>
+							<table class="table table-borderless">
+								<tbody>
+										<tr>
+											<td style="width: 20%;">
+												N du registre <strong><span t-field="o.etat_civil_naissance_id.name" /></strong><br/><br/>
+												NAISSANCE DE : <br/><br/><strong><span t-field="o.etat_civil_naissance_id.prenom" /><br/><span t-field="o.etat_civil_naissance_id.nom" /></strong><br/>
+											</td>
+											<td style="width: 50%;">
+												<p style="line-height: 200%; word-space:20px;">
+													Le <strong><span t-field="o.etat_civil_naissance_id.birthday" /></strong> à <strong><span t-field="o.etat_civil_naissance_id.heure_naissance" /></strong>
+													est né à <strong><span t-field="o.etat_civil_naissance_id.lieu_naissance" /></strong> ,commume de San Pedro l'enfant :<strong><span t-field="o.etat_civil_naissance_id.prenom" /> <span t-field="o.etat_civil_naissance_id.nom" /> </strong>
+													,de sexe <strong><span t-field="o.etat_civil_naissance_id.sexe"/></strong> ayant pour père :<strong> <span t-field="o.etat_civil_naissance_id.prenom_pere" /> <span t-field="o.etat_civil_naissance_id.nom_pere" /></strong>
+													,né en <strong><span t-field="o.etat_civil_naissance_id.birthday_pere"/></strong> à <strong><span t-field="o.etat_civil_naissance_id.lieu_naissance_pere"/></strong> Sous prefecture de ............
+													,profession : <strong><span t-field="o.etat_civil_naissance_id.profession_pere"/></strong>, domicilié à : <strong><span t-field="o.etat_civil_naissance_id.residence_pere"/></strong> .
+													Et pour mère :<strong><span t-field="o.etat_civil_naissance_id.prenom_mere" /> <span t-field="o.etat_civil_naissance_id.nom_mere" /> </strong>
+													,né en <strong><span t-field="o.etat_civil_naissance_id.birthday_mere"/></strong> à <strong><span t-field="o.etat_civil_naissance_id.lieu_naissance_mere"/></strong> Sous prefecture de .............
+													,profession : <strong><span t-field="o.etat_civil_naissance_id.profession_mere"/></strong>, domicilié à : <strong><span t-field="o.etat_civil_naissance_id.residence_mere"/></strong> .
+												</p>
+												<p style="line-height: 200%;">
+													Dressé le <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S')" /> sur la déclaration du père .Par nous <strong><span t-field="o.user_id"/></strong>, adjoint au maire, Officier de l'état civil 
+													de la commune de San Pedro . Apres que le déclarant ait été averti des peines sanctionnant les fausses declarations. Lecture faite, le déclarant invité a lire l'acte,nous avons signé seul, le déclarant ne le pouvant.	
+												</p>
+											</td>
+											<td style="width: 10%;">
+											</td>
+										</tr>
+								</tbody>
+							</table>
+							<br/>
+							<br/>
+							<br/>
+							<p style="float:right ;text-align:center;">
+								(Sur le registre suivant les signatures<br/>
+								Pour copie certifiée conforme)<br/>
+								SAN PEDRO le <span t-esc="time.strftime('%d-%m-%Y')" /><br/>
+								L'OFFECIER DE L'ETAT CIVIL
+							</p>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<report string="Liste des naissances" id="report_etat_civil_naissance"
+		model="etat.civil.naissance" report_type="qweb-pdf"
+		name="etat_civil.report_etat_civil_naissance_p"
+		file="etat_civil.report_etat_civil_naissance" />
+</odoo>

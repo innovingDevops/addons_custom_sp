@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<report
+            id="payslip_report_san_pedro_pdf"
+            string="Fiche de paye"
+            model="hr.payslip"
+            report_type="qweb-pdf"
+            file="l10n_syscoa_payroll.syscoa_report_payslip_sp"
+            name="l10n_syscoa_payroll.syscoa_report_payslip_sp"
+            menu="True"
+        />
+    	
+
+       <record id="syscoa_report_format_sp" model="report.paperformat">
+				<field name="name">Format San Pedro</field>
+				<field name="default" eval="True" />
+				<field name="format">custom</field>
+				<field name="page_height">0</field>
+				<field name="page_width">0</field>
+				<field name="orientation">Portrait</field>
+				<field name="margin_top">3</field>
+				<field name="margin_bottom">23</field>
+				<field name="margin_left">20</field>
+				<field name="margin_right">20</field>
+				<field name="header_line" eval="False" />
+				<field name="header_spacing">35</field>
+				<field name="dpi">90</field>
+		</record>	
+            </data>
+    </odoo>
+	

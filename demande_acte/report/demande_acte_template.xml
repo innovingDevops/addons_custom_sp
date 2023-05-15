@@ -1,0 +1,573 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_demande_acte_p">
+		<t t-name="demande_acte.report_demande_acte">
+			<!--  <t t-call="web.html_container">-->
+			<t t-call="web.basic_layout">
+				<t t-foreach="docs" t-as="o">
+					<t t-if="o.state not in ['draft','cancel']">
+					<!-- <div class="page" style="background-image:url('/etat_civil/static/src/img/report_bg.jpeg');background-repeat: no-repeat;background-size: 100% 100%;font-family:arial !important;font-size:18px;"> -->
+						<div class="page" style="font-family:arial !important;font-size:13px;">
+							<div class="oe_structure" />
+							<table class="table table-borderless">
+								<tbody>
+										<tr>
+											<td>
+												<span style="float:left;text-align:center;">
+													<h4><strong>REGION DE SAN PEDRO</strong></h4>
+													<h3>- - - - -</h3>
+													<h4><strong>DEPARTEMENT DE SAN PEDRO</strong></h4>
+													<h3>- - - - -</h3>
+													<img class="img" src="/etat_civil/static/src/img/logo.jpeg" style="height:80%;width:45%;" />
+													<h4><strong>COMMUNE DE SAN PEDRO</strong></h4>
+													<h5>- - - - -</h5>
+													<h4><strong>ETAT CIVIL</strong></h4>
+												</span>
+											</td>
+											<td>
+											<h5><strong><br></br>
+											<!-- 
+											<span t-field="o.user_id.users_initial" /> 
+											-->
+											</strong></h5>
+											</td>
+											<td>
+												<span style="float:right;text-align:center;">
+													<h3><strong>REPUBLIQUE DE COTE D'IVOIRE</strong></h3>
+													<p><h4><strong>Union-Discipline-Travail</strong></h4></p>
+													<h3>- - - - -</h3>
+													<t t-if="o.type_acte in ['an','am','ad']">
+														<h1>
+															<strong>EXTRAIT</strong>
+														</h1>
+														<p><h4><strong>du registre des actes de l'Etat-Civil</strong></h4></p>
+														<p><h4><strong>Pour l'Année <span t-field="o.date_jour_str" /></strong></h4></p>
+													</t>
+													<t t-if="o.type_acte in ['cian','ciam','ciad']">
+														<h1>
+															<strong>Copie Intégrale</strong>
+														</h1>
+														<p style="text-align:center;"><h5>DU REGISTRE DES ACTES DE L'ETAT CIVIL</h5></p>
+														<p style="text-align:center;"><h5>DE LA COMMUNE DE SAN PEDRO</h5></p>
+														<p style="text-align:center;"><h5>POUR L'ANNEE <span t-field="o.date_jour_str" /></h5></p>
+													</t>
+												</span>
+												
+											</td>
+										</tr>
+								</tbody>
+							</table>
+							<t t-if="o.type_acte == 'an'">
+								<table class="table table-borderless">
+									<tbody>
+											<tr>
+												<td style="font-size:30px;">
+													N° <strong><span t-field="o.etat_civil_naissance_id.name" /></strong><br/><br/>
+													NAISSANCE DE : <br/><br/>
+													<strong><span t-field="o.etat_civil_naissance_id.prenom" /> <span t-field="o.etat_civil_naissance_id.nom" /> </strong>
+													<br/><br/><br/><br/>
+													E.18
+												</td>
+												<td style="line-height: 180%;font-size:30px;">
+													Le  <span t-field="o.etat_civil_naissance_id.birthday_str" /><br/><br/>
+													à   <span t-field="o.etat_civil_naissance_id.heure_str" /><br/><br/>
+													est né(e)  <span t-field="o.etat_civil_naissance_id.prenom" /> <span t-field="o.etat_civil_naissance_id.nom" /><br/><br/>
+													à   <span t-field="o.etat_civil_naissance_id.lieu_naissance" /><br/><br/>
+													<t t-if="o.etat_civil_naissance_id.sexe == 'masculin'"> 
+													fils de  
+													</t> 
+													<t t-if="o.etat_civil_naissance_id.sexe == 'feminin'">
+													fille de  
+													</t> 
+													<strong>
+														<span t-field="o.etat_civil_naissance_id.prenom_pere" /> <span t-field="o.etat_civil_naissance_id.nom_pere" /> 
+													</strong><br/><br/>
+													et de   <strong> <span t-field="o.etat_civil_naissance_id.prenom_mere" /> <span t-field="o.etat_civil_naissance_id.nom_mere" /> </strong><br/><br/>
+												</td>
+											</tr>
+									</tbody>
+								</table><br/>
+								<strong><hr style="height:4px;background-color:black;"/></strong><br/>
+								<strong style="text-align:center;"><h2>MENTION (éventuellement)</h2></strong><br/><br/>
+									<p style="font-size:30px;">
+										Marié (e) le <strong> <span t-field="o.etat_civil_naissance_id.date_mariage_str" /></strong><br/><br/>
+										Avec  <strong> <span t-field="o.etat_civil_naissance_id.conjoint" /></strong><br/><br/>
+										Mariage dissous par décision de divorce en date du <strong> <span t-field="o.etat_civil_naissance_id.date_divorce_str" /></strong><br/><br/>
+										Décédé (e) le <strong><span t-field="o.etat_civil_naissance_id.date_deces_str" /></strong><br/><br/>
+										Certifie le présent extrait conforme aux indications portées au registre :
+									</p>
+								<br/>
+								<p style="float:right ;font-size:25px;">
+									Délivré  à San Pedro le <span t-field="o.date_jour_str" />
+								</p>
+								<p style="float:left;margin-left:100px;margin-top:40px; font-size:25px">
+									<strong>Seau</strong>
+								</p>
+								<br/>
+								<table class="table table-borderless">
+									<tbody>
+											<tr>
+												<td>
+												</td>
+												<td style="float:right;font-size:18px;">
+												<p style="font-size:20px;">
+													<span style="text-align:center;">L'Officier de l'Etat Civil</span><br/>
+													<span style="text-align:center;">L'Agent de l'Etat Civil</span><br/>
+													<span style="text-align:center;">(Signature)</span>
+												</p>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+								<br/><br/><br/><br/>
+							</t>
+							<t t-if="o.type_acte == 'am'"><br/>
+								<table class="table table-borderless" style="width:100%;">
+									<tbody>
+											<tr>
+												<td style="width:35%;">
+													<h4>N° <strong><span t-field="o.etat_civil_mariage_id.name" /></strong><br/><br/></h4>
+													<h3>MARIAGE ENTRE <br/><br/>
+													<strong><span t-field="o.etat_civil_mariage_id.prenom_homme" /> <span t-field="o.etat_civil_mariage_id.nom_homme" /> </strong><br/><br/>
+													ET	<br/><br/>
+													<strong><span t-field="o.etat_civil_mariage_id.prenom_femme" /> <span t-field="o.etat_civil_mariage_id.nom_femme" /> </strong><br/>
+													</h3>
+												</td>
+												<td></td>
+												<td >
+													<p style="line-height:225%; font-size:30px">
+															Le : <strong><span t-field="o.etat_civil_mariage_id.date_mariage_str" /></strong><br/>
+															à :  <strong><span t-field="o.etat_civil_mariage_id.heure_str" /></strong><br/>
+															Entre : <strong><span t-field="o.etat_civil_mariage_id.prenom_homme" /> <span t-field="o.etat_civil_mariage_id.nom_homme" /> </strong><br/>
+															Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_homme" /></strong><br/>
+															Né : <strong><span t-field="o.etat_civil_mariage_id.birthday_homme_str" /></strong><br/>
+															à :  <strong><span t-field="o.etat_civil_mariage_id.lieu_naissance_homme" /></strong><br/>
+															fils de :  <strong><span t-field="o.etat_civil_mariage_id.prenom_pere_homme" /> <span t-field="o.etat_civil_mariage_id.nom_pere_homme" /> </strong><br/>
+															et de :  <strong><span t-field="o.etat_civil_mariage_id.prenom_mere_homme" /> <span t-field="o.etat_civil_mariage_id.nom_mere_homme" /> </strong><br/>
+															Domicilié à : SAN PEDRO <br/>
+															Et : <strong><span t-field="o.etat_civil_mariage_id.prenom_femme" /> <span t-field="o.etat_civil_mariage_id.nom_femme" /> </strong><br/>
+															Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_femme" /></strong><br/>
+															Née : <strong><span t-field="o.etat_civil_mariage_id.birthday_femme_str" /></strong><br/>
+															à :  <strong><span t-field="o.etat_civil_mariage_id.lieu_naissance_femme" /></strong><br/>
+															fille de :  <strong><span t-field="o.etat_civil_mariage_id.prenom_pere_femme" /> <span t-field="o.etat_civil_mariage_id.nom_pere_femme" /> </strong><br/>
+															et de :  <strong><span t-field="o.etat_civil_mariage_id.prenom_mere_femme" /> <span t-field="o.etat_civil_mariage_id.nom_mere_femme" /> </strong><br/>
+															Domicilié à : SAN PEDRO
+													</p>
+													<p style="font-size:25px">
+														<h4><i>Certifié le présent extrait conforme aux indications<br/><br/>
+									                    portées au Registre par nous, <strong><span t-field="o.etat_civil_mariage_id.maire_id"/>,<span t-field="o.etat_civil_mariage_id.maire_id.rang"/></strong>
+									  					</i></h4>
+									  				</p>
+												</td>
+											</tr>
+									</tbody>
+								</table><br/>
+								<table class="table table-borderless">
+									<tbody>
+											<tr>
+												<td style="float:left;">
+													<svg width="150" height="100">
+													  <rect width="150" height="50" style="fill:white;stroke-width:2;stroke:rgb(0,0,0)"/>
+													</svg>
+												</td>
+												<td style="float:center;text-align:left;font-size:20px;">
+													Sceau
+												</td>
+												<td style="float:right;text-align:center;font-size:22px;">
+													San Pedro le <span t-field="o.date_jour_str" /><br/>
+													<span style="text-align:center;"><strong>L'Officier de l'Etat-Civil</strong></span><br/>
+													<span style="text-align:center;"><h6>(Signature)</h6></span>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+								<br/><br /><br /><br /><br />
+							</t>
+							<t t-if="o.type_acte == 'ad'"><br/><br/>
+								<table class="table table-borderless">
+									<tbody>
+											<tr>
+												<td>
+													<h4>N° <strong><span t-field="o.etat_civil_deces_id.name" /></strong></h4><br/><br/>
+													<h3>DECES DE : <br/><br/>
+													<strong><span t-field="o.etat_civil_deces_id.prenom" /> <br/><br/>
+													<span t-field="o.etat_civil_deces_id.nom" /> </strong><br/></h3>
+												</td>
+												<td>
+													<p style="line-height:200%; font-size:30px">
+														Le : <strong><span t-field="o.etat_civil_deces_id.date_deces_str" /></strong><br/><br/>
+														à :  <strong><span t-field="o.etat_civil_deces_id.heure_str" /></strong><br/><br/>
+														Est décédé(e) à : <strong><span t-field="o.etat_civil_deces_id.lieu_deces" /></strong><br/><br/>
+														Nom et Prénoms :  <strong><span t-field="o.etat_civil_deces_id.prenom" /> <span t-field="o.etat_civil_deces_id.nom" /> </strong><br/><br/>
+														Né(e) à : <strong><span t-field="o.etat_civil_deces_id.lieu_naissance" /></strong><br/><br/>
+														Profession : <strong><span t-field="o.etat_civil_deces_id.profession" /></strong><br/><br/>
+														Fils / fille de :  <strong><span t-field="o.etat_civil_deces_id.prenom_pere" /> <span t-field="o.etat_civil_deces_id.nom_pere" /> </strong><br/><br/>
+														Et de :  <strong><span t-field="o.etat_civil_deces_id.prenom_mere" /> <span t-field="o.etat_civil_deces_id.nom_mere" /> </strong><br/><br/>
+													</p>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+								<br/>
+								<table class="table table-borderless">
+									<tbody>
+											<tr>
+												<td style="float:right;">
+													<span style="text-align:center;margin-left:5px;font-size:30px;">
+														Fait à San Pedro, le <span t-field="o.date_jour_str" />
+														<strong>
+														<h4>L'Officier de l'Etat Civil</h4><br/>
+															<p><h5>(Signature)</h5></p>
+														</strong>
+													</span>
+														<br/>
+												</td>
+											</tr>
+									</tbody>
+								</table><br/>
+								<table class="table border-all:5px solid black;">
+									<tbody>
+										<tr>
+											<td style="float:left;font-size:28px;">
+													<h5><strong>Timbre</strong></h5>
+											 </td>
+										 </tr>
+									</tbody>
+								</table>
+								<p style="text-align:center;margin-top:-5px;font-size:30px;">
+									Seau
+								</p>
+								<br/><br /><br/><br /><br /><br /><br />
+							</t>
+							<t t-if="o.type_acte == 'cian'">
+								<table class="table table-borderless" style="width:100%;">
+									<tbody>
+										<tr>
+											<td style="width:30%">
+												<h4>N° <strong><span t-field="o.etat_civil_naissance_id.name" /></strong></h4><br/><br/>
+												<h3>NAISSANCE DE : <br/><br/>
+													<strong>
+														<span t-field="o.etat_civil_naissance_id.prenom" /><br/><br/>
+														<span t-field="o.etat_civil_naissance_id.nom" />
+													</strong>
+												</h3>
+											</td>
+											<td></td>
+											<td>
+												<p style="line-height:225%; font-size:30px">
+													Le <strong><span t-field="o.etat_civil_naissance_id.birthday_str" /></strong> à <strong><span t-field="o.etat_civil_naissance_id.heure_str" /></strong>	est né à <strong><span t-field="o.etat_civil_naissance_id.lieu_naissance" /></strong>, 
+													commume de San Pedro l'enfant <strong><span t-field="o.etat_civil_naissance_id.nom" /> <span t-field="o.etat_civil_naissance_id.prenom" /></strong>, du sexe <strong><span t-field="o.etat_civil_naissance_id.sexe"/></strong> ayant pour père <strong>
+													<span t-field="o.etat_civil_naissance_id.prenom_pere" /> <span t-field="o.etat_civil_naissance_id.nom_pere" /> </strong>, né le <strong><span t-field="o.etat_civil_naissance_id.birthday_pere_str"/></strong> à <strong>
+													<span t-field="o.etat_civil_naissance_id.lieu_naissance_pere"/></strong> Sous-Préfecture de <span t-field="o.etat_civil_naissance_id.sous_prefecture_pere"/>, profession <strong><span t-field="o.etat_civil_naissance_id.profession_pere"/></strong>, 
+													domicilié à <strong><span t-field="o.etat_civil_naissance_id.residence_pere"/></strong>.
+													Et pour mère <strong><span t-field="o.etat_civil_naissance_id.prenom_mere" /> <span t-field="o.etat_civil_naissance_id.nom_mere" /> </strong>, née le <strong><span t-field="o.etat_civil_naissance_id.birthday_mere_str"/></strong>
+													à <strong><span t-field="o.etat_civil_naissance_id.lieu_naissance_mere"/></strong> Sous-Préfecture de <span t-field="o.etat_civil_naissance_id.sous_prefecture_mere"/>,
+													profession <strong><span t-field="o.etat_civil_naissance_id.profession_mere"/></strong>, domicilié à : <strong><span t-field="o.etat_civil_naissance_id.residence_mere"/></strong>.<br/>
+												</p>
+												<p style="line-height:225%; font-size:30px">
+													Dressé le <strong><span t-field="o.date_jour_lettre_str"/></strong> à <strong><span t-field="o.heure_jour_str"/></strong> sur la déclaration du père.
+													Par nous <strong><span t-field="o.etat_civil_naissance_id.maire_id"/>,<span t-field="o.etat_civil_naissance_id.maire_id.rang"/></strong>, Officier de l'état civil
+													de la commune de San Pedro . Apres que le déclarant ait été averti des peines sanctionnant les fausses declarations.
+													Lecture faite, le déclarant invité a lire l'acte,nous avons signé seul, le déclarant ne le pouvant.
+												</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<br/>
+								<br/>
+								<br/>
+								<p style="float:right;text-align:center;font-size:25px">
+									(Sur le registre suivant les signatures<br/>
+									Pour copie certifiée conforme)<br/><br/>
+									SAN PEDRO le <span t-field="o.date_jour_str" /><br/><br/>
+									L'OFFECIER DE L'ETAT CIVIL
+								</p>
+								<br/>
+							</t>
+							<t t-if="o.type_acte == 'ciam'">
+								<table class="table table-borderless" style="width:100%;">
+									<tbody>
+											<tr>
+												<td style="width:30%;">
+													<h4>N° <strong><span t-field="o.etat_civil_mariage_id.name" /></strong></h4><br/><br/><br/>
+													<h3>MARIAGE ENTRE <br/><br/>
+													<strong>
+														<span t-field="o.etat_civil_mariage_id.prenom_homme" /> <span t-field="o.etat_civil_mariage_id.nom_homme" /> 
+													</strong><br/><br/> 
+													ET<br/><br/>
+													<strong>
+														<span t-field="o.etat_civil_mariage_id.prenom_femme" /> <span t-field="o.etat_civil_mariage_id.nom_femme" /> 
+													</strong></h3><br/>
+												</td>
+												<td></td>
+												<td>
+													<p style="line-height:160%; font-size:30px">
+														Le <strong><span t-field="o.etat_civil_mariage_id.date_mariage_str" /></strong>
+														à <strong><span t-field="o.etat_civil_mariage_id.heure_str" /></strong> ,
+														devant nous <strong><span t-field="o.etat_civil_mariage_id.maire_id"/>,<span t-field="o.etat_civil_mariage_id.maire_id.rang"/></strong>, 
+														Officier de l'Etat Civil de la Commune de SAN PEDRO ont comparu publiquement au siège de la commune de SAN PEDRO :
+														<strong><span t-field="o.etat_civil_mariage_id.prenom_homme" /> <span t-field="o.etat_civil_mariage_id.nom_homme" /> </strong>
+														Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_homme"/></strong>,
+														né le <strong><span t-field="o.etat_civil_mariage_id.birthday_homme_str"/></strong>
+														à <strong><span t-field="o.etat_civil_mariage_id.lieu_naissance_homme"/></strong>,
+														Sous prefecture de <strong><span t-field="o.etat_civil_mariage_id.commune_naissance_homme"/></strong>,
+														fils de <strong><span t-field="o.etat_civil_mariage_id.prenom_pere_homme" /> <span t-field="o.etat_civil_mariage_id.nom_pere_homme" /> </strong>
+														Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_pere_homme"/></strong>,
+														domicilié à : <strong><span t-field="o.etat_civil_mariage_id.residence_pere_homme"/></strong> 
+														et de :<strong><span t-field="o.etat_civil_mariage_id.prenom_mere_homme" /> <span t-field="o.etat_civil_mariage_id.nom_mere_homme" /> </strong>
+														Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_mere_homme"/></strong>,
+														domicilié à : <strong><span t-field="o.etat_civil_mariage_id.residence_mere_homme"/></strong> 
+														Commune de SAN PEDRO,<br/>
+														
+														Et :<strong><span t-field="o.etat_civil_mariage_id.prenom_femme" /> <span t-field="o.etat_civil_mariage_id.nom_femme" /> </strong>
+														Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_femme"/></strong>,
+														née le <strong><span t-field="o.etat_civil_mariage_id.birthday_femme_str"/></strong>
+														à <strong><span t-field="o.etat_civil_mariage_id.lieu_naissance_femme"/></strong>,
+														Sous prefecture de <strong><span t-field="o.etat_civil_mariage_id.commune_naissance_femme"/></strong>,,
+														fille  de <strong><span t-field="o.etat_civil_mariage_id.prenom_pere_femme" /> <span t-field="o.etat_civil_mariage_id.nom_pere_femme" /> </strong>
+														Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_pere_femme"/></strong>,
+														domicilié à : <strong><span t-field="o.etat_civil_mariage_id.residence_pere_femme"/></strong> 
+														et de :<strong><span t-field="o.etat_civil_mariage_id.prenom_mere_femme" /> <span t-field="o.etat_civil_mariage_id.nom_mere_femme" /> </strong>
+														Profession : <strong><span t-field="o.etat_civil_mariage_id.profession_mere_femme"/></strong>,
+														domiciliée à : <strong><span t-field="o.etat_civil_mariage_id.residence_mere_femme"/></strong> 
+													</p>
+													<p style="line-height:160%; font-size:30px">
+														Lesquels ont déclaré sur notre interpellation ne pas opter pour le régime de la séparation de biens et l'un apres l'autre vouloir se prendre pour
+														 	époux et nous avons prononcé,au non de la loi qu'ils sont unis par le mariage en présence de :<br/>
+														 	- <strong><span t-field="o.etat_civil_mariage_id.prenom_temoin_homme"/></strong> <strong><span t-field="o.etat_civil_mariage_id.nom_temoin_homme"/></strong>,
+														 	<strong><span t-field="o.etat_civil_mariage_id.age_temoin_homme_str"/></strong>,
+														 	<strong><span t-field="o.etat_civil_mariage_id.profession_temoin_homme"/></strong>
+														 	domicilié à <strong><span t-field="o.etat_civil_mariage_id.residence_temoin_homme"/></strong><br/>
+														 	- <strong><span t-field="o.etat_civil_mariage_id.prenom_temoin_femme"/></strong> <strong><span t-field="o.etat_civil_mariage_id.nom_temoin_femme"/></strong> , 
+														 	<strong><span t-field="o.etat_civil_mariage_id.age_temoin_femme_str"/></strong>,
+														 	<strong><span t-field="o.etat_civil_mariage_id.profession_temoin_femme"/></strong>
+															domicilié à <strong><span t-field="o.etat_civil_mariage_id.residence_temoin_femme"/></strong><br/>
+															Avant de dresser l'acte nous avons averti les parties comparantes et les témoins des peines prévues par la loi pour sanctionner les fausses
+															décatations. Lecture faite,les époux et les témoins invités a lire l'acte nous avons signé avec les époux et les témoins.
+													</p>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+								<p style="float:right;text-align:center;font-size:25px">
+									(Sur le registre suivant les signatures<br/>
+									Pour copie certifiée conforme)<br/><br/>
+									SAN PEDRO le <span t-field="o.date_jour_str" /><br/><br/>
+									L'OFFECIER DE L'ETAT CIVIL
+								</p>
+								<br/><br/><br/><br/>
+							</t>
+							<t t-if="o.type_acte == 'ciad'">
+								<table class="table table-borderless" style="width:100%;">
+									<tbody>
+											<tr>
+												<td style="width: 30%;">
+													<h5>N° <strong><span t-field="o.etat_civil_deces_id.name" /></strong></h5><br/><br/>
+													<h4>DECES DE : <br/><br/><strong><span t-field="o.etat_civil_deces_id.prenom" /> <br/><br/>
+													<span t-field="o.etat_civil_deces_id.nom" /></strong></h4><br/>
+												</td>
+												<td></td>
+												<td>
+													<p style="line-height:250%; font-size:30px">
+															Le  <strong><span t-field="o.etat_civil_deces_id.date_deces_str" /></strong> est décédé(e)
+															à <strong><span t-field="o.etat_civil_deces_id.lieu_deces" /></strong>,
+															<strong><span t-field="o.etat_civil_deces_id.prenom" /> <span t-field="o.etat_civil_deces_id.nom" /> </strong>,
+															Profession <strong><span t-field="o.etat_civil_deces_id.profession" /></strong> domicilié
+															à <strong><span t-field="o.etat_civil_deces_id.residence_defunt" /></strong> 
+															né(e) le <strong><span t-field="o.etat_civil_deces_id.birthday_str" /></strong> ,
+															à <strong><span t-field="o.etat_civil_deces_id.lieu_naissance" /></strong> ,
+															République de <strong><span t-field="o.etat_civil_deces_id.country_id" /></strong> ,
+															de <strong><span t-field="o.etat_civil_deces_id.prenom_pere" /> <span t-field="o.etat_civil_deces_id.nom_pere" /> </strong>,
+															domoicilié à  <strong><span t-field="o.etat_civil_deces_id.residence_pere" /></strong>
+														 	et de <strong><span t-field="o.etat_civil_deces_id.prenom_mere" /><span t-field="o.etat_civil_deces_id.nom_mere" /></strong>
+															;domiciliée à <strong><span t-field="o.etat_civil_deces_id.residence_mere" /></strong>.<br/>
+													</p>
+													<p style="line-height:250%; font-size:30px">
+															Dressé le <strong><span t-field="o.date_jour_lettre_str"/></strong> à  <strong><span t-field="o.heure_jour_str"/></strong>
+															sur la déclaration de : <strong> <span t-field="o.etat_civil_deces_id.prenom_demandeur" /></strong> <strong><span t-field="o.etat_civil_deces_id.nom_demandeur" /></strong> ,
+															<strong><span t-field="o.etat_civil_deces_id.age_demandeur" /></strong> ans,
+															Profeesion <strong><span t-field="o.etat_civil_deces_id.profession_demandeur"/></strong> 
+															,domicilié(e) à <strong><span t-field="o.etat_civil_deces_id.residence_demandeur" /></strong> Par nous: <strong><span t-field="o.etat_civil_deces_id.maire_id"/>,<span t-field="o.etat_civil_deces_id.maire_id.rang"/></strong>,  
+															Conseiller municipal,officier de l'Etat Civil de la Commune de SAN PEDRO.<br/>
+															Apres que le déclarant ait été averti des peines sanctionnant les fausses déclarations. Lecture faite et le déclarant invité a lire 
+															l'acte, nous avons signé avec le déclarant .
+													 </p>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+								<br/><br/><br/>
+								<p style="float:right;text-align:center;font-size:25px ;">
+									(Sur le registre suivant les signatures<br/>
+									Pour copie certifiée conforme)<br/>
+									SAN PEDRO le <span t-field="o.date_jour_str" /><br/>
+									L'OFFECIER DE L'ETAT CIVIL
+								</p>
+								<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+							</t>
+							<t t-if="o.type_acte == 'cv'">
+								<table class="table table-borderless">
+									<tbody>
+										<tr>
+											<td>
+												<h3>
+													N° <strong><span t-field="o.code_registre" /></strong><br/><br/><br/>
+												</h3>
+												<span style="text-align:center;font-size:30px;">
+													<h1><strong>CERTIFICAT DE VIE</strong></h1>
+												</span>
+												<br/><br/>
+												<p style="line-height:150%; font-size:30px">
+												Le Maire de la Commune de San Pedro,soussigné,certifie que<br/><br/>
+												Madame/Monsieur :<strong><span t-field="o.prenom_demandeur" /> <span t-field="o.nom_demandeur" /> </strong><br/><br/>
+												Est né(e) le : <strong><span t-field="o.birthday_cv_str" /> à ( <span t-field="o.country_id" />)</strong><br/><br/>
+												Domicilié(e) à<strong><span> SAN PEDRO</span></strong><br/><br/>
+												Fils(le) de :<strong><span t-field="o.nom_pere_certificat_vie" /></strong> et de :<strong><span t-field="o.nom_mere_certificat_vie" /></strong><br/><br/>
+												Profession : <strong><span t-field="o.profession_demandeur_certificat_vie" /></strong><br/><br/>
+												Numéro MATRICULE CGRAE :<strong><span t-field="o.numero_matricule_cgrae" /></strong><br/><br/>
+												Numéro Téléphone : <strong><span t-field="o.telephone" /></strong><br/><br/>
+												CNI N° :<strong><span t-field="o.numero_piece" /></strong><br/><br/>
+												</p>
+												<p style="line-height:100%; font-size:30px">
+												Est bien vivant(e),pour s'être présenté(e) devant nous ce jour .<br/><br/>
+												En foi de quoi ,le présent ceritficat est établi pour servir et valoir de ce que <br/><br/>
+												de droit .
+												</p>
+												<br/><br/><br/>
+												<span style="text-align:center;">
+													<p style="float:right;text-align:center;font-size:25px ;">
+														<strong>Faite à San-Pedro, le <span t-field="o.date_jour_str" /></strong><br/><br/>
+														P/Le Maire et P.D
+													</p>
+												</span>
+												
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<br/>								
+							</t>							
+							<t t-if="o.type_acte == 'cve'"><br/><br/>
+								<table class="table table-borderless">
+									<tbody>
+										<tr>
+											<td>
+												<span style="text-align:center">
+													<strong>
+														<h1>
+															<u>CERTIFICAT DE VIE ET ENTRETIENT</u>
+														</h1>
+													</strong>
+												</span><br/>
+												<p style="text-align:center;font-size:30px;">(EXECUTION DE LA CIRCULATION N 2338 P.2 DU 13 OCTOBRE 1930)</p><br/>
+												<p style="text-align:justify;font-size:30px;">Le Maire de la commune de San Perdo,soussigné certifie que l'enfant ci-apres de Monsieur,<br/>
+													Profession : Retraité BP SAN PEDRO
+												</p>
+											</td>
+										</tr>											
+									</tbody>
+								</table>
+								<table class="table table-borderless" style="width:100%;font-size:28px;">
+										<tbody>
+											<t t-foreach="o.enfant_ids" t-as="line">
+												<tr>
+													<td style="width: 30%;">
+														<span t-field="line.code" />) <span t-field="line.name" />
+													</td>
+													<td style="width: 30%;">
+														Né(e) à <span t-field="line.lieu_naissance" />
+													</td>
+													<td>
+														Le <span t-field="line.birthday_str" />
+													</td>
+												</tr>
+											</t>
+										</tbody>
+									</table><br/><br/>
+								<p style="font-size:28px;">Est entretenu par le pere ci-dessous nommé <span t-field="o.prenom_demandeur" /> <span t-field="o.nom_demandeur" /><br/>
+								En foi de quoi,il est établi le present certicat pour servir et valoire ce que de droit.</p>
+								<table class="table table-borderless" style="font-size:28px;">
+									<tbody>
+											<tr>
+												<td style="float:right;text-align:center;">
+													<p style="25px;"><strong>Fait à San Pedro le <span t-field="o.date_jour_str" /></strong></p>
+													<span style="text-align:center;">
+														<p>P. le maire et P.O</p>
+													</span>
+												</td>
+											</tr>
+									</tbody>
+								</table>
+								<br/><br /><br /><br /><br /><br /><br />
+								<p style="text-align:justify;font-size:22px;">
+									Certificate de vie et d,entretien qui ne peut délivré que sur la production d'extrait de niassance ayant mois de 3 mois de date a compter du jour de<br/>leur
+									établissement  l'autorité  Adminisrative qualifié,ou sur présentation d'un livret de la famille tenu a jiur et ne comportant aucune rature ni surchage.
+								</p>
+							</t>
+						
+							<t t-if="o.type_acte == 'cn'">
+								<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td>
+											<span style="text-align:center">
+												<strong>
+													<h1><u>
+														CERTIFICAT DE NON REMARIAGE<br/>
+														DE NON DIVORCE ET DE NON<br/>
+														SEPARATION DE CORPS
+														</u>
+													</h1>
+												</strong>
+											</span>
+											<br/><br/>
+										  <p style="line-height:250%; font-size:30px">
+											Le Maire de la Commune de San-Pedro, sur déclaration de l'intéressé et l'attestation des sieurs :<br/><br/>
+											<span style="margin-left:50px;">
+												1. <strong><span t-field="o.prenom_temoin_premier" /> <span t-field="o.nom_temoin_premier" /> </strong><br/><br/>
+											</span>
+											<span style="margin-left:50px;">
+												2. <strong><span t-field="o.prenom_temoin_deuxieme" /> <span t-field="o.nom_temoin_deuxieme" /> </strong><br/><br/>
+											</span>
+											<span style="margin-left:50px;">
+												Certifie que : <strong><span t-field="o.prenom_demandeur" /> <span t-field="o.nom_demandeur" /> </strong>
+											</span>
+											</p>
+											<br/><br/>
+											<p style="line-height:150%; font-size:30px">
+											Ne s'est jamais rémariée et quelle est en possession de ses droits civils .<br/>
+											En foi nde quoi, le présent certificat a été délivré pour servi et valoir ce que de droit .<br/><br/>
+										  	</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table table-borderless">
+								<tbody>
+									<tr>
+										<td>
+											<p style="font-size:25px">Les témoins</p>
+										</td>
+										<td>
+											<span style="text-align:center;">
+												<p style="float:right;font-size:25px">
+													<strong>Faite à San-Pedro, le <span t-field="o.date_jour_str" /></strong><br/><br/>
+													P.Le Maire P.O
+												</p>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+							</t>
+						<!-- </t> -->
+					</div>
+					</t>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

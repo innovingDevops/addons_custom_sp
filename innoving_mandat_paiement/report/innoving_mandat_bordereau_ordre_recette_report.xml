@@ -1,0 +1,22 @@
+<odoo>		
+	<record id="paperformat_innoving_mandat_bordereau_ordre_recette_report" model="report.paperformat">
+		<field name="name">Mandat bordereau de recette</field>		
+		<field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">3</field>
+		<field name="margin_bottom">3</field>
+		<field name="margin_left">3</field>
+		<field name="margin_right">3</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">0</field>
+		<field name="dpi">120</field>
+	</record>
+		
+	<report string="Bordereau d'ordre de recette" id="report_innoving_mandat_bordereau_ordre_recette_report"
+		model="innoving.mandat" report_type="qweb-pdf"
+		name="innoving_mandat_paiement.report_innoving_mandat_bordereau_ordre_recette_p"
+		file="innoving_mandat_paiement.report_innoving_mandat_bordereau_ordre_recette_report" 
+		paperformat="innoving_mandat_paiement.paperformat_innoving_mandat_bordereau_ordre_recette_report" />
+	
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for registre -->
+		<record id="data_document1" model="etat.civil.document">
+			<field name="name">CERTIFICAT DE CAPACITE MATRIMONIALE</field>
+			<field name="code">CERTIFICAT DE CAPACITE MATRIMONIALE</field>
+		</record>
+		<record id="data_document2" model="etat.civil.document">
+			<field name="name">CERTIFICAT MEDICAL DE NAISSANCE</field>
+			<field name="code">CERTIFICAT MEDICAL DE NAISSANCE</field>
+		</record>
+		<record id="data_document3" model="etat.civil.document">
+			<field name="name">CERTIFICAT MEDICAL DE DECES</field>
+			<field name="code">CERTIFICAT MEDICAL DE DECES</field>
+		</record>
+		<record id="data_document4" model="etat.civil.document">
+			<field name="name">CERTIFICAT DE PRESENCE AU CORPS</field>
+			<field name="code">CERTIFICAT DE PRESENCE AU CORPS</field>
+		</record>
+		<record id="data_document5" model="etat.civil.document">
+			<field name="name">CERTIFICAT DE RESIDENCE DU MARIÉ</field>
+			<field name="code">CERTIFICAT DE RESIDENCE DU MARIÉ</field>
+		</record>
+		<record id="data_document6" model="etat.civil.document">
+			<field name="name">CERTIFICAT DE RESIDENCE DE LA MARIÉE</field>
+			<field name="code">CERTIFICAT DE RESIDENCE DE LA MARIÉE</field>
+		</record>
+		<record id="data_document7" model="etat.civil.document">
+			<field name="name">PHOTOCOPIE CNI DU PERE</field>
+			<field name="code">PHOTOCOPIE CNI DU PERE</field>
+		</record>
+		<record id="data_document8" model="etat.civil.document">
+			<field name="name">PHOTOCOPIE CNI DE LA MERE</field>
+			<field name="code">PHOTOCOPIE CNI DE LA MERE</field>
+		</record>
+		<record id="data_document9" model="etat.civil.document">
+			<field name="name">PHOTOCOPIE CNI DU MARIÉ</field>
+			<field name="code">PHOTOCOPIE CNI DU MARIÉ</field>
+		</record>
+		<record id="data_document10" model="etat.civil.document">
+			<field name="name">PHOTOCOPIE CNI DE LA MARIÉE</field>
+			<field name="code">PHOTOCOPIE CNI DE LA MARIÉE</field>
+		</record>
+		<record id="data_document11" model="etat.civil.document">
+			<field name="name">PHOTOCOPIE CNI TEMOIN DU MARIÉ</field>
+			<field name="code">PHOTOCOPIE CNI TEMOIN DU MARIÉ</field>
+		</record>
+		<record id="data_document12" model="etat.civil.document">
+			<field name="name">PHOTOCOPIE CNI TEMOIN DE LA MARIÉE</field>
+			<field name="code">PHOTOCOPIE CNI TEMOIN DE LA MARIÉE</field>
+		</record>
+		<record id="data_document13" model="etat.civil.document">
+			<field name="name">PHOTOCOPIE CNI DU DECLARANT</field>
+			<field name="code">PHOTOCOPIE CNI DU DECLARANT</field>
+		</record>
+
+	</data>
+</odoo>
+

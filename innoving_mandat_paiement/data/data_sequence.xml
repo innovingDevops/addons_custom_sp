@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="1">
+		<!-- Sequences for demande acte -->
+		<record id="seq_innoving_mandat_fonctionnel" model="ir.sequence">
+			<field name="name">Mandat Fonctionnel</field>
+			<field name="code">innoving.mandat.fonctionnel</field>
+			<field name="prefix">MDT-F/SPY-</field>
+			<field name="padding">6</field>
+			<field name="suffix">/%(y)s</field>
+		</record>
+		<record id="seq_innoving_mandat_investissement" model="ir.sequence">
+			<field name="name">Mandat Investissement</field>
+			<field name="code">innoving.mandat.investissement</field>
+			<field name="prefix">MDT-I/SPY-</field>
+			<field name="padding">6</field>
+			<field name="suffix">/%(y)s</field>
+		</record>
+	</data>
+</odoo>

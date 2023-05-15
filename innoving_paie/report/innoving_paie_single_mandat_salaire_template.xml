@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_paie_single_mandat_salaire_p">
+		<t t-name="innoving_paie.report_innoving_paie_single_mandat_salaire">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table border-collapse" style="width:100%;font-size:15px;">
+							<tbody class="sale_tbody">
+								<tr>
+								    <td rowspan="2" style="width:40%;border: 1px solid black;">
+								    	<strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong><br/><br/>
+										<strong>DISTRICT AUTONOME DU BAS SASSANDRA</strong><br/><br/>
+										<strong>REGION DE</strong> : SAN PEDRO<br/><br/>
+										<strong>COMMUNE DE</strong> : SAN PEDRO<br/><br/>
+										<strong>Code</strong> : 336
+									</td>
+								    <td rowspan="2" style="width:30%;border: 1px solid black;">
+								    	<strong>MANDAT DE PAIEMENT</strong><br/>
+										<strong>EXERCICE</strong> : <span t-esc="time.strftime('%Y')" /><br/>
+										<strong>TITRE DU BUDGET</strong> : I<br/><br/>
+										<p style="text-align:center;"><strong>IMPUTATION</strong></p>		
+										<strong>FONCTIONNELLE</strong> : <span t-esc="o.account_fonctionnel_code" /> / <span t-esc="o.analytic_account_ref" /><br/>
+										<strong>PATRIMONIALE</strong> : /
+								    </td>
+								    <td style="width:30%;border: 1px solid black;">
+								    	<strong>N° d'inscription au livre d'exécution des opérations budgétaires</strong>:<br/>
+										.......................................................................
+									</td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;">
+								    	<strong>Numéro d'ordre :</strong> ...........................................<br/><br/>
+										<strong>Numéro de Bordereau d'émission :</strong> <br/>
+										.......................................................................
+								    </td>
+								  </tr>
+							</tbody>
+						</table>
+						<table class="table border-collapse" style="width:100%;font-size:15px;margin-top:-16px;">
+							<tbody class="sale_tbody">
+								<tr>
+								    <td style="width:30%;border: 1px solid black;">
+								    	<strong>COMPTABLE PAYEUR</strong><br/><br/>
+								    	Receveur municipal San Pedro
+									</td>
+								    <td style="width:40%;border: 1px solid black;">
+								    	<strong>OBJET DE LA DEPENSE</strong><br/><br/>
+								    	<span t-esc="o.objet" />
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;">
+								    	<strong>CREANCIER</strong><br/><br/>
+								    	<strong>Bénéficiaire</strong> : <span t-esc="o.employee_id.name" />, <span t-esc="o.job_id.name" /><br/><br/>
+								    	<strong>A</strong> : SAN PEDRO<br/><br/>
+								    	<strong>Compte Bancaire</strong> : <span t-esc="o.numero_compte" /><br/><br/>
+								    	Ou <strong>Postal</strong> : <br/><br/>
+								    	<strong>Banque</strong> : <span t-esc="o.bank_id.name" /><br/><br/>
+								    	<strong>Agence de</strong> : 
+								    </td>
+								    <td style="border: 1px solid black;">
+								    	<strong>Montant brut</strong> : <span t-esc="o.net" t-options='{"widget": "float", "precision": 0}'/><br/><br/>
+								    	<strong>A précompter</strong> :.................................................................<br/><br/>
+								    	<strong>Somme net à payer ou à virer (A)</strong> : <br/>
+										......................................................................................<br/>
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;width:50%;">
+								    	<strong>Réglé au compte indiqué ci-dessus par</strong> :<br/><br/>
+								    	- Virement postal<br/><br/>
+								    	- Virement bancaire<br/><br/>
+								    	- Cheque bancaire
+								    </td>
+								    <td rowspan="3" style="border: 1px solid black;">
+								    	<strong>Arrêté le présent mandat de paiement à la somme de</strong> : <span t-esc="docs.sum_text(o.net)" /><br/><br/>
+								    	<br/><br/>
+								    	<strong>A San Pedro, le </strong><br/><br/>
+								    	<p><strong>Signature et cachet de l'ordinateur</strong></p><br/><br/><br/><br/><br/><br/><br/>
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;width:50%;">
+								    	<strong>PIÈCES JUSTIFICATIVES DE LA DÉPENSE</strong> :<br/>
+										ETAT CI-JOINT<br/>
+								    	<strong>Référence du marché</strong> :<br/><br/>
+								    	<strong>Facture N˚</strong> :  <strong>du</strong><br/>
+								    </td>
+								  </tr>
+								  <tr>
+								    <td rowspan="3" style="border: 1px solid black;width:50%;">
+								    	<strong>Avis de la municipalité N°</strong> :<br/><br/>
+								    	<strong>Délibération N˚</strong> : <br/><br/>
+								    	<strong>Du </strong>:<br/><br/>
+								    	<strong>Montant à précompter (en lettres)</strong><br/><br/>
+								    	......................................................................................<br/><br/>
+								    	......................................................................................<br/><br/>
+								    	......................................................................................<br/><br/>
+								    	
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;width:50%;">
+								    	<strong>Vu bon à payer ou à virer pour la somme de (A)</strong><br/><br/>
+								    	............................................................................................<br/><br/>
+								    	............................................................................................<br/><br/>
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;">
+								    	<strong>Pour acquit de la somme indiquée ci-dessus (A)</strong><br/><br/>
+								    	<strong>A San Pedro, le</strong> ..........................................................<br/><br/>
+								    </td>
+								  </tr>
+							</tbody>
+						</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>	
+			</t>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_paie_p">
+		<t t-name="innoving_paie.report_innoving_paie">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table border-collapse" style="width:100%;font-size:20px;">
+								<tbody class="sale_tbody">
+									<tr>
+									    <td colspan="5" style="width:30%;">
+											<strong>DEPARTEMENT DE : SAN PEDRO<br/>
+											COMMUNE DE SAN PEDRO</strong>
+										</td>
+									    <td colspan="4" style="width:40%;">
+									    	<strong>ETAT DE SOLDE</strong><br/><br/>
+											<p style="text-align:center;"><strong>BANQUE : NSIA BANQUE</strong></p>		
+									    </td>
+									    <td colspan="5" style="width:30%;">
+									    	<strong>REPUBLIQUE DE COTE D'IVOIRE<br/>
+											UNION-DISCIPLINE-TRAVAIL</strong>
+										</td>
+									  </tr>
+									  <tr>
+									    <td colspan="4" style="width:30%;">
+											<strong>EXERCCE :2022</strong>
+										</td>
+									    <td colspan="10" style="width:70%;">
+									    	C.C.P ........IMPUTATION FONCTIONNELLE ........ 6100 VOIRES ET RESEAUX/1	
+									    </td>
+									  </tr>
+									  <tr>
+									    <td colspan="6" style="width:40%;">
+											ETAT NOMINATIF pour servir au paiement de la somme<br/>
+											acquise par les virés du service<br/>
+											du 01 Mai au 31 Mai 2022
+										</td>
+									    <td colspan="4" style="width:30%;margin-top:30px;">
+									    	Grade : D2	
+									    </td>
+									    <td colspan="4" style="width:30%;margin-top:30px;">
+									    	Echelon : 1
+										</td>
+									  </tr>
+									  
+								</tbody>
+							</table>
+							<table class="table border-collapse" style="width:100%;font-size:20px;">
+								<tbody class="sale_tbody">
+									  <tr>
+									    <td rowspan="2" style="border: 1px solid black;">
+											Nom et Prenoms
+										</td>
+									    <td style="border: 1px solid black;">
+									    	Fonction
+									    </td>
+									    <td colspan="2" style="border: 1px solid black;">
+									    	ELEMENTS IMPOSSIBLE
+										</td>
+										<td colspan="4" style="border: 1px solid black;">
+											RETENUES
+										</td>
+									    <td rowspan="2" style="border: 1px solid black;">
+									    	net apres retenues
+									    </td>
+									    <td colspan="3" style="border: 1px solid black;">
+									    	DIVERSES INDEMNITES
+										</td>
+										<td rowspan="2" style="border: 1px solid black;">
+											SALAIRE NET A PAYER
+										</td>
+									    <td rowspan="2" style="border: 1px solid black;">
+									    	EMARGEMENTS
+									    </td>
+									  </tr>
+									  <tr>
+									  	<td style="border: 1px solid black;">
+									    	
+									    </td>
+									    <td style="border: 1px solid black;">
+									    	sal.Base
+									    </td>
+									    <td style="border: 1px solid black;">
+									    	Brut Impos
+										</td>
+										<td style="border: 1px solid black;">
+											Mutuelle
+										</td>
+										<td style="border: 1px solid black;">
+											CNPS
+										</td>
+										<td style="border: 1px solid black;">
+									    	Assurance
+										</td>
+									    <td style="border: 1px solid black;">
+									    	I.S
+									    </td>
+										<td style="border: 1px solid black;">
+											Transport
+										</td>
+										<td style="border: 1px solid black;">
+											Responsabil
+										</td>
+									    <td style="border: 1px solid black;">
+									    	Fonction
+									    </td>
+									  </tr>
+										  <tr>
+											  	<td style="border: 1px solid black;">
+											    	<span class="text-left" t-field="o.contract_id.employee_id.name" />
+											    </td>
+											    <td style="border: 1px solid black;">
+											    	<span class="text-left" t-field="o.contract_id.employee_id.job_id.name" />
+											    </td>
+											    <t t-foreach="o.line_ids" t-as="line_id">
+												    <t t-if="line_id.name in ['SALAIRE CATEGORIEL']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['BRUT IMPOSABLE']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['MUTUELLE MAMA-SP']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['RETRAITE CNPS']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['SCA-INTER A']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['I.S. IMPOT SUR SALAIRE']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET APRES RETENUES']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['INDEMNITE DE TRANSPORT']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET APRES RETENUES']">
+													    <td style="border: 1px solid black;">
+													    	-
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET APRES RETENUES']">
+													    <td style="border: 1px solid black;">
+													    	-
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET A PAYER']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+												</t>
+												<td style="border: 1px solid black;">
+												</td>
+										  </tr>
+									  
+									  <tr>
+									  	<td style="border: 1px solid black;">
+									    	TOTAL
+									    </td>
+									    <td style="border: 1px solid black;text-align:center;">
+									    	1
+									    </td>
+									    <t t-foreach="o.line_ids" t-as="line_id">
+												    <t t-if="line_id.name in ['SALAIRE CATEGORIEL']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['BRUT IMPOSABLE']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['MUTUELLE MAMA-SP']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['RETRAITE CNPS']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['SCA-INTER A']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['I.S. IMPOT SUR SALAIRE']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET APRES RETENUES']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['INDEMNITE DE TRANSPORT']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET APRES RETENUES']">
+													    <td style="border: 1px solid black;">
+													    	-
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET APRES RETENUES']">
+													    <td style="border: 1px solid black;">
+													    	-
+														</td>
+													</t>
+													<t t-if="line_id.name in ['NET A PAYER']">
+													    <td style="border: 1px solid black;">
+													    	<span class="text-left" t-field="line_id.amount" />
+														</td>
+													</t>
+												</t>
+												<td style="border: 1px solid black;">
+												</td>
+									  </tr><br/>
+									  <tr>
+									    <td colspan="10">
+									    	ARRETE LE PRESENT ETAT A LA SOMME DE : ..........................
+									    </td>
+									    <td colspan="4">
+									    	<P style="float:left;margin-top:20px;">SAN PEDRO, LE</P>
+									    	<P style="float:right;margin-top:30px;">LE MAIRE</P>
+									    </td>
+									  </tr>
+								</tbody>
+							</table><br/>
+							<table class="table border-collapse" style="width:50%;font-size:22px;">
+								<tbody class="sale_tbody">
+									<tr>
+									    <td style="width:60%;border: 1px solid black;">
+									    	Vu,Vérifié et Liquidé la Présente Facture<br/>
+									    	Ou le Présent Etat ou Mémoire à la Somme<br/>
+									    	de : ......................................<br/>
+									    	...............................................<br/>
+									    	...............................................<br/>
+									    	Imputable du Budget ................ Ex ...............<br/>
+									    	Cpte ............... chap .............. Art .............§ ..........<br/>
+									    	SAN PEDRO, le .......................................
+									    	
+										</td>
+									    <td style="width:40%;border: 1px solid black;">
+									    	<p><strong><u>SITUATION DES CREDITS</u></strong></p><br/>
+									    	Crédit OUVERT .......................<br/>
+									    	Dépenses Anterieures .....................<br/>
+									    	Dépense Actuelle .........................<br/>
+									    	Disponible ...........................
+									    </td>
+									  </tr>
+								</tbody>
+							</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

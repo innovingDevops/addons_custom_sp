@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_certificat_dotation_p">
+		<t t-name="innoving_mandat_paiement.report_innoving_certificat_dotation">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page" style="font-family:Century Gothic !important;border:20px;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<t t-if="o.state in ['confirm','valid']">
+								<table class="table table-borderless" style="width:100%;font-size:20px;">
+									<tbody class="sale_tbody">
+										<h2 style="text-align:center;word-space:40px;letter-space:40px;"><strong>CERTIFIE LE SERVICE FAIT</strong></h2><br/><br/>
+										
+										<p style="margin-left:27%;margin-top:20px;font-size:20px;">
+											La mise en consommation immédiate,<br/>
+											La mise en service immédiate<br/>
+											La mise en utilisation immédiate<br/>
+											Le transport effectué<br/>
+											L'inscription au livre-journal de la<br/>
+											Comptabilité matière sous le N° <t t-if="o.is_carburant == False"><strong><span t-field="o.numero_facture_origine"/></strong></t><br/>
+											L'inscription au livre-journal special des<br/>
+											Carburants sous le N° <t t-if="o.is_carburant == True"><strong><span t-field="o.numero_facture_origine"/></strong></t><br/>
+											La prise en inventaire sous le N° ...............................................<br/>
+											La prise en charge sous le N° ...................................................<br/>
+											A SAN PEDRO, le  <strong><span t-field="o.date_edition_fournisseur"/></strong><br/>
+										</p>
+														
+										<div  style="margin-top:200px;margin-left:100px;">
+											<tr>
+												<td  style="width:53%;margin-left:80px;">
+													Vu, vérifié et liquidé la présence Facture<br/><br/>
+													Ou le présent Etat ou Mémoire à la somme de :<br/>
+													<strong><span t-field="o.montant_lettre"/></strong><br/><br/>
+													Imputable du Budget <strong>Com</strong> Ex <strong><span t-field="o.creat_year"/></strong><br/><br/>
+													Cpte <strong><span t-field="o.compte"/></strong> Chap <strong><span t-field="o.chapitre"/></strong> Art 
+													<t t-if="o.type_depense == 'fonctionnel'"><strong><span t-field="o.account_fonctionnel_id.code"/></strong> $ <strong><span t-field="o.barre_account_fonctionnel"/></strong> / <strong><span t-field="o.account_patrimoniale_code"/></strong></t>
+													<t t-if="o.type_depense == 'investissement'"><strong><span t-field="o.account_patrimoine_id.code"/></strong> $ <strong><span t-field="o.barre_account_patrimoine"/></strong> / <strong><span t-field="o.account_patrimoniale_code"/></strong></t><br/><br/>
+
+													SAN PEDRO, le ............................................................<br/>
+												</td>
+												<td style="width:2%;border-left:5px solid black;">
+												</td>
+												<td style="width:45%;">
+													<p><strong><u>SITUATION DES CREDITS</u></strong></p>
+													<p style="margin-top:50px;">
+														Crédit OUVERT <strong><span t-field="o.montant_alloue"/></strong><br/><br/>
+														Dépenses antérieures <strong><span t-field="o.depense_anterieur"/></strong><br/><br/>
+														Dépense actuelle <strong><span t-field="o.montant_reel"/></strong><br/><br/>
+														Disponible <strong><span t-field="o.montant_disponible"/></strong><br/>
+													</p>
+												</td>
+											</tr>
+										</div>
+									</tbody>
+								</table>
+							</t>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_demande_acte_caisse_form" model="ir.ui.view">
+		<field name="name">Les caisses</field>
+		<field name="model">demande.acte.caisse</field>
+		<field name="arch" type="xml">
+			<form string="Trésorérie">
+				<sheet>
+					<group string="">
+						<group>
+							<field name="code" readonly="1"/>
+							<field name="quantity" readonly="1"/>
+							<field name="amount" readonly="1"/>
+						</group>
+						<group>
+							<field name="user_id" readonly="1"/>
+							<field name="date_jour" readonly="1"/>
+						</group>
+					</group>
+					<group string="Les lignes de caisse">
+						<field name="demande_acte_caisse_line_ids" nolabel="1" readonly="1">
+							<tree>
+				 				<field name="code" readonly="1"/>
+								<field name="type_acte" readonly="1"/>
+								<field name="quantity" readonly="1"/>
+								<field name="unit_price" readonly="1"/>
+								<field name="amount" readonly="1"/>
+								<field name="user_id" readonly="1"/>
+								<field name="date_ajout" readonly="1"/>
+							</tree>
+						</field>
+					</group>
+				</sheet>
+				<!--  
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers" />
+					<field name="activity_ids" widget="mail_activity" />
+					<field name="message_ids" widget="mail_thread" />
+				</div>
+				-->
+			</form>
+		</field>
+	</record>
+	<record id="view_demande_acte_caisse_tree" model="ir.ui.view">
+		<field name="name">Liste des caisses</field>
+		<field name="model">demande.acte.caisse</field>
+		<field name="arch" type="xml">
+			<tree string="Trésorérie" toolbar="1" create="0">
+				<field name="code"/>
+				<field name="quantity"/>
+				<field name="amount"/>
+				<field name="user_id"/>
+				<field name="date_jour"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_demande_acte_caisse_calendar"
+		model="ir.ui.view">
+		<field name="name">Les Caisses</field>
+		<field name="model">demande.acte.caisse</field>
+		<field name="arch" type="xml">
+			<calendar string="Trésorérie" date_start="create_date" color="user_id">
+				<field name="code"/>
+				<field name="amount"/>
+				<field name="user_id"/>
+				
+			</calendar>
+		</field>
+	</record>
+
+	<record id="demande_acte_caisse_view_search" model="ir.ui.view">
+		<field name="name">Trésorérie
+		</field>
+		<field name="model">demande.acte.caisse</field>
+		<field name="arch" type="xml">
+			<search string="Recherche Trésorérie">
+				<field name="code"/>
+				<field name="amount"/>
+				<separator />
+				<field name='user_id' />
+				<field name='date_ajout' />
+				<group expand="0" string="Grouper par">
+					<filter name="user_id" string="Agent" domain=""
+						context="{'group_by':'user_id'}" />
+					<filter name="date_ajout" string="Date ajout" domain=""
+						context="{'group_by':'date_ajout'}" />
+					
+				</group>
+			</search>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="view_demande_acte_caisse_pivot">
+		<field name="name">Trésorérie</field>
+		<field name="model">demande.acte.caisse</field>
+		<field name="arch" type="xml">
+			<pivot string="Les Caisses">
+				<field name="date_ajout" type="row" />
+				<field name="user_id" type="measure" />
+			</pivot>
+		</field>
+	</record>
+	
+	<record id="action_demande_acte_rejecter_tree_view"
+		model="ir.actions.act_window">
+		<field name="name">Demande d'acte rejeté</field>
+		<field name="res_model">demande.acte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<field name="domain">[('state','=','cancel')]</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle demande de copie d'acte
+			</p>
+		</field>
+	</record>
+
+	<record id="action_view_demande_acte_caisse_tree"
+		model="ir.actions.act_window">
+		<field name="name">Trésorérie</field>
+		<field name="res_model">demande.acte.caisse</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form,calendar,pivot</field>
+		<!-- vue principale par defaut -->
+		<field name="view_id" ref="view_demande_acte_caisse_tree" />
+		<!-- declaration de la search vue-->
+		<field name="search_view_id"
+			ref="demande_acte_caisse_view_search" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Enregistrer une nouvelle caisse
+			</p>
+		</field>
+	</record>
+	
+</odoo>

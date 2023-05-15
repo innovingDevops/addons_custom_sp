@@ -1,0 +1,22 @@
+<odoo>		
+	<record id="paperformat_innoving_paie_mandat_paiement_report" model="report.paperformat">
+		<field name="name">Mandat de paiement 2  </field>		
+		<field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">5</field>
+		<field name="margin_bottom">0</field>
+		<field name="margin_left">0</field>
+		<field name="margin_right">0</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">0</field>
+		<field name="dpi">0</field>
+	</record>
+		
+	<report string="Mandat de paiement 2" id="report_innoving_paie_mandat_paiement_report"
+		model="hr.payslip" report_type="qweb-pdf"
+		name="innoving_paie.report_innoving_paie_mandat_paiement_p"
+		file="innoving_paie.report_innoving_paie_mandat_paiement_report" 
+		paperformat="innoving_paie.paperformat_innoving_paie_mandat_paiement_report" />
+	
+</odoo>

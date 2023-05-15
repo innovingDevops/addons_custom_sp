@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_hr_employee_form_inherit_innoving_hr_employee"
+		model="ir.ui.view">
+		<field name="name">hr.employee</field>
+		<field name="model">hr.employee</field>
+		<field name="inherit_id" ref="hr.view_employee_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//group[@name='active_group']" position="after">
+				<group string="Grade / Echelon" name="grade">
+					<field name="hr_grade_id"/>
+					<field name="hr_echelon_id"/>
+				</group>
+				<group string="Comptabilité" name="compte_fonctionnel">
+					<field name="account_fonctionnel_id"/>
+					<field name="account_fonctionnel_code"/>
+				</group>
+			</xpath>
+		</field>
+	</record>
+</odoo>

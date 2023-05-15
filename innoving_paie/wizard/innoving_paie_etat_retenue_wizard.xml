@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+	<record id="view_innoving_paie_etat_retenue_wizard_form" model="ir.ui.view">
+		<field name="name">Etat récapitulatif des retenues</field>
+		<field name="model">innoving.hr.payslip.etat.retenue</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="titre" required="1"/>
+							<field name="account_fonctionnel_id" required="1" options="{'no_create': True, 'no_open': True}"/>
+							<field name="account_fonctionnel_code" required="1" />
+							<field name="barre" required="1" />
+						</group>
+						<group>
+							<field name="periode_id" required="1" options="{'no_create': True, 'no_open': True}"/>
+							<field name="date_from" required="1" />
+							<field name="date_to" required="1" />
+						</group>
+					</group>
+					<footer>
+						<button name="print_report" string="Imprimer" type="object"
+							class="oe_highlight" />
+						ou
+						<button string="Annuler" class="oe_link" special="cancel" />
+					</footer>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_view_innoving_paie_etat_retenue_wizard" model="ir.actions.act_window">
+		<field name="name">Etat récapitulatif des retenues</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">innoving.hr.payslip.etat.retenue</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="view_innoving_paie_etat_retenue_wizard_form" />
+		<field name="target">new</field>
+		<field name="multi">True</field>
+	</record>
+</odoo>

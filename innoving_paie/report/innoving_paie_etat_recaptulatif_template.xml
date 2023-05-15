@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_paie_recapitulatif_p">
+		<t t-name="innoving_paie.report_innoving_paie_recapitulatif">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table border-collapse" style="width:100%;font-size:20px;">
+							<tbody class="sale_tbody">
+								<tr>
+								    <td style="width:40%;">
+										<strong>DEPARTEMENT DE SAN PEDRO<br/>
+										BP 797 SAN PEDRO<br/>
+										Tèl : 34 71 26 60
+										</strong>
+									</td>
+								    <td colspan="2" style="width:60%;">
+								    	<strong>ETAT RECAPITULATIF DES RETENUES OPREREES</strong><br/><br/>
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="width:40%;">
+										AU TITRE DE<br/>
+										SUR LE SALAIRE AQUIS EN<br/>
+										PAR LE PERSONNEL DU SERVICE<br/>
+										BUDGET COMMUNAL
+									</td>
+								    <td colspan="2" style="width:60%;">
+								    	:CNPS AGENT<br/>
+								    	:AVRIL 2022<br/>
+								    	:FONCTIONNEMENT DU CABINET DU MAIRE<br/>
+								    	:2022<br/>
+								    	:COMPTE FONCTIONNEL : 60012/1
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="width:40%;border: 1px solid black;">
+										<strong>NOM ET PRENOMS</strong>
+									</td>
+								    <td style="width:30%;border: 1px solid black;">
+								    	<strong>CALCUL DE BASE</strong>
+								    </td>
+								    <td style="width:30%;border: 1px solid black;">
+								    	<strong>MONTANT SALARIAL</strong>
+									</td>
+								  </tr>
+								  <tr>
+								    <td style="width:40%;border: 1px solid black;">
+										CISSE KHALIF LOSSENI
+									</td>
+								    <td style="width:30%;border: 1px solid black;">
+								    	2 000 000
+								    </td>
+								    <td style="width:30%;border: 1px solid black;">
+								    	1 800 000
+									</td>
+								  </tr>
+								  <tr>
+								    <td style="width:40%;border: 1px solid black;">
+										1
+									</td>
+								    <td style="width:30%;border: 1px solid black;">
+								    	2 000 000
+								    </td>
+								    <td style="width:30%;border: 1px solid black;">
+								    	1 800 000
+									</td>
+								  </tr>
+								  <tr>
+								    <td colspan="3">
+								    	CERTIFIE EXACT LE PRESENT MONTANT ARRETE A LA SOMME DE : ..........................
+								    </td>
+								  </tr>
+								  <tr>
+								    <td colspan="3">
+								    	<p style="margin-top:20px;float:right;">SAN PEDRO, LE Lundi 23 Mai 2022</p>
+								    </td>
+								  </tr><br/><br/>
+								  <tr>
+								    <td colspan="3">
+								    	<p style="margin-top:30px;margin-left:80%;">LE MAIRE</p>
+								    </td>
+								  </tr>
+							</tbody>
+						</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

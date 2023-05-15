@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_mandat_bordereau_p">
+		<t t-name="innoving_mandat.report_innoving_mandat">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table table-borderless" style="width:100%;font-size:23px;background-color">
+							<tbody class="sale_tbody">
+								<tr>
+									<td style="width:25%;">
+										DEPARTEMENT DE SAN PEDRO<br/>
+										COMMUNE DE SAN PEDRO<br/>
+										EXERCICE 2021 CODE 336
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="text-align:center;width:50%;">
+										BORDEREAU D'EMISSION DE MANDATS				
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="width:25%;">
+										REPUBLIQUE DE CÔTE D'IVOIRE<br/>
+										UNION-DISCIPLINE-TRAVAIL
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						
+						
+						<table class="table table-borderless" style="width:100%;font-size:23px;margin-top:-60px;text-align:center">
+							<tbody class="sale_tbody">
+								<tr>
+									<td colspan="6">
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="6" style="border: 1px solid black;">
+										PARTIE RESERVEE AU RECEVEUR
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+								</tr>
+								<tr>
+									<td colspan="3">
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;">
+										IMPUTATION
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;">
+										SOMME MANDATEE
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										Date de paiement
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;">
+										CREDITEURS DIVERS C/4690
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td colspan="2" style="border: 1px solid black;">
+										AUTRES OPERATIONS
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										N°
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										Nature de la dépense
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										Nature et adresse du créancier
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										Fonctionnelle
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										Patrimoine
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										reste a payer
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										SOMMES
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										N° de cpte aut.cpte de tiers
+									</td>
+								</tr>
+								<tr>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;weight:60%;">
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										reglement de la consommation
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										SODECI
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										6250 /6
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										8021
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										
+									</td>
+									<!-- <td style="border-left:5px solid black;width:0%;weight:50%;"></td> -->
+									<td style="border: 1px solid black;">
+										
+									</td>
+									<td style="border: 1px solid black;">
+										
+									</td>
+									<td style="border: 1px solid black;">
+										
+									</td>
+								</tr>
+								
+								
+								<tr>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td rowspan="4" colspan="5" style="border: 1px solid black;">
+										<p style="float:right;text-align:right;">
+											TOTAL DE PRESENT BORDEREAU:<br/>
+											TOATAL DU PRECEDENT BORDEREAU:<br/>
+											TOTAL GENERAL DU PRESENT BORDEREAU:<br/>
+										</p>
+										<p style="text-align:left;margin-top:80px;">
+											FILIO N° :<br/>
+											Arretee a la somme de (en lettre)
+										</p>
+										A SAN PEDRO,le (date)<br/>
+										L'ordinateur
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									
+									<td rowspan="2" style="border: 1px solid black;">
+										8021
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td colspan="3" style="border: 1px solid black;">
+										Total des mandats non remis en paiement <br/>(a deduire du total ci-contre)
+										
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="border: 1px solid black;">
+									
+										
+									</td>
+								</tr>
+								
+								<tr>
+									
+									
+									
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td colspan="3" style="border: 1px solid black;">
+										Nouveau total du pecedent bordereau
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="border: 1px solid black;">
+										
+									</td>
+								</tr>
+								
+								
+								<tr>
+									
+									
+									
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td rowspan="2" style="border: 1px solid black;">
+										DATE D'EMISSION
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td colspan="3" style="border: 1px solid black;">
+										Total general a presenter sur le prochain bordereau
+									</td>
+									<!--<td style="border-left:5px solid black;width:0%;"></td> -->
+									<td style="border: 1px solid black;">
+									
+										
+									</td>
+								</tr>
+								
+								<tr>
+									
+									
+									
+									<td colspan="4" style="border: 1px solid black;">
+										LE RECEVEUR
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

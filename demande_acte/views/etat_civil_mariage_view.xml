@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_etat_civil_mariage_form_inherit"
+		model="ir.ui.view">
+		<field name="name">Mariage</field>
+		<field name="model">etat.civil.mariage</field>
+		<field name="inherit_id"
+			ref="etat_civil.view_etat_civil_mariage_form" />
+		<field name="arch" type="xml">
+	 		<group name="infos_demande_acte_mariage" position="inside"> 
+	 			<field name="demande_acte_ids" nolabel="1" readonly="1"> 
+	 				<tree>
+	 					<field name='date_ajout'/>
+						<field name="code"/>
+						<field name='type_acte' />
+						<field name='nombre_copie' />
+						<field name='state' />
+					</tree>
+	 			</field>
+			</group>
+		</field>
+	 </record>
+</odoo>

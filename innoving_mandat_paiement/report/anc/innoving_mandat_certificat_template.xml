@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_mandat_p">
+		<t t-name="innoving_mandat.report_innoving_mandat">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table table-borderless" style="width:100%">
+							<tbody class="sale_tbody">
+								<h2 style="text-align:center;word-space:40px;letter-space:40px;"><strong><u>CERTIFIE LE SERVICE FAIT</u></strong></h2><br/><br/>
+								
+									<p style="margin-left:30%;font-size:25px;margin-top:50px;">
+										La mise en consommation immédiate,<br/>
+										La mise en service immédiate<br/>
+										La mise en utilisation immédiate<br/>
+										Le transport effectuév
+										L'inscription au livre-journal de la<br/>
+										Comptabilité matière sous le n .........................................<br/>
+										L'inscription au livre-journal speciél des<br/>
+										Carburants sous le n ..........................................................<br/>
+										La prise en inventaire sous le n .........................................<br/>
+										La prise en charge sous le n .............................................<br/>
+										A SAN PEDRO, le .............................................................<br/>
+									</p>
+												
+								<div  style="margin-top:350px;">
+									<tr>
+										<td  style="font-size:25px;width:58%;margin-left:20px;">
+											Vu,vérifié et liquidé la présence Facture<br/>
+											Ou le présent Etat ou Mémoire a la somme de :<br/>
+											........................................................................<br/>
+											........................................................................<br/>
+											........................................................................<br/>
+											Imputable du Budget ............Ex .......................<br/>
+											Cpte ...........Chap .........Art ............$...................<br/>
+											SAN PEDRO, le .................................................	<br/>
+										</td>
+										<td style="width:2%;border-left:5px solid black;">
+										
+										</td>
+										<td style="font-size:25px;width:40%;">
+											<p><strong><u>SITUATION DES CREDITS</u></strong></p>
+											<p style="margin-top:50px;">
+												Crédit OUVERT...............................<br/>
+												Dépense antérieures. ............................<br/>
+												Dépense actuelle. ..................................<br/>
+												Disponible .............................................<br/>
+											</p>
+										</td>
+									</tr>
+								</div>
+							</tbody>
+						</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<odoo>
+	<template id="report_innoving_mandat_paiement_p">
+		<t t-name="innoving_mandat.report_innoving_mandat">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<div class="page" style="font-family:Century Gothic !important;">
+						<t t-call="web.basic_layout">
+							<div class="oe_structure" />
+							<table class="table border-collapse" style="width:100%;font-size:23px;">
+							<tbody class="sale_tbody">
+								<tr>
+								    <td rowspan="2" style="width:30%;border: 1px solid black;">
+								    	REPUBLIQUE DE CÔTE D'IVOIRE<br/>
+										DEPARTEMENT DE: SAN PEDRO<br/>
+										COMMUNE DE: SAN PEDRO<br/>
+										Code:336
+									</td>
+								    <td rowspan="2" style="width:40%;border: 1px solid black;">
+								    	MANDAT DE PAIEMENT<br/>
+										EXERCICE :2021<br/>
+										TITRE DU BUDGET :<br/>
+										<p style="text-align:center;">IMPUTATION</p>		
+										FONCTIONNEL:6250/6<br/>
+										PATRIMONIALE
+								    </td>
+								    <td style="border: 1px solid black;">
+								    	N d'inscription au livre d'exécution<br/>
+										des opérations budgétaires:<br/>
+										..................................................
+									</td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;">
+								    	Numéro d'ordre :<br/>
+										Numero de Bordereau<br/>
+										D'émission:
+								    </td>
+								  </tr>
+							</tbody>
+						</table>
+						
+						
+						
+						<table class="table border-collapse" style="width:100%;font-size:23px;margin-top:-15px;">
+							<tbody class="sale_tbody">
+								<tr>
+								    <td style="width:30%;border: 1px solid black;">
+								    	COMPTABLE PAYEUR<br/>
+								    	Receveur municipal San pedro
+									</td>
+								    <td style="width:40%;border: 1px solid black;">
+								    	OBJET DE LA DEPENSE<br/>
+								    	REGLEMENT DE LA CONSOMMATION D'EAU<br/>
+								    	AU CENTRE CULTUREL MUNICIPAL<br/>
+								    	PERIODE : OCTOBRE 2021
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;">
+								    	CREANCIER<br/>
+								    	Beneficiaire :SODECI<br/>
+								    	A :<br/>
+								    	Compte Bancaire: CI008 07271<br/>
+								    	Banque :SGBCI<br/>
+								    	Agence de : SAN PEDRO
+								    	
+								    </td>
+								    <td style="border: 1px solid black;">
+								    	Montant brut :..........................<br/>
+								    	A precompter :..........................<br/>
+								    	Somme nette à payer ou à virer(A) :..........................
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;width:50%;">
+								    	Réglé au compte indiqué ci-dessus par :<br/>
+								    	- Virement postal<br/>
+								    	- Virement bancaire<br/>
+								    	- Cheque bancaire<br/>
+								    	
+								    	
+								    </td>
+								    <td rowspan="3" style="border: 1px solid black;">
+								    	Arrêté le présent mandat de paiement<br/>
+								    	à la somme de :<br/>
+								    	HUIT MILLE VINGT UN FRANCS<br/>
+								    	A San Pedro, le ___________________________<br/>
+								    	<P style="float:left;">Cachet de l'ordinateur</P>
+								    	<P style="float:right;">Signature</P>
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;width:50%;">
+								    	PIÈCES JUSTIFICATIVES DE LA DÉPENSE :<br/>
+								    	Référence du marché :<br/>
+								    	Facture N˚:05737 du 10/11/2021
+								    </td>
+								  </tr>
+								  <tr>
+								    <td rowspan="3" style="border: 1px solid black;width:50%;">
+								    	Avis de la municipalité :<br/>
+								    	Délibération N˚ :    DU<br/>
+								    	Montant a précompter(en lettre)<br/>
+								    	...................................................<br/>
+								    	...................................................<br/>
+								    	...................................................
+								    	
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;width:50%;">
+								    	Vu bon a payer ou a virer pour la somme de (A)<br/>
+								    	..........................................................<br/>
+								    	..........................................................
+								    </td>
+								  </tr>
+								  <tr>
+								    <td style="border: 1px solid black;">
+								    	Pour acquit de la somme indiqué ci-dessus (A)<br/><br/>
+								    	A San Pedro,le ............................................
+								    </td>
+								  </tr>
+							</tbody>
+						</table>
+						</t>
+					</div>
+					<div class="oe_structure" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,28 @@
+<odoo>
+	<report string="Acte de naissance" id="report_etat_civil_fiche_naissance"
+		model="etat.civil.naissance" report_type="qweb-pdf"
+		name="etat_civil.report_etat_civil_fiche_naissance_p"
+		file="etat_civil.report_etat_civil_fiche_naissance" paperformat="etat_civil.paperformat_etat_civil"/>
+		
+	<record id="paperformat_etat_civil" model="report.paperformat">
+		<field name="name">Etat Civil A4</field>
+		<field name="default" eval="True"/>
+		<field name="format">A4</field>
+		<field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">10</field>
+		<field name="margin_bottom">10</field>
+		<field name="margin_left">10</field>
+		<field name="margin_right">10</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">5</field>
+		<field name="dpi">90</field>
+	</record>
+	
+	<!--  
+	<record id="etat_civil.report_etat_civil_fiche_naissance" model="ir.act.report.xml">
+		<field name="paperformat_id" ref="etat_civil.paperformat_etat_civil"/>
+	</record>
+	-->
+</odoo>
